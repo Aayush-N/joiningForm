@@ -3,20 +3,23 @@ from django.db import models
 # Create your models here.
 
 class FacultyForm(models.Model):
-position = models.CharField(max_length=50)
-department = models.CharField(max_length=50)
-name = models.CharField(max_length=50)
-fathers_name = models.CharField(max_length=50)
-address = models.CharField(max_length=50)
-permanent_address = models.CharField(max_length=50)
-phone = models.CharField("Phone", max_length=15, null=True, blank=True)
-email = models.EmailField('email address', unique=False)
-date_of_birth = models.CharField(max_length=50)
-age = models.CharField(max_length=50)
-place = models.CharField(max_length=50)
-religion = models.CharField(max_length=50)
-reservation = models.CharField(max_length=50)
-family_members = models.IntegerField()
+	position = models.CharField(max_length=50)
+	department = models.CharField(max_length=50)
+	name = models.CharField(max_length=50)
+	fathers_name = models.CharField(max_length=50)
+	address = models.CharField(max_length=50)
+	permanent_address = models.CharField(max_length=50)
+	phone = models.CharField("Phone", max_length=15, null=True, blank=True)
+	email = models.EmailField('email address', unique=False)
+	date_of_birth = models.CharField(max_length=50)
+	age = models.CharField(max_length=50)
+	place = models.CharField(max_length=50)
+	religion = models.CharField(max_length=50)
+	reservation = models.CharField(max_length=50)
+	family_members = models.IntegerField()
+
+class Languages(models.Model):
+	to_read
 languages_known
 to_read
 to_speak
