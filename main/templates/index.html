@@ -436,31 +436,31 @@
             		<fieldset class="col-md-12">
 						<div class="form-group">
             			    <label>Name: <span>*</span></label>
-                            {% render_field form.name placeholder=form.name.label class="form-control" %}
+                            {% render_field form.name placeholder=form.name.label class="form-control required" %}
                         </div>
                         <div class="form-group">
             			    <label>Father's Name: <span>*</span></label>
-                            {% render_field form.fathers_name placeholder=form.fathers_name.label class="form-control" %}
+                            {% render_field form.fathers_name placeholder=form.fathers_name.label class="form-control required" %}
                         </div>
                         <div class="form-group">
             			    <label>Date of Birth: <span>*</span></label>
-                            {% render_field form.date_of_birth placeholder=form.date_of_birth.label type="date" class="form-control" %}
+                            {% render_field form.date_of_birth placeholder=form.date_of_birth.label type="date" class="form-control required"%}
                         </div>
                         <div class="form-group">
             			    <label>Age: <span>*</span></label>
-                            {% render_field form.age placeholder=form.age.label type="date" class="form-control" %}
+                            {% render_field form.age placeholder=form.age.label type="date" class="form-control required" %}
                         </div>
 						<div class="form-group">
             			    <label>Position: <span>*</span></label>
-                            {% render_field form.position placeholder=form.position.label class="form-control" %}
+                            {% render_field form.position placeholder=form.position.label class="form-control required" %}
                         </div>
                         <div class="form-group">
             			    <label>Department: <span>*</span></label>
-                            {% render_field form.department placeholder=form.department.label class="form-control" %}
+                            {% render_field form.department placeholder=form.department.label class="form-control required" %}
                         </div>
                         <div class="form-group">
             			    <label>Place: <span>*</span></label>
-                            {% render_field form.place placeholder=form.place.label type="date" class="form-control" %}
+                            {% render_field form.place placeholder=form.place.label type="date" class="form-control required" %}
                         </div>
                         <div class="form-wizard-buttons">
                             <button type="button" class="btn btn-next">Next</button>
@@ -470,27 +470,27 @@
                     <fieldset>
                     	<div class="form-group">
             			    <label>Address: <span>*</span></label>
-                            {% render_field form.address placeholder=form.address.label class="form-control" %}
+                            {% render_field form.address placeholder=form.address.label class="form-control required" %}
                         </div>
                         <div class="form-group">
             			    <label>Permanent Address: <span>*</span></label>
-                            {% render_field form.permanent_address placeholder=form.permanent_address.label class="form-control" %}
+                            {% render_field form.permanent_address placeholder=form.permanent_address.label class="form-control required" %}
                         </div>
                         <div class="form-group">
             			    <label>Phone: <span>*</span></label>
-                            {% render_field form.phone placeholder=form.phone.label class="form-control" %}
+                            {% render_field form.phone placeholder=form.phone.label class="form-control required" %}
                         </div>
                         <div class="form-group">
             			    <label>Email: <span>*</span></label>
-                            {% render_field form.email placeholder=form.email.label class="form-control" %}
+                            {% render_field form.email placeholder=form.email.label class="form-control required" %}
                         </div>
 						<div class="form-group">
             			    <label>Religion: <span>*</span></label>
-                            {% render_field form.religion placeholder=form.religion.label type="date" class="form-control" %}
+                            {% render_field form.religion placeholder=form.religion.label type="date" class="form-control required" %}
                         </div>
 						<div class="form-group">
             			    <label>Reservation: <span>*</span></label>
-                            {% render_field form.reservation placeholder=form.reservation.label type="date" class="form-control" %}
+                            {% render_field form.reservation placeholder=form.reservation.label type="date" class="form-control required" %}
                         </div>
                         <div class="form-group">
             			    <label>Family Members: <span>*</span></label>
@@ -517,32 +517,32 @@
                         	<tr>
                         		<td>
                         			<div class="form-group">
-			                            {% render_field form.Course_phd type="date" class="form-control" %}
+			                            {% render_field form.Course_phd type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 			                        <div class="form-group">
-			            			    {% render_field form.Specialisation_phd type="date" class="form-control" %}
+			            			    {% render_field form.Specialisation_phd type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Institution_Name_phd type="date" class="form-control" %}
+			            			    {% render_field form.Institution_Name_phd type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Passing_Year_phd type="date" class="form-control" %}
+			            			    {% render_field form.Passing_Year_phd type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Percent_Marks_phd type="date" class="form-control" %}
+			            			    {% render_field form.Percent_Marks_phd type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Class_Awarded_phd type="date" class="form-control" %}
+			            			    {% render_field form.Class_Awarded_phd type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                </tr>
@@ -560,32 +560,32 @@
                         	<tr>
                         		<td>
                         			<div class="form-group">
-			                            {% render_field form.Course_mtech type="date" class="form-control" %}
+			                            {% render_field form.Course_mtech type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 			                        <div class="form-group">
-			            			    {% render_field form.Specialisation_mtech type="date" class="form-control" %}
+			            			    {% render_field form.Specialisation_mtech type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Institution_Name_mtech type="date" class="form-control" %}
+			            			    {% render_field form.Institution_Name_mtech type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Passing_Year_mtech type="date" class="form-control" %}
+			            			    {% render_field form.Passing_Year_mtech type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Percent_Marks_mtech type="date" class="form-control" %}
+			            			    {% render_field form.Percent_Marks_mtech type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Class_Awarded_mtech type="date" class="form-control" %}
+			            			    {% render_field form.Class_Awarded_mtech type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                </tr>
@@ -603,32 +603,32 @@
                         	<tr>
                         		<td>
                         			<div class="form-group">
-			                            {% render_field form.Course_mca type="date" class="form-control" %}
+			                            {% render_field form.Course_mca type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 			                        <div class="form-group">
-			            			    {% render_field form.Specialisation_mca type="date" class="form-control" %}
+			            			    {% render_field form.Specialisation_mca type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Institution_Name_mca type="date" class="form-control" %}
+			            			    {% render_field form.Institution_Name_mca type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Passing_Year_mca type="date" class="form-control" %}
+			            			    {% render_field form.Passing_Year_mca type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Percent_Marks_mca type="date" class="form-control" %}
+			            			    {% render_field form.Percent_Marks_mca type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Class_Awarded_mca type="date" class="form-control" %}
+			            			    {% render_field form.Class_Awarded_mca type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                </tr>
@@ -646,32 +646,32 @@
                         	<tr>
                         		<td>
                         			<div class="form-group">
-			                            {% render_field form.Course_be type="date" class="form-control" %}
+			                            {% render_field form.Course_be type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 			                        <div class="form-group">
-			            			    {% render_field form.Specialisation_be type="date" class="form-control" %}
+			            			    {% render_field form.Specialisation_be type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Institution_Name_be type="date" class="form-control" %}
+			            			    {% render_field form.Institution_Name_be type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Passing_Year_be type="date" class="form-control" %}
+			            			    {% render_field form.Passing_Year_be type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Percent_Marks_be type="date" class="form-control" %}
+			            			    {% render_field form.Percent_Marks_be type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Class_Awarded_be type="date" class="form-control" %}
+			            			    {% render_field form.Class_Awarded_be type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                </tr>
@@ -689,32 +689,32 @@
                         	<tr>
                         		<td>
                         			<div class="form-group">
-			                            {% render_field form.Course_bsc type="date" class="form-control" %}
+			                            {% render_field form.Course_bsc type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 			                        <div class="form-group">
-			            			    {% render_field form.Specialisation_bsc type="date" class="form-control" %}
+			            			    {% render_field form.Specialisation_bsc type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Institution_Name_bsc type="date" class="form-control" %}
+			            			    {% render_field form.Institution_Name_bsc type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Passing_Year_bsc type="date" class="form-control" %}
+			            			    {% render_field form.Passing_Year_bsc type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Percent_Marks_bsc type="date" class="form-control" %}
+			            			    {% render_field form.Percent_Marks_bsc type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Class_Awarded_bsc type="date" class="form-control" %}
+			            			    {% render_field form.Class_Awarded_bsc type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                </tr>
@@ -732,32 +732,32 @@
                         	<tr>
                         		<td>
                         			<div class="form-group">
-			                            {% render_field form.Course_other type="date" class="form-control" %}
+			                            {% render_field form.Course_other type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 			                        <div class="form-group">
-			            			    {% render_field form.Specialisation_other type="date" class="form-control" %}
+			            			    {% render_field form.Specialisation_other type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Institution_Name_other type="date" class="form-control" %}
+			            			    {% render_field form.Institution_Name_other type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Passing_Year_other type="date" class="form-control" %}
+			            			    {% render_field form.Passing_Year_other type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Percent_Marks_other type="date" class="form-control" %}
+			            			    {% render_field form.Percent_Marks_other type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Class_Awarded_other type="date" class="form-control" %}
+			            			    {% render_field form.Class_Awarded_other type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                </tr>
@@ -773,7 +773,7 @@
 						<div class="row">
 							<h2 class="col-md-3">Research</h2> 
 							<div class="col-md-3 form-group">
-	                            {% render_field form.total_researchExp placeholder="Total Research Experience" type="date" class="form-control" %}
+	                            {% render_field form.total_researchExp placeholder="Total Research Experience" type="date" class="form-control required" %}
 	                        </div>
 	                    </div>
                         <table class="table table-bordered">
@@ -791,22 +791,22 @@
                         	<tr>
                         		<td>
                         			<div class="form-group">
-			                            {% render_field form.Name_university type="date" class="form-control" %}
+			                            {% render_field form.Name_university type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 			                        <div class="form-group">
-			            			    {% render_field form.area_reasearch type="date" class="form-control" %}
+			            			    {% render_field form.area_reasearch type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.from_date type="date" class="form-control" %}
+			            			    {% render_field form.from_date type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.to_date type="date" class="form-control" %}
+			            			    {% render_field form.to_date type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
@@ -816,22 +816,22 @@
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.total_internationalConf type="date" class="form-control" %}
+			            			    {% render_field form.total_internationalConf type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.title_paper type="date" class="form-control" %}
+			            			    {% render_field form.title_paper type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.conf_International type="date" class="form-control" %}
+			            			    {% render_field form.conf_International type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.year_month_pub type="date" class="form-control" %}
+			            			    {% render_field form.year_month_pub type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                </tr>
@@ -850,37 +850,37 @@
                         	<tr>
                         		<td>
                         			<div class="form-group">
-			                            {% render_field form.conf_conducted_org type="date" class="form-control" %}
+			                            {% render_field form.conf_conducted_org type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 			                        <div class="form-group">
-			            			    {% render_field form.total_experience type="date" class="form-control" %}
+			            			    {% render_field form.total_experience type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.university type="date" class="form-control" %}
+			            			    {% render_field form.university type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.designation type="date" class="form-control" %}
+			            			    {% render_field form.designation type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.from_date type="date" class="form-control" %}
+			            			    {% render_field form.from_date type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.to_date type="date" class="form-control" %}
+			            			    {% render_field form.to_date type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.total_duration type="date" class="form-control" %}
+			            			    {% render_field form.total_duration type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                </tr>
@@ -896,22 +896,22 @@
                         	<tr>
                         		<td>
                         			<div class="form-group">
-			                            {% render_field form.profbody type="date" class="form-control" %}
+			                            {% render_field form.profbody type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 			                        <div class="form-group">
-			            			    {% render_field form.grade type="date" class="form-control" %}
+			            			    {% render_field form.grade type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.no_member type="date" class="form-control" %}
+			            			    {% render_field form.no_member type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.year_selection type="date" class="form-control" %}
+			            			    {% render_field form.year_selection type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                </tr>
@@ -928,27 +928,27 @@
                         	<tr>
                         		<td>
                         			<div class="form-group">
-			                            {% render_field form.organisation type="date" class="form-control" %}
+			                            {% render_field form.organisation type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 			                        <div class="form-group">
-			            			    {% render_field form.position_held type="date" class="form-control" %}
+			            			    {% render_field form.position_held type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.from_date type="date" class="form-control" %}
+			            			    {% render_field form.from_date type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.to_date type="date" class="form-control" %}
+			            			    {% render_field form.to_date type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.experience_years type="date" class="form-control" %}
+			            			    {% render_field form.experience_years type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                </tr>
@@ -964,22 +964,22 @@
                         	<tr>
                         		<td>
                         			<div class="form-group">
-			                            {% render_field form.Spec_awards_particulars type="date" class="form-control" %}
+			                            {% render_field form.Spec_awards_particulars type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 			                        <div class="form-group">
-			            			    {% render_field form.state type="date" class="form-control" %}
+			            			    {% render_field form.state type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.national type="date" class="form-control" %}
+			            			    {% render_field form.national type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.international type="date" class="form-control" %}
+			            			    {% render_field form.international type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                </tr>
@@ -994,17 +994,17 @@
                         	<tr>
                         		<td>
                         			<div class="form-group">
-			                            {% render_field form.name type="date" class="form-control" %}
+			                            {% render_field form.name type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 			                        <div class="form-group">
-			            			    {% render_field form.position type="date" class="form-control" %}
+			            			    {% render_field form.position type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.contact_no type="date" class="form-control" %}
+			            			    {% render_field form.contact_no type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                </tr>
@@ -1019,27 +1019,27 @@
                     <fieldset>
                     	<div class="form-group">
             			    <label>NEFT: <span>*</span></label>
-                            {% render_field form.neft placeholder=form.neft.label type="date" class="form-control" %}
+                            {% render_field form.neft placeholder=form.neft.label type="date" class="form-control required" %}
                         </div>
                         <div class="form-group">
             			    <label>UTI: <span>*</span></label>
-                            {% render_field form.uti placeholder=form.uti.label type="date" class="form-control" %}
+                            {% render_field form.uti placeholder=form.uti.label type="date" class="form-control required" %}
                         </div>
 						<div class="form-group">
             			    <label>Date: <span>*</span></label>
-                            {% render_field form.Date placeholder=form.Date.label type="date" class="form-control" %}
+                            {% render_field form.Date placeholder=form.Date.label type="date" class="form-control required" %}
                         </div>
 						<div class="form-group">
             			    <label>Amount: <span>*</span></label>
-                            {% render_field form.Amount placeholder=form.Amount.label type="date" class="form-control" %}
+                            {% render_field form.Amount placeholder=form.Amount.label type="date" class="form-control required" %}
                         </div>
 						<div class="form-group">
             			    <label>Bank: <span>*</span></label>
-                            {% render_field form.Bank placeholder=form.Bank.label type="date" class="form-control" %}
+                            {% render_field form.Bank placeholder=form.Bank.label type="date" class="form-control required" %}
                         </div>
                         <div class="form-group">
             			    <label>Branch: <span>*</span></label>
-                            {% render_field form.Branch placeholder=form.Branch.label type="date" class="form-control" %}
+                            {% render_field form.Branch placeholder=form.Branch.label type="date" class="form-control required" %}
                         </div>
                         <div class="form-wizard-buttons">
                             <button type="button" class="btn btn-previous">Previous</button>

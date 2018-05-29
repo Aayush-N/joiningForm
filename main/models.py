@@ -5,7 +5,7 @@ from django.db import models
 class Faculty(models.Model):
 	position = models.CharField(max_length=20)
 	department = models.CharField(max_length=50)
-	name = models.CharField(max_length=50)
+	name = models.CharField(max_length=50, blank=False, null=False)
 	fathers_name = models.CharField(max_length=50)
 	address = models.CharField(max_length=50)
 	permanent_address = models.CharField(max_length=50)
