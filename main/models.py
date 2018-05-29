@@ -3,9 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Languages(models.Model):
-	read = models.CharField("read", max_length=50, null=False, blank=False)
-	speak = models.CharField("write", max_length=50, null=False, blank=False)
-	write = models.CharField("speak", max_length=50, null=False, blank=False)
+	proficiency = models.CharField("proficiency", max_length=50, null=False, blank=False)
 
 class PHD(models.Model):
 	Course = models.CharField(max_length=50, null=False, blank=False)
@@ -111,7 +109,7 @@ class BankDetails(models.Model):
 
 
 class Faculty(models.Model):
-	position = models.CharField(max_length=50)
+	position = models.CharField(max_length=20)
 	department = models.CharField(max_length=50)
 	name = models.CharField(max_length=50)
 	fathers_name = models.CharField(max_length=50)
@@ -125,7 +123,9 @@ class Faculty(models.Model):
 	religion = models.CharField(max_length=50)
 	reservation = models.CharField(max_length=50)
 	family_members = models.IntegerField()
-	Languages = models.ForeignKey("Languages", on_delete=models.CASCADE, null=False)
+	Kannada = models.ForeignKey("Languages", on_delete=models.CASCADE, null=False,related_name='kannada')
+	English = models.ForeignKey("Languages", on_delete=models.CASCADE, null=False,related_name='english')
+	Hindi = models.ForeignKey("Languages", on_delete=models.CASCADE, null=False,related_name='hindi')
 	PHD = models.ForeignKey("PHD", on_delete=models.CASCADE, null=True)
 	MTech = models.ForeignKey("MTech", on_delete=models.CASCADE, null=True)
 	MphilMca = models.ForeignKey("MphilMca", on_delete=models.CASCADE, null=True)
