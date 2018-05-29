@@ -118,3 +118,24 @@ class Faculty(models.Model):
 	Bank = models.CharField("Bank", max_length=35, null=False, blank=False)
 	Branch = models.CharField("Branch", max_length=35, null=False, blank=False)
 
+	#FilesToBeUploaded
+	Sslc = models.FileField(upload_to='uploads/')
+	bachelors_certificate = models.FileField(upload_to='uploads/')
+	bachelors_marks_card = models.FileField(upload_to='uploads/')
+	masters_certificate = models.FileField(upload_to='uploads/')
+	masters_marks_card = models.FileField(upload_to='uploads/')
+	phd_certificate = models.FileField(upload_to='uploads/')
+	other_certificate = models.FileField(upload_to='uploads/')
+	research_experience_certificate = models.FileField(upload_to='uploads/')
+	teaching_experience_certificate = models.FileField(upload_to='uploads/')
+	industrial_experience_certificate = models.FileField(upload_to='uploads/')
+	research_publication_certificate = models.FileField(upload_to='uploads/')
+	professional_membership_certificate = models.FileField(upload_to='uploads/')
+	aadhar_card = models.FileField(upload_to='uploads/')
+	pan_card = models.FileField(upload_to='uploads/')
+	reference_letter1 = models.FileField(upload_to='uploads/')
+	reference_letter2 = models.FileField(upload_to='uploads/')
+	
+
+
+
