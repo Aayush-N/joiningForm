@@ -19,9 +19,7 @@ class IndexView(CreateView):
 	form_class = FacultyForm
 
 	def get_context_data(self, *args, **kwargs):
-		context = super(JobCreateView, self).get_context_data(*args, **kwargs)
-		user = self.request.user
-		context['user'] = user.username
+		context = super(IndexView, self).get_context_data(*args, **kwargs)
 		return context
 	
 	def form_valid(self, form):
