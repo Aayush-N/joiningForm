@@ -117,3 +117,4 @@ class Faculty(models.Model):
 	Amount = models.CharField("Amount", max_length=35, null=False, blank=False)
 	Bank = models.CharField("Bank", max_length=35, null=False, blank=False)
 	Branch = models.CharField("Branch", max_length=35, null=False, blank=False)
+
