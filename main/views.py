@@ -13,10 +13,10 @@ from .forms import *
 
 class IndexView(CreateView):
 	template_name = 'index.html'
-	model = Job
+	model = Faculty
 	#success_url = reverse("index")
 	error_url = reverse_lazy('index')
-	form_class = MainForm
+	form_class = FacultyForm
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(JobCreateView, self).get_context_data(*args, **kwargs)
