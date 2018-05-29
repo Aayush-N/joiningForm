@@ -1,4 +1,4 @@
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 from django.views.generic.edit import UpdateView
 
 from django.shortcuts import render
@@ -32,3 +32,10 @@ def done(request):
 	"title": "JobsRubix"
 	}
 	return render(request, template_name, context)
+
+class DisplayView(ListView):
+	template_name = 'display.html'
+	model = Faculty
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		return context	
