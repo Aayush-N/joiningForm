@@ -39,3 +39,12 @@ class DisplayView(ListView):
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
 		return context	
+
+def upload_file(request):
+    if request.method == 'POST':
+        form = FacultyForm(request.POST, request.FILES)
+        if form.is_valid():
+            return HttpResponseRedirect('/')
+    else:
+        form = FacultyForm()
+    return render(request, 'index.html', {'form': form})

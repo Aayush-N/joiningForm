@@ -402,7 +402,7 @@
             <div class="col-md-12 form-wizard">
 			
 				<!-- Form Wizard -->
-            	<form role="form" action="/" method="post">{% csrf_token %}
+            	<form role="form" action="/" method="post" enctype="multipart/form-data">{% csrf_token %}
 
             		<h3>BMS Institute of Technology</h3>
             		<p>Fill all form field to go next step</p>
@@ -414,10 +414,6 @@
             			<div class="form-wizard-step active">
             				<div class="form-wizard-step-icon"><i class="fa fa-user" aria-hidden="true"></i></div>
             				<p>Personal</p>
-            			</div>
-            			<div class="form-wizard-step">
-            				<div class="form-wizard-step-icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
-            				<p>Contact</p>
             			</div>
 						<div class="form-wizard-step">
             				<div class="form-wizard-step-icon"><i class="fa fa-graduation-cap" aria-hidden="true"></i></div>
@@ -431,76 +427,74 @@
             				<div class="form-wizard-step-icon"><i class="fa fa-money" aria-hidden="true"></i></div>
             				<p>Payment Details</p>
             			</div>
+            			<div class="form-wizard-step">
+            				<div class="form-wizard-step-icon"><i class="fa fa-file" aria-hidden="true"></i></div>
+            				<p>Documents</p>
+            			</div>
             		</div>
 
             		<fieldset class="col-md-12">
-						<div class="form-group">
+            			<div class="row">
+						<div class="col-md-12 form-group">
             			    <label>Name: <span>*</span></label>
                             {% render_field form.name placeholder=form.name.label class="form-control required" %}
                         </div>
-                        <div class="form-group">
+                        <div class="col-md-12 form-group">
             			    <label>Father's Name: <span>*</span></label>
                             {% render_field form.fathers_name placeholder=form.fathers_name.label class="form-control required" %}
                         </div>
-                        <div class="form-group">
+                        <div class="col-md-6 form-group">
             			    <label>Date of Birth: <span>*</span></label>
                             {% render_field form.date_of_birth placeholder=form.date_of_birth.label type="date" class="form-control required"%}
                         </div>
-                        <div class="form-group">
+                        <div class="col-md-6 form-group">
             			    <label>Age: <span>*</span></label>
                             {% render_field form.age placeholder=form.age.label class="form-control required" %}
                         </div>
-						<div class="form-group">
+						<div class="col-md-6 form-group">
             			    <label>Position: <span>*</span></label>
                             {% render_field form.position placeholder=form.position.label class="form-control required" %}
                         </div>
-                        <div class="form-group">
+                        <div class="col-md-6 form-group">
             			    <label>Department: <span>*</span></label>
                             {% render_field form.department placeholder=form.department.label class="form-control required" %}
                         </div>
-                        <div class="form-group">
+                        <div class="col-md-12 form-group">
+            			    <label>Address: <span>*</span></label>
+                            {% render_field form.address placeholder=form.address.label class="form-control required" %}
+                        </div>
+                        <div class="col-md-12 form-group">
+            			    <label>Permanent Address: <span>*</span></label>
+                            {% render_field form.permanent_address placeholder=form.permanent_address.label class="form-control required" %}
+                        </div>
+                        <div class="col-md-6 form-group">
+            			    <label>Phone: <span>*</span></label>
+                            {% render_field form.phone placeholder=form.phone.label class="form-control required" %}
+                        </div>
+                        <div class="col-md-6 form-group">
+            			    <label>Email: <span>*</span></label>
+                            {% render_field form.email placeholder=form.email.label class="form-control required" %}
+                        </div>
+						<div class="col-md-6 form-group">
+            			    <label>Religion: <span>*</span></label>
+                            {% render_field form.religion placeholder=form.religion.label class="form-control required" %}
+                        </div>
+						<div class="col-md-6 form-group">
+            			    <label>Reservation: <span>*</span></label>
+                            {% render_field form.reservation placeholder=form.reservation.label class="form-control required" %}
+                        </div>
+                        <div class="col-md-6 form-group">
+            			    <label>Family Members: <span>*</span></label>
+                            {% render_field form.family_members placeholder=form.family_members.label class="form-control" %}
+                        </div>
+                        <div class="col-md-6 form-group">
             			    <label>Place: <span>*</span></label>
                             {% render_field form.place placeholder=form.place.label class="form-control required" %}
                         </div>
                         <div class="form-wizard-buttons">
-                            <button type="button" class="btn btn-next">Next</button>
+                            <button type="button" class="col-md-12 btn btn-next">Next</button>
                         </div>
-                    </fieldset>
-					
-                    <fieldset>
-                    	<div class="form-group">
-            			    <label>Address: <span>*</span></label>
-                            {% render_field form.address placeholder=form.address.label class="form-control required" %}
-                        </div>
-                        <div class="form-group">
-            			    <label>Permanent Address: <span>*</span></label>
-                            {% render_field form.permanent_address placeholder=form.permanent_address.label class="form-control required" %}
-                        </div>
-                        <div class="form-group">
-            			    <label>Phone: <span>*</span></label>
-                            {% render_field form.phone placeholder=form.phone.label class="form-control required" %}
-                        </div>
-                        <div class="form-group">
-            			    <label>Email: <span>*</span></label>
-                            {% render_field form.email placeholder=form.email.label class="form-control required" %}
-                        </div>
-						<div class="form-group">
-            			    <label>Religion: <span>*</span></label>
-                            {% render_field form.religion placeholder=form.religion.label class="form-control required" %}
-                        </div>
-						<div class="form-group">
-            			    <label>Reservation: <span>*</span></label>
-                            {% render_field form.reservation placeholder=form.reservation.label class="form-control required" %}
-                        </div>
-                        <div class="form-group">
-            			    <label>Family Members: <span>*</span></label>
-                            {% render_field form.family_members placeholder=form.family_members.label class="form-control" %}
-                        </div>
-						
-                        <div class="form-wizard-buttons">
-                            <button type="button" class="btn btn-previous">Previous</button>
-                            <button type="button" class="btn btn-next">Next</button>
-                        </div>
+                    </div>
                     </fieldset>
 					
                     <fieldset>
@@ -613,7 +607,7 @@
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Institution_Name_mcaclass="form-control required" %}
+			            			    {% render_field form.Institution_Name_mca class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
@@ -752,7 +746,7 @@
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Percent_Marks_otherclass="form-control required" %}
+			            			    {% render_field form.Percent_Marks_other class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
@@ -969,7 +963,7 @@
 			                    </td>
 			                    <td>
 			                        <div class="form-group">
-			            			    {% render_field form.stateclass="form-control required" %}
+			            			    {% render_field form.state class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
@@ -1043,10 +1037,79 @@
                         </div>
                         <div class="form-wizard-buttons">
                             <button type="button" class="btn btn-previous">Previous</button>
-                            <button type="submit" class="btn btn-next">Submit</button>
+                            <button type="button" class="btn btn-next">Next</button>
                         </div>
                     </fieldset>
-					<!-- Form Step 4 -->
+					<fieldset>
+						<div class="form-group">
+            			    <label>SSLC: <span>*</span></label>
+                            {% render_field form.Sslc class="form-control required" %}
+                        </div>
+                        <div class="form-group">
+            			    <label>Bachelor's Certificate: <span>*</span></label>
+                            {% render_field form.bachelors_certificate class="form-control required" %}
+                        </div>
+						<div class="form-group">
+            			    <label>Bachelor's Marks Card: <span>*</span></label>
+                            {% render_field form.bachelors_marks_card class="form-control required" %}
+                        </div>
+						<div class="form-group">
+            			    <label>Masters Certificate: <span>*</span></label>
+                            {% render_field form.masters_certificate class="form-control required" %}
+                        </div>
+						<div class="form-group">
+            			    <label>Masters Marks Card: <span>*</span></label>
+                            {% render_field form.masters_marks_card class="form-control required" %}
+                        </div>
+                        <div class="form-group">
+            			    <label>PHD Certificate: <span>*</span></label>
+                            {% render_field form.phd_certificate class="form-control required" %}
+                        </div>
+                        <div class="form-group">
+            			    <label>Other Certificate: <span>*</span></label>
+                            {% render_field form.other_certificate class="form-control required" %}
+                        </div>
+                        <div class="form-group">
+            			    <label>Research Experience Certificate: <span>*</span></label>
+                            {% render_field form.research_experience_certificate class="form-control required" %}
+                        </div>
+                        <div class="form-group">
+            			    <label>Teaching Experience Certificate: <span>*</span></label>
+                            {% render_field form.teaching_experience_certificate class="form-control required" %}
+                        </div>
+                        <div class="form-group">
+            			    <label>Industrial Experience Certificate: <span>*</span></label>
+                            {% render_field form.industrial_experience_certificate class="form-control required" %}
+                        </div>
+                        <div class="form-group">
+            			    <label>Research Publication Certificate: <span>*</span></label>
+                            {% render_field form.research_publication_certificate class="form-control required" %}
+                        </div>
+                        <div class="form-group">
+            			    <label>Professional Membership Certificate: <span>*</span></label>
+                            {% render_field form.professional_membership_certificate class="form-control required" %}
+                        </div>
+                        <div class="form-group">
+            			    <label>Aadhar Card: <span>*</span></label>
+                            {% render_field form.aadhar_card class="form-control required" %}
+                        </div>
+                        <div class="form-group">
+            			    <label>Pan Card: <span>*</span></label>
+                            {% render_field form.pan_card class="form-control required" %}
+                        </div>
+                        <div class="form-group">
+            			    <label>Reference Letter 1: <span>*</span></label>
+                            {% render_field form.reference_letter1 class="form-control required" %}
+                        </div>
+                        <div class="form-group">
+            			    <label>Reference Letter 2: <span>*</span></label>
+                            {% render_field form.reference_letter2 class="form-control required" %}
+                        </div>
+                        <div class="form-wizard-buttons">
+                            <button type="button" class="btn btn-previous">Previous</button>
+                            <button type="submit" class="btn btn-next">Submit</button>
+                        </div>
+					</fieldset>
             	
             	</form>
 				<!-- Form Wizard -->
@@ -1231,5 +1294,10 @@ $('.image_title input').blur(function() {
 });
 
 // image uploader scripts
+</script>
+<script>
+$(function() {
+	$('input[type=text]').val('a')
+})
 </script>
 </body>
