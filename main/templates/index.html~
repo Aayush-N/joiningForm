@@ -1,0 +1,1644 @@
+<!DOCTYPE HTML>
+{% load widget_tweaks %}
+<head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<style type="text/css">
+		.form-box {
+			padding-top: 40px;
+			padding-bottom: 40px;
+			
+			background: rgb(234,88,4); /* Old browsers */
+			background: -moz-linear-gradient(top,  rgba(234,88,4,1) 0%, rgba(234,40,3,1) 51%, rgba(234,88,4,1) 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(top,  rgba(234,88,4,1) 0%,rgba(234,40,3,1) 51%,rgba(234,88,4,1) 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to bottom,  rgba(234,88,4,1) 0%,rgba(234,40,3,1) 51%,rgba(234,88,4,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ea5804', endColorstr='#ea5804',GradientType=0 ); /* IE6-9 */
+		}
+
+		.form-wizard {
+			padding: 25px; 
+			background: #fff;
+			-moz-border-radius: 4px; 
+			-webkit-border-radius: 4px; 
+			border-radius: 4px; 
+			box-shadow: 0px 0px 6px 3px #777;
+			font-family: 'Roboto', sans-serif;
+		    font-size: 16px;
+		    font-weight: 300;
+		    color: #888;
+		    line-height: 30px;
+		    text-align: center;
+		}
+			
+		.form-wizard strong { font-weight: 500; }
+
+		.form-wizard a, .form-wizard a:hover, .form-wizard a:focus {
+			color: #ea2803;
+			text-decoration: none;
+		    -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+		}
+
+		.form-wizard h1, .form-wizard h2 {
+			margin-top: 10px;
+			font-size: 38px;
+		    font-weight: 100;
+		    color: #555;
+		    line-height: 50px;
+		}
+
+		.form-wizard h3 {
+			font-size: 25px;
+		    font-weight: 300;
+		    color: #ea2803;
+		    line-height: 30px;
+			margin-top: 0; 
+			margin-bottom: 5px; 
+			text-transform: uppercase; 
+		}
+
+		.form-wizard h4 {
+			float:left;
+			font-size: 20px;
+		    font-weight: 300;
+		    color: #ea2803;
+		    line-height: 26px;
+			width:100%;
+		}
+		.form-wizard h4  span{
+			float:right;
+			font-size: 18px;
+		    font-weight: 300;
+		    color: #555;
+		    line-height: 26px;
+		}
+
+		.form-wizard table tr th{font-weight:normal;}
+
+		.form-wizard img { max-width: 100%; }
+
+		.form-wizard ::-moz-selection { background: #ea2803; color: #fff; text-shadow: none; }
+		.form-wizard ::selection { background: #ea2803; color: #fff; text-shadow: none; }
+
+
+		.form-control {
+			height: 44px;
+			width:100%;
+		    margin: 0;
+		    padding: 0 20px;
+		    vertical-align: middle;
+		    background: #fff;
+		    border: 1px solid #ddd;
+		    font-family: 'Roboto', sans-serif;
+		    font-size: 16px;
+		    font-weight: 300;
+		    line-height: 44px;
+		    color: #888;
+		    -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+		    -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+		    -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+		}
+		.checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"], .radio input[type="radio"], .radio-inline input[type="radio"] {
+			position: absolute;
+			margin-top: 9px;
+			margin-left: -20px;
+		}
+
+		.form-control option:hover, .form-control option:checked  {
+		    box-shadow: 0 0 10px 100px #ea2803 inset;
+		}
+
+		.form-control:focus {
+			outline: 0;
+			background: #fff;
+		    border: 1px solid #ccc;
+		    -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+		}
+
+		.form-control:-moz-placeholder { color: #888; }
+		.form-control:-ms-input-placeholder { color: #888; }
+		.form-control::-webkit-input-placeholder { color: #888; }
+
+		.form-wizard label { font-weight: 300; }
+		.form-wizard label span { color:#ea2803; }
+
+
+		.form-wizard .btn {
+			min-width: 105px;
+			height: 40px;
+		    margin: 0;
+		    padding: 0 20px;
+		    vertical-align: middle;
+		    border: 0;
+		    font-family: 'Roboto', sans-serif;
+		    font-size: 16px;
+		    font-weight: 300;
+		    line-height: 40px;
+		    color: #fff;
+		    -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+		    text-shadow: none;
+		    -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+		    -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+		}
+
+		.form-wizard .btn:hover {
+			background:#f34727; 
+			color: #fff; 
+			}
+		.form-wizard .btn:active { 
+			outline: 0; 
+			background:#f34727; 
+			color: #fff; 
+			-moz-box-shadow: none; 
+			-webkit-box-shadow: none; 
+			box-shadow: none; 
+			}
+		.form-wizard .btn:focus,
+		.form-wizard .btn:active:focus,
+		.form-wizard .btn.active:focus { 
+			outline: 0; 
+			background:#f34727; 
+			color: #fff; 
+		}
+
+		.form-wizard .btn.btn-next,
+		.form-wizard .btn.btn-next:focus,
+		.form-wizard .btn.btn-next:active:focus, 
+		.form-wizard .btn.btn-next.active:focus { 
+		background: #ea2803; 
+		}
+
+		.form-wizard .btn.btn-submit,
+		.form-wizard .btn.btn-submit:focus,
+		.form-wizard .btn.btn-submit:active:focus, 
+		.form-wizard .btn.btn-submit.active:focus { 
+		background: #ea2803; 
+		}
+
+		.form-wizard .btn.btn-previous,
+		.form-wizard .btn.btn-previous:focus,
+		.form-wizard .btn.btn-previous:active:focus, 
+		.form-wizard .btn.btn-previous.active:focus { 
+		background: #bbb;
+		}
+
+		.form-wizard .success h3{
+			color: #4F8A10;
+			text-align: center;
+			margin: 20px auto !important;
+		}
+		.form-wizard .success .success-icon {
+			color: #4F8A10;
+			font-size: 100px;
+			border: 5px solid #4F8A10;
+			border-radius: 100px;
+			text-align: center !important;
+			width: 110px;
+			margin: 25px auto;
+		}
+		.form-wizard .progress-bar {
+			background-color: #ea2803;
+		}
+
+		.form-wizard-steps{ 
+			margin:auto; 
+			overflow: hidden; 
+			position: relative; 
+			margin-top: 20px;
+		}
+		.form-wizard-step{
+			padding-top:10px !important;
+			border:2px solid #fff;
+			background:#ccc;
+			-ms-transform: skewX(-30deg); /* IE 9 */
+		    -webkit-transform: skewX(-30deg); /* Safari */
+		    transform: skewX(-30deg); /* Standard syntax */
+		}
+		.form-wizard-step.active{
+			background:#ea2803;
+		}
+		.form-wizard-step.activated{
+			background:#ea2803;
+		}
+		.form-wizard-progress { 
+			position: absolute; 
+			top: 36px;
+			left: 0; 
+			width: 100%; 
+			height: 0px; 
+			background: #ea2803;
+		}
+		.form-wizard-progress-line { 
+			position: absolute; 
+			top: 0; 
+			left: 0; 
+			height: 0px; 
+			background: #ea2803; 
+		}
+
+		.form-wizard-tolal-steps-3 .form-wizard-step { 
+			position: relative;
+			float: left; 
+			width: 33.33%; 
+			padding: 0 5px; 
+		}
+		.form-wizard-tolal-steps-4 .form-wizard-step { 
+			position: relative; 
+			float: left; 
+			width: 25%; 
+			padding: 0 5px; 
+		}
+		.form-wizard-tolal-steps-5 .form-wizard-step { 
+			position: relative;
+			float: left;
+			width: 20%;
+			padding: 0 5px;
+		}
+
+		.form-wizard-step-icon {
+			display: inline-block;
+			width: 40px; 
+			height: 40px; 
+			margin-top: 4px; 
+			background: #ddd;
+			font-size: 16px; 
+			color: #777; 
+			line-height: 40px;
+			-moz-border-radius: 50%; 
+			-webkit-border-radius: 50%; 
+			border-radius: 50%;
+			-ms-transform: skewX(30deg); /* IE 9 */
+		    -webkit-transform: skewX(30deg); /* Safari */
+		    transform: skewX(30deg); /* Standard syntax */
+		}
+		.form-wizard-step.activated .form-wizard-step-icon {
+			background: #ea2803; 
+			border: 1px solid #fff; 
+			color: #fff; 
+			line-height: 38px;
+		}
+		.form-wizard-step.active .form-wizard-step-icon {
+			background: #fff; 
+			border: 1px solid #fff; 
+			color: #ea2803; 
+			line-height: 38px;
+		}
+
+		.form-wizard-step p { 
+			color: #fff;
+			-ms-transform: skewX(30deg); /* IE 9 */
+		    -webkit-transform: skewX(30deg); /* Safari */
+		    transform: skewX(30deg); /* Standard syntax */
+		}
+		.form-wizard-step.activated p { color: #fff; }
+		.form-wizard-step.active p { color: #fff; }
+
+		.form-wizard fieldset { 
+			display: none; 
+			text-align: left; 
+			border:0px !important
+		}
+
+		.form-wizard-buttons { text-align: right; }
+
+		.form-wizard .input-error { border-color: #ea2803;}
+
+		/** image uploader **/
+		.image-upload a[data-action] {
+		  cursor: pointer;
+		  color: #555;
+		  font-size: 18px;
+		  line-height: 24px;
+		  transition: color 0.2s;
+		}
+		.image-upload a[data-action] i {
+		  width: 1.25em;
+		  text-align: center;
+		}
+		.image-upload a[data-action]:hover {
+		  color: #ea2803;
+		}
+		.image-upload a[data-action].disabled {
+		  opacity: 0.35;
+		  cursor: default;
+		}
+		.image-upload a[data-action].disabled:hover {
+		  color: #555;
+		}
+		.settings_wrap{
+			margin-top:20px;
+		}
+		.image_picker .settings_wrap {
+		  overflow: hidden;
+		  position: relative;
+		}
+		.image_picker .settings_wrap .drop_target,
+		.image_picker .settings_wrap .settings_actions {
+		  float: left;
+		}
+		.image_picker .settings_wrap .drop_target {
+		  margin-right: 18px;
+		}
+		.image_picker .settings_wrap .settings_actions {
+			float: left;
+			margin-top: 100px;
+			margin-left: 20px;
+		}
+		.settings_actions.vertical a {
+		  display: block;
+		}
+		.drop_target {
+			position: relative;
+			cursor: pointer;
+			transition: all 0.2s;
+		    width: 250px;
+		    height: 250px;
+		    background: #f2f2f2;
+		    border-radius: 100%;
+		    margin: 0 auto 25px auto;
+		    overflow: hidden;
+		    border: 8px solid #E0E0E0;
+		}
+		.drop_target input[type="file"] {
+		  visibility: hidden;
+		}
+		.drop_target::before {
+			content: 'Drop Hear';
+			font-family: FontAwesome;
+			position: absolute;
+			display: block;
+			width: 100%;
+			line-height: 220px;
+			text-align: center;
+			font-size: 40px;
+			color: rgba(0, 0, 0, 0.3);
+			transition: color 0.2s;
+		}
+		.drop_target:hover,
+		.drop_target.dropping {
+		  background: #f80;
+		  border-top-color: #cc6d00;
+		}
+		.drop_target:hover:before,
+		.drop_target.dropping:before {
+		  color: rgba(0, 0, 0, 0.6);
+		}
+		.drop_target .image_preview {
+		  width: 100%;
+		  height: 100%;
+		  background: no-repeat center;
+		  background-size: contain;
+		  position: relative;
+		  z-index: 2;
+		}
+	</style>
+<section class="form-box" >
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12 form-wizard">
+			
+			<center><img height="80" width="80" src="https://bmsit.ac.in/assets/logo-5527329e306f832982eb5b10b8325a606bc2058ae61b4aa5705c8c2d4e436212.png"></center>	<!-- Form Wizard -->
+            	<form role="form" action="/" method="post" enctype="multipart/form-data">{% csrf_token %}
+
+            		<h3>BMS Institute of Technology</h3>
+            		<p>Fill all form field to go next step</p>
+					
+            		<div class="form-wizard-steps form-wizard-tolal-steps-5">
+            			<div class="form-wizard-progress">
+            			    <div class="form-wizard-progress-line" data-now-value="10" data-number-of-steps="5" style="width: 10%;"></div>
+            			</div>
+            			<div class="form-wizard-step active">
+            				<div class="form-wizard-step-icon"><i class="fa fa-user" aria-hidden="true"></i></div>
+            				<p>Personal</p>
+            			</div>
+						<div class="form-wizard-step">
+            				<div class="form-wizard-step-icon"><i class="fa fa-graduation-cap" aria-hidden="true"></i></div>
+            				<p>Educational</p>
+            			</div>
+						<div class="form-wizard-step">
+            				<div class="form-wizard-step-icon"><i class="fa fa-briefcase" aria-hidden="true"></i></div>
+            				<p>Professional Career</p>
+            			</div>
+            			<div class="form-wizard-step">
+            				<div class="form-wizard-step-icon"><i class="fa fa-money" aria-hidden="true"></i></div>
+            				<p>Payment Details</p>
+            			</div>
+            			<div class="form-wizard-step">
+            				<div class="form-wizard-step-icon"><i class="fa fa-file" aria-hidden="true"></i></div>
+            				<p>Documents</p>
+            			</div>
+            		</div>
+
+            		<fieldset class="col-md-12">
+            			<div class="row">
+						<div class="col-md-12 form-group">
+            			    <label>Name: <span>*</span></label>
+                            {% render_field form.name placeholder=form.name.label class="form-control required" %}
+                        </div>
+                        <div class="col-md-12 form-group">
+            			    <label>Father's Name: <span>*</span></label>
+                            {% render_field form.fathers_name placeholder=form.fathers_name.label class="form-control required" %}
+                        </div>
+                        <div class="col-md-6 form-group">
+            			    <label>Date of Birth: <span>*</span></label>
+                            {% render_field form.date_of_birth placeholder=form.date_of_birth.label type="date" class="form-control required"%}
+                        </div>
+                        <div class="col-md-6 form-group">
+            			    <label>Age: <span>*</span></label>
+                            {% render_field form.age placeholder=form.age.label class="form-control required" %}
+                        </div>
+						<div class="col-md-6 form-group">
+            			    <label>Position: <span>*</span></label>
+                            {% render_field form.position placeholder=form.position.label class="form-control required" %}
+                        </div>
+                        <div class="col-md-6 form-group">
+            			    <label>Department: <span>*</span></label>
+                            {% render_field form.department placeholder=form.department.label class="form-control required" %}
+                        </div>
+                        <div class="col-md-12 form-group">
+            			    <label>Address: <span>*</span></label>
+                            {% render_field form.address placeholder=form.address.label class="form-control required" %}
+                        </div>
+                        <div class="col-md-12 form-group">
+            			    <label>Permanent Address: <span>*</span></label>
+                            {% render_field form.permanent_address placeholder=form.permanent_address.label class="form-control required" %}
+                        </div>
+                        <div class="col-md-6 form-group">
+            			    <label>Phone: <span>*</span></label>
+                            {% render_field form.phone placeholder=form.phone.label class="form-control required" %}
+                        </div>
+                        <div class="col-md-6 form-group">
+            			    <label>Email: <span>*</span></label>
+                            {% render_field form.email placeholder=form.email.label class="form-control required" %}
+                        </div>
+						<div class="col-md-6 form-group">
+            			    <label>Religion: <span>*</span></label>
+                            {% render_field form.religion placeholder=form.religion.label class="form-control required" %}
+                        </div>
+						<div class="col-md-6 form-group">
+            			    <label>Reservation: <span>*</span></label>
+                            {% render_field form.reservation placeholder=form.reservation.label class="form-control required" %}
+                        </div>
+                        <div class="col-md-6 form-group">
+            			    <label>Family Members: <span>*</span></label>
+                            {% render_field form.family_members placeholder=form.family_members.label class="form-control" %}
+                        </div>
+                        <div class="col-md-6 form-group">
+            			    <label>Place: <span>*</span></label>
+                            {% render_field form.place placeholder=form.place.label class="form-control required" %}
+                        </div>
+<div class="col-md-6 form-group">
+            			    <label>Kannada: <span>*</span></label>
+                            {% render_field form.proficiency_kannada placeholder=form.proficiency_kannada.label class="form-control required" %}
+                        </div>
+<div class="col-md-6 form-group">
+            			    <label>English: <span>*</span></label>
+                            {% render_field form.proficiency_english placeholder=form.proficiency_english.label class="form-control required" %}
+                        </div>
+<div class="col-md-6 form-group">
+            			    <label>Hindi: <span>*</span></label>
+                            {% render_field form.proficiency_hindi placeholder=form.proficiency_hindi.label class="form-control required" %}
+                        </div>
+                        <div class="form-wizard-buttons">
+                            <button type="button" class="col-md-12 btn btn-next">Next</button>
+                        </div>
+                    </div>
+                    </fieldset>
+					
+                    <fieldset>
+                        <h2>PHD</h2>
+                        <table class="table table-bordered">
+                        	<tr>
+                        		<th>Course</th>
+                        		<th>Specialisation</th>
+                        		<th>Institution Name</th>
+                        		<th>Passing Year</th>
+                        		<th>Percent Marks</th>
+                        		<th>Class Awarded</th>
+                        	</tr>
+                        	<tr>
+                        		<td>
+                        			<div class="form-group">
+			                            {% render_field form.Course_phd class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+			                        <div class="form-group">
+			            			    {% render_field form.Specialisation_phd class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.Institution_Name_phd class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.Passing_Year_phd class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.Percent_Marks_phd class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.Class_Awarded_phd class="form-control required" %}
+			                        </div>
+			                    </td>
+			                </tr>
+                        </table>
+                        <h2>MTech.</h2>
+                        <table class="table table-bordered">
+                        	<tr>
+                        		<th>Course</th>
+                        		<th>Specialisation</th>
+                        		<th>Institution Name</th>
+                        		<th>Passing Year</th>
+                        		<th>Percent Marks</th>
+                        		<th>Class Awarded</th>
+                        	</tr>
+                        	<tr>
+                        		<td>
+                        			<div class="form-group">
+			                            {% render_field form.Course_mtech class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+			                        <div class="form-group">
+			            			    {% render_field form.Specialisation_mtech class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.Institution_Name_mtech class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.Passing_Year_mtech class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.Percent_Marks_mtech class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.Class_Awarded_mtech class="form-control required" %}
+			                        </div>
+			                    </td>
+			                </tr>
+                        </table>
+                        <h2>MCA</h2>
+                        <table class="table table-bordered">
+                        	<tr>
+                        		<th>Course</th>
+                        		<th>Specialisation</th>
+                        		<th>Institution Name</th>
+                        		<th>Passing Year</th>
+                        		<th>Percent Marks</th>
+                        		<th>Class Awarded</th>
+                        	</tr>
+                        	<tr>
+                        		<td>
+                        			<div class="form-group">
+			                            {% render_field form.Course_mca class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+			                        <div class="form-group">
+			            			    {% render_field form.Specialisation_mca class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.Institution_Name_mca class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.Passing_Year_mca class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.Percent_Marks_mca class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.Class_Awarded_mca class="form-control required" %}
+			                        </div>
+			                    </td>
+			                </tr>
+                        </table>
+                        <h2>BE</h2>
+                        <table class="table table-bordered">
+                        	<tr>
+                        		<th>Course</th>
+                        		<th>Specialisation</th>
+                        		<th>Institution Name</th>
+                        		<th>Passing Year</th>
+                        		<th>Percent Marks</th>
+                        		<th>Class Awarded</th>
+                        	</tr>
+                        	<tr>
+                        		<td>
+                        			<div class="form-group">
+			                            {% render_field form.Course_be class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+			                        <div class="form-group">
+			            			    {% render_field form.Specialisation_be class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.Institution_Name_be class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.Passing_Year_be class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.Percent_Marks_be class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.Class_Awarded_be  class="form-control required" %}
+			                        </div>
+			                    </td>
+			                </tr>
+                        </table>
+                        <h2>BSc.</h2>
+                        <table class="table table-bordered">
+                        	<tr>
+                        		<th>Course</th>
+                        		<th>Specialisation</th>
+                        		<th>Institution Name</th>
+                        		<th>Passing Year</th>
+                        		<th>Percent Marks</th>
+                        		<th>Class Awarded</th>
+                        	</tr>
+                        	<tr>
+                        		<td>
+                        			<div class="form-group">
+			                            {% render_field form.Course_bsc class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+			                        <div class="form-group">
+			            			    {% render_field form.Specialisation_bsc  class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.Institution_Name_bsc class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.Passing_Year_bsc class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.Percent_Marks_bsc  class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.Class_Awarded_bsc class="form-control required" %}
+			                        </div>
+			                    </td>
+			                </tr>
+                        </table>
+                        <h2>Other</h2>
+                        <table class="table table-bordered">
+                        	<tr>
+                        		<th>Course</th>
+                        		<th>Specialisation</th>
+                        		<th>Institution Name</th>
+                        		<th>Passing Year</th>
+                        		<th>Percent Marks</th>
+                        		<th>Class Awarded</th>
+                        	</tr>
+                        	<tr>
+                        		<td>
+                        			<div class="form-group">
+			                            {% render_field form.Course_other class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+			                        <div class="form-group">
+			            			    {% render_field form.Specialisation_other class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.Institution_Name_other class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.Passing_Year_other type="date" class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.Percent_Marks_other class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.Class_Awarded_other class="form-control required" %}
+			                        </div>
+			                    </td>
+			                </tr>
+                        </table>
+                        <div class="form-wizard-buttons">
+                            <button type="button" class="btn btn-previous">Previous</button>
+                            <button type="button" class="btn btn-next">Next</button>
+                        </div>
+                    </fieldset>
+					
+					<fieldset>
+						<div style="clear:both;"></div>
+						<div class="row">
+							<h2 class="col-md-3">Research</h2> 
+							<div class="col-md-3 form-group">
+	                            {% render_field form.total_researchExp placeholder="Total Research Experience" type="date" class="form-control required" %}
+	                        </div>
+	                    </div>
+                        <table style="table-layout:fixed; width: 100%;" id="research" class="table table-bordered">
+                        	<tr>
+                        		<th>University Name</th>
+                        		<th>Area of Research</th>
+                        		<th>From</th>
+                        		<th>To</th>
+                        		<th>Total Duration</th>
+                        		<th>Total International Conference</th>
+                        		<th>Title Paper</th>
+                        		<th>International Conference</th>
+                        		<th>Year of Publishing</th>
+                        	</tr>
+                        	<tr>
+                        		<td>
+                        			<div class="form-group">
+			                            {% render_field form.Name_university  class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+			                        <div class="form-group">
+			            			    {% render_field form.area_reasearch class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.from_date type="date" class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.to_date type="date" class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.total_duration class="form-control" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.total_internationalConf class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.title_paper class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.conf_International  class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.year_month_pub type="date" class="form-control required" %}
+			                        </div>
+			                    </td>
+			                </tr>
+			
+                        </table>
+<input type="button" onclick="addField();" id="add_research" class="btn btn-primary" value="Add Row">
+                        <h2>Conference</h2>
+                        <table id="conference" class="table table-bordered">
+                        	<tr>
+                        		<th>Organisation</th>
+                        		<th>Total Experience</th>
+                        		<th>University</th>
+                        		<th>Designation</th>
+                        		<th>From</th>
+                        		<th>To</th>
+                        		<th>Duration</th>
+                        	</tr>
+                        	<tr>
+                        		<td>
+                        			<div class="form-group">
+			                            {% render_field form.conf_conducted_org class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+			                        <div class="form-group">
+			            			    {% render_field form.total_experience class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.university class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.designation class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.from_date_conf type="date" class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.to_date_conf type="date" class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.total_duration_conf class="form-control required" %}
+			                        </div>
+			                    </td>
+			                </tr>
+                        </table>
+<input type="button" onclick="addField1();" id="add_conference" class="btn btn-primary" value="Add Row">
+			<h2>Teaching Experience</h2>
+                        <table id="teaching" class="table table-bordered">
+                        	<tr>
+				     <th>Name of the University / Institution</th>
+				     <th>Designation</th>
+				     <th>From</th>
+				     <th>To</th>
+				     <th>Total</th>
+				  </tr>
+                        	<tr>
+                        		<td>
+                        			<div class="form-group">
+			                            {% render_field form.university_name class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+			                        <div class="form-group">
+			            			    {% render_field form.designation class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.from_date_teaching class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.to_date_teaching class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.total_duration_teaching type="date" class="form-control required" %}
+			                        </div>
+			                    </td>
+			                </tr>
+                        </table>
+<input type="button" onclick="addField5();" id="add_conference" class="btn btn-primary" value="Add Row">
+                        <h2>Affiliation</h2>
+                        <table id="affiliation" class="table table-bordered">
+                        	<tr>
+                        		<th>Body</th>
+                        		<th>Grade</th>
+                        		<th>Number of Members</th>
+                        		<th>Year of Selection</th>
+                        	</tr>
+                        	<tr>
+                        		<td>
+                        			<div class="form-group">
+			                            {% render_field form.profbody class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+			                        <div class="form-group">
+			            			    {% render_field form.grade class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.no_member class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.year_selection class="form-control required" %}
+			                        </div>
+			                    </td>
+			                </tr>
+                        </table>
+<input type="button" onclick="addField2();" id="add_affiliation" class="btn btn-primary" value="Add Row">
+                        <h2>Industrial Experience</h2>
+                        <table id="industrial" class="table table-bordered">
+                        	<tr>
+                        		<th>Organisation</th>
+                        		<th>Position Held</th>
+                        		<th>From</th>
+                        		<th>To</th>
+                        		<th>Experience</th>
+                        	</tr>
+                        	<tr>
+                        		<td>
+                        			<div class="form-group">
+			                            {% render_field form.organisation class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+			                        <div class="form-group">
+			            			    {% render_field form.position_held class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.from_date_industrial type="date" class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.to_date_industrial type="date" class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.experience_years class="form-control required" %}
+			                        </div>
+			                    </td>
+			                </tr>
+                        </table>
+<input type="button" onclick="addField3();" id="add_industrial" class="btn btn-primary" value="Add Row">
+                        <h2>Awards</h2>
+                        <table id="awards" class="table table-bordered">
+                        	<tr>
+                        		<th>Particulars</th>
+                        		<th>State</th>
+                        		<th>National</th>
+                        		<th>International</th>
+                        	</tr>
+                        	<tr>
+                        		<td>
+                        			<div class="form-group">
+			                            {% render_field form.Spec_awards_particulars class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+			                        <div class="form-group">
+			            			    {% render_field form.state class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.national class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.international class="form-control required" %}
+			                        </div>
+			                    </td>
+			                </tr>
+                        </table>
+<input type="button" onclick="addField4();" id="add_awards" class="btn btn-primary" value="Add Row">
+                        <h2>Referral</h2>
+                        <table class="table table-bordered">
+                        	<tr>
+                        		<th>Name</th>
+                        		<th>Position</th>
+                        		<th>Phone Number</th>
+                        	</tr>
+                        	<tr>
+                        		<td>
+                        			<div class="form-group">
+			                            {% render_field form.name class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+			                        <div class="form-group">
+			            			    {% render_field form.position class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.contact_no class="form-control required" %}
+			                        </div>
+			                    </td>
+			                </tr>
+                        </table>
+						<br/>
+                        <div class="form-wizard-buttons">
+                            <button type="button" class="btn btn-previous">Previous</button>
+                            <button type="button" class="btn btn-next">Next</button>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                    	<div class="form-group">
+            			    <label>NEFT: <span>*</span></label>
+                            {% render_field form.neft placeholder=form.neft.label class="form-control required" %}
+                        </div>
+                        <div class="form-group">
+            			    <label>UPI: <span>*</span></label>
+                            {% render_field form.uti placeholder=form.uti.label  class="form-control required" %}
+                        </div>
+						<div class="form-group">
+            			    <label>Date: <span>*</span></label>
+                            {% render_field form.Date placeholder=form.Date.label class="form-control required" %}
+                        </div>
+						<div class="form-group">
+            			    <label>Amount: <span>*</span></label>
+                            {% render_field form.Amount placeholder=form.Amount.label  class="form-control required" %}
+                        </div>
+						<div class="form-group">
+            			    <label>Bank: <span>*</span></label>
+                            {% render_field form.Bank placeholder=form.Bank.label class="form-control required" %}
+                        </div>
+                        <div class="form-group">
+            			    <label>Branch: <span>*</span></label>
+                            {% render_field form.Branch placeholder=form.Branch.label  class="form-control required" %}
+                        </div>
+                        <div class="form-wizard-buttons">
+                            <button type="button" class="btn btn-previous">Previous</button>
+                            <button type="button" class="btn btn-next">Next</button>
+                        </div>
+                    </fieldset>
+					<fieldset>
+						<div class="form-group">
+            			    <label>SSLC: <span>*</span></label>
+                            {% render_field form.Sslc class="form-control required" %}
+                        </div>
+                        <div class="form-group">
+            			    <label>Bachelor's Certificate: <span>*</span></label>
+                            {% render_field form.bachelors_certificate class="form-control " %}
+                        </div>
+						<div class="form-group">
+            			    <label>Bachelor's Marks Card: <span>*</span></label>
+                            {% render_field form.bachelors_marks_card class="form-control " %}
+                        </div>
+						<div class="form-group">
+            			    <label>Masters Certificate: <span>*</span></label>
+                            {% render_field form.masters_certificate class="form-control " %}
+                        </div>
+						<div class="form-group">
+            			    <label>Masters Marks Card: <span>*</span></label>
+                            {% render_field form.masters_marks_card class="form-control " %}
+                        </div>
+                        <div class="form-group">
+            			    <label>PHD Certificate: <span>*</span></label>
+                            {% render_field form.phd_certificate class="form-control " %}
+                        </div>
+                        <div class="form-group">
+            			    <label>Other Certificate: <span>*</span></label>
+                            {% render_field form.other_certificate class="form-control " %}
+                        </div>
+                        <div class="form-group">
+            			    <label>Research Experience Certificate: <span>*</span></label>
+                            {% render_field form.research_experience_certificate class="form-control " %}
+                        </div>
+                        <div class="form-group">
+            			    <label>Teaching Experience Certificate: <span>*</span></label>
+                            {% render_field form.teaching_experience_certificate class="form-control " %}
+                        </div>
+                        <div class="form-group">
+            			    <label>Industrial Experience Certificate: <span>*</span></label>
+                            {% render_field form.industrial_experience_certificate class="form-control " %}
+                        </div>
+                        <div class="form-group">
+            			    <label>Research Publication Certificate: <span>*</span></label>
+                            {% render_field form.research_publication_certificate class="form-control " %}
+                        </div>
+                        <div class="form-group">
+            			    <label>Professional Membership Certificate: <span>*</span></label>
+                            {% render_field form.professional_membership_certificate class="form-control " %}
+                        </div>
+                        <div class="form-group">
+            			    <label>Aadhar Card: <span>*</span></label>
+                            {% render_field form.aadhar_card class="form-control " %}
+                        </div>
+                        <div class="form-group">
+            			    <label>Pan Card: <span>*</span></label>
+                            {% render_field form.pan_card class="form-control " %}
+                        </div>
+                        <div class="form-group">
+            			    <label>Reference Letter 1: <span>*</span></label>
+                            {% render_field form.reference_letter1 class="form-control " %}
+                        </div>
+                        <div class="form-group">
+            			    <label>Reference Letter 2: <span>*</span></label>
+                            {% render_field form.reference_letter2 class="form-control " %}
+                        </div>
+                        <div class="form-wizard-buttons">
+                            <button type="button" class="btn btn-previous">Previous</button>
+                            <button type="submit" class="btn btn-next">Submit</button>
+                        </div>
+					</fieldset>
+            	
+            	</form>
+				<!-- Form Wizard -->
+            </div>
+        </div>
+            
+    </div>
+</section>
+<script>
+function addField (argument) {
+       var myTable = document.getElementById("research");
+       var currentIndex = myTable.rows.length;
+       var currentRow = myTable.insertRow(-1);
+   
+       var university = document.createElement("input");
+       university.setAttribute("name", "Name_university" + currentIndex);
+university.setAttribute("class", "form-control");
+   
+       var area = document.createElement("input");
+       area.setAttribute("name", "area_research" + currentIndex);
+area.setAttribute("class", "form-control");
+   
+       var research_to = document.createElement("input");
+       research_to.setAttribute("name", "from_date" + currentIndex);
+research_to.setAttribute("class", "form-control");
+     
+     var research_from = document.createElement("input");
+       research_from.setAttribute("name", "to_date" + currentIndex);
+research_from.setAttribute("class", "form-control");
+   
+     var research_total = document.createElement("input");
+       research_total.setAttribute("name", "total_duration" + currentIndex);
+research_total.setAttribute("class", "form-control");
+
+var int_conf = document.createElement("input");
+       int_conf.setAttribute("name", "total_internationalConf" + currentIndex);
+int_conf.setAttribute("class", "form-control");
+
+var title_paper = document.createElement("input");
+       title_paper.setAttribute("name", "title_paper" + currentIndex);
+title_paper.setAttribute("class", "form-control");
+
+var conf = document.createElement("input");
+       conf.setAttribute("name", "conf_International" + currentIndex);
+conf.setAttribute("class", "form-control");
+
+var year = document.createElement("input");
+       year.setAttribute("name", "year_month_pub" + currentIndex);
+year.setAttribute("class", "form-control");
+  
+
+       var currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(university);
+   
+       currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(area);
+   
+       currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(research_to);
+   
+     currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(research_from);
+   
+     currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(research_total);
+
+	currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(int_conf);
+
+currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(title_paper);
+
+currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(conf);
+   
+     currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(year);
+     }
+
+
+function addField1 (argument) {
+       var myTable = document.getElementById("conference");
+       var currentIndex = myTable.rows.length;
+       var currentRow = myTable.insertRow(-1);
+   
+       var university = document.createElement("input");
+       university.setAttribute("name", "conf_conducted_org" + currentIndex);
+university.setAttribute("class", "form-control");
+   
+       var area = document.createElement("input");
+       area.setAttribute("name", "total_experience" + currentIndex);
+area.setAttribute("class", "form-control");
+   
+       var research_to = document.createElement("input");
+       research_to.setAttribute("name", "university" + currentIndex);
+research_to.setAttribute("class", "form-control");
+     
+     var research_from = document.createElement("input");
+       research_from.setAttribute("name", "designation" + currentIndex);
+research_from.setAttribute("class", "form-control");
+   
+     var research_total = document.createElement("input");
+       research_total.setAttribute("name", "from_date" + currentIndex);
+research_total.setAttribute("class", "form-control");
+
+var int_conf = document.createElement("input");
+       int_conf.setAttribute("name", "to_date" + currentIndex);
+int_conf.setAttribute("class", "form-control");
+
+var title_paper = document.createElement("input");
+       title_paper.setAttribute("name", "total_duration" + currentIndex);
+title_paper.setAttribute("class", "form-control");
+
+  
+
+       var currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(university);
+   
+       currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(area);
+   
+       currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(research_to);
+   
+     currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(research_from);
+   
+     currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(research_total);
+
+	currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(int_conf);
+
+currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(title_paper);
+     }
+
+
+function addField2 (argument) {
+       var myTable = document.getElementById("affiliation");
+       var currentIndex = myTable.rows.length;
+       var currentRow = myTable.insertRow(-1);
+   
+       var university = document.createElement("input");
+       university.setAttribute("name", "profbody" + currentIndex);
+university.setAttribute("class", "form-control");
+   
+       var area = document.createElement("input");
+       area.setAttribute("name", "year" + currentIndex);
+area.setAttribute("class", "form-control");
+   
+       var research_to = document.createElement("input");
+       research_to.setAttribute("name", "no_member" + currentIndex);
+research_to.setAttribute("class", "form-control");
+     
+     var research_from = document.createElement("input");
+       research_from.setAttribute("name", "year_selection" + currentIndex);
+research_from.setAttribute("class", "form-control");
+
+       var currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(university);
+   
+       currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(area);
+   
+       currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(research_to);
+   
+     currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(research_from);
+     }
+
+
+function addField3 (argument) {
+       var myTable = document.getElementById("industrial");
+       var currentIndex = myTable.rows.length;
+       var currentRow = myTable.insertRow(-1);
+   
+       var university = document.createElement("input");
+       university.setAttribute("name", "organisation" + currentIndex);
+university.setAttribute("class", "form-control");
+   
+       var area = document.createElement("input");
+       area.setAttribute("name", "position_held" + currentIndex);
+area.setAttribute("class", "form-control");
+   
+       var research_to = document.createElement("input");
+       research_to.setAttribute("name", "from_date" + currentIndex);
+research_to.setAttribute("class", "form-control");
+     
+     var research_from = document.createElement("input");
+       research_from.setAttribute("name", "to_date" + currentIndex);
+research_from.setAttribute("class", "form-control");
+
+var experience = document.createElement("input");
+       experience.setAttribute("name", "experience_years" + currentIndex);
+experience.setAttribute("class", "form-control");
+
+       var currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(university);
+   
+       currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(area);
+   
+       currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(research_to);
+   
+     currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(research_from);
+
+	currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(experience);
+     }
+
+
+function addField4 (argument) {
+       var myTable = document.getElementById("awards");
+       var currentIndex = myTable.rows.length;
+       var currentRow = myTable.insertRow(-1);
+   
+       var university = document.createElement("input");
+       university.setAttribute("name", "Spec_awards_particulars" + currentIndex);
+university.setAttribute("class", "form-control");
+   
+       var area = document.createElement("input");
+       area.setAttribute("name", "state" + currentIndex);
+area.setAttribute("class", "form-control");
+   
+       var research_to = document.createElement("input");
+       research_to.setAttribute("name", "national" + currentIndex);
+research_to.setAttribute("class", "form-control");
+     
+     var research_from = document.createElement("input");
+       research_from.setAttribute("name", "international" + currentIndex);
+research_from.setAttribute("class", "form-control");
+
+
+       var currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(university);
+   
+       currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(area);
+   
+       currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(research_to);
+   
+     currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(research_from);
+     }		
+
+function addField5 (argument) {
+       var myTable = document.getElementById("teaching");
+       var currentIndex = myTable.rows.length;
+       var currentRow = myTable.insertRow(-1);
+   
+       var university = document.createElement("input");
+       university.setAttribute("name", "university_name" + currentIndex);
+university.setAttribute("class", "form-control");
+   
+       var area = document.createElement("input");
+       area.setAttribute("name", "designation" + currentIndex);
+area.setAttribute("class", "form-control");
+   
+       var research_to = document.createElement("input");
+       research_to.setAttribute("name", "from_date_teaching" + currentIndex);
+research_to.setAttribute("class", "form-control");
+     
+     var research_from = document.createElement("input");
+       research_from.setAttribute("name", "to_date_teaching" + currentIndex);
+research_from.setAttribute("class", "form-control");
+
+var duration = document.createElement("input");
+      duration.setAttribute("name", "total_duration_teaching" + currentIndex);
+duration.setAttribute("class", "form-control");
+
+
+       var currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(university);
+   
+       currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(area);
+   
+       currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(research_to);
+   
+     currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(research_from);
+
+	currentCell = currentRow.insertCell(-1);
+       currentCell.appendChild(duration);
+     }		
+</script>
+<script type="text/javascript">
+	"use strict";
+function scroll_to_class(element_class, removed_height) {
+	var scroll_to = $(element_class).offset().top - removed_height;
+	if($(window).scrollTop() != scroll_to) {
+		$('.form-wizard').stop().animate({scrollTop: scroll_to}, 0);
+	}
+}
+
+function bar_progress(progress_line_object, direction) {
+	var number_of_steps = progress_line_object.data('number-of-steps');
+	var now_value = progress_line_object.data('now-value');
+	var new_value = 0;
+	if(direction == 'right') {
+		new_value = now_value + ( 100 / number_of_steps );
+	}
+	else if(direction == 'left') {
+		new_value = now_value - ( 100 / number_of_steps );
+	}
+	progress_line_object.attr('style', 'width: ' + new_value + '%;').data('now-value', new_value);
+}
+
+jQuery(document).ready(function() {
+    
+    /*
+        Form
+    */
+    $('.form-wizard fieldset:first').fadeIn('slow');
+    
+    $('.form-wizard .required').on('focus', function() {
+    	$(this).removeClass('input-error');
+    });
+    
+    // next step
+    $('.form-wizard .btn-next').on('click', function() {
+    	var parent_fieldset = $(this).parents('fieldset');
+    	var next_step = true;
+    	// navigation steps / progress steps
+    	var current_active_step = $(this).parents('.form-wizard').find('.form-wizard-step.active');
+    	var progress_line = $(this).parents('.form-wizard').find('.form-wizard-progress-line');
+    	
+    	// fields validation
+    	parent_fieldset.find('.required').each(function() {
+    		if( $(this).val() == "" ) {
+    			$(this).addClass('input-error');
+    			next_step = false;
+    		}
+    		else {
+    			$(this).removeClass('input-error');
+    		}
+    	});
+    	// fields validation
+    	
+    	if( next_step ) {
+    		parent_fieldset.fadeOut(400, function() {
+    			// change icons
+    			current_active_step.removeClass('active').addClass('activated').next().addClass('active');
+    			// progress bar
+    			bar_progress(progress_line, 'right');
+    			// show next step
+	    		$(this).next().fadeIn();
+	    		// scroll window to beginning of the form
+    			scroll_to_class( $('.form-wizard'), 20 );
+	    	});
+    	}
+    	
+    });
+    
+    // previous step
+    $('.form-wizard .btn-previous').on('click', function() {
+    	// navigation steps / progress steps
+    	var current_active_step = $(this).parents('.form-wizard').find('.form-wizard-step.active');
+    	var progress_line = $(this).parents('.form-wizard').find('.form-wizard-progress-line');
+    	
+    	$(this).parents('fieldset').fadeOut(400, function() {
+    		// change icons
+    		current_active_step.removeClass('active').prev().removeClass('activated').addClass('active');
+    		// progress bar
+    		bar_progress(progress_line, 'left');
+    		// show previous step
+    		$(this).prev().fadeIn();
+    		// scroll window to beginning of the form
+			scroll_to_class( $('.form-wizard'), 20 );
+    	});
+    });
+    
+    // submit
+    $('.form-wizard').on('submit', function(e) {
+    	
+    	// fields validation
+    	$(this).find('.required').each(function() {
+    		if( $(this).val() == "" ) {
+    			e.preventDefault();
+    			$(this).addClass('input-error');
+    		}
+    		else {
+    			$(this).removeClass('input-error');
+    		}
+    	});
+    	// fields validation
+    	
+    });
+    
+    
+});
+
+
+
+
+
+// image uploader scripts 
+
+var $dropzone = $('.image_picker'),
+    $droptarget = $('.drop_target'),
+    $dropinput = $('#inputFile'),
+    $dropimg = $('.image_preview'),
+    $remover = $('[data-action="remove_current_image"]');
+
+$dropzone.on('dragover', function() {
+  $droptarget.addClass('dropping');
+  return false;
+});
+
+$dropzone.on('dragend dragleave', function() {
+  $droptarget.removeClass('dropping');
+  return false;
+});
+
+$dropzone.on('drop', function(e) {
+  $droptarget.removeClass('dropping');
+  $droptarget.addClass('dropped');
+  $remover.removeClass('disabled');
+  e.preventDefault();
+  
+  var file = e.originalEvent.dataTransfer.files[0],
+      reader = new FileReader();
+
+  reader.onload = function(event) {
+    $dropimg.css('background-image', 'url(' + event.target.result + ')');
+  };
+  
+  console.log(file);
+  reader.readAsDataURL(file);
+
+  return false;
+});
+
+$dropinput.change(function(e) {
+  $droptarget.addClass('dropped');
+  $remover.removeClass('disabled');
+  $('.image_title input').val('');
+  
+  var file = $dropinput.get(0).files[0],
+      reader = new FileReader();
+  
+  reader.onload = function(event) {
+    $dropimg.css('background-image', 'url(' + event.target.result + ')');
+  }
+  
+  reader.readAsDataURL(file);
+});
+
+$remover.on('click', function() {
+  $dropimg.css('background-image', '');
+  $droptarget.removeClass('dropped');
+  $remover.addClass('disabled');
+  $('.image_title input').val('');
+});
+
+$('.image_title input').blur(function() {
+  if ($(this).val() != '') {
+    $droptarget.removeClass('dropped');
+  }
+});
+
+// image uploader scripts
+</script>
+<script>
+$(function() {
+	$('input[type=text]').val('a')
+})
+</script>
+</body>
