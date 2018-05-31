@@ -399,6 +399,7 @@
 <section class="form-box" >
     <div class="container">
 
+
         <div class="row">
             <div class="col-md-12 form-wizard">
 			
@@ -492,6 +493,7 @@
             			    <label>Place: <span>*</span></label>
                             {% render_field form.place placeholder=form.place.label class="form-control required" %}
                         </div>
+
 <div class="col-md-6 form-group">
             			    <label>Kannada: <span>*</span></label>
                             {% render_field form.proficiency_kannada placeholder=form.proficiency_kannada.label class="form-control required" %}
@@ -784,6 +786,7 @@
 	                        </div>
 	                    </div>
                         <table style="table-layout:fixed; width: 100%;" id="research" class="table table-bordered">
+                        <table class="table table-bordered">
                         	<tr>
                         		<th>University Name</th>
                         		<th>Area of Research</th>
@@ -842,6 +845,7 @@
 			                        </div>
 			                    </td>
 			                </tr>
+
 			
                         </table>
 <input type="button" onclick="addField();" id="add_research" class="btn btn-primary" value="Add Row">
@@ -879,6 +883,7 @@
 			                    </td>
 			                    <td>
 									<div class="form-group">
+
 			            			    {% render_field form.from_date_conf type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
@@ -918,20 +923,25 @@
 			                    <td>
 									<div class="form-group">
 			            			    {% render_field form.from_date_teaching class="form-control required" %}
+
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
+
 			            			    {% render_field form.to_date_teaching class="form-control required" %}
+
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
+
 			            			    {% render_field form.total_duration_teaching type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                </tr>
                         </table>
+
 <input type="button" onclick="addField5();" id="add_conference" class="btn btn-primary" value="Add Row">
                         <h2>Affiliation</h2>
                         <table id="affiliation" class="table table-bordered">
@@ -964,9 +974,11 @@
 			                    </td>
 			                </tr>
                         </table>
+
 <input type="button" onclick="addField2();" id="add_affiliation" class="btn btn-primary" value="Add Row">
                         <h2>Industrial Experience</h2>
                         <table id="industrial" class="table table-bordered">
+
                         	<tr>
                         		<th>Organisation</th>
                         		<th>Position Held</th>
@@ -987,6 +999,7 @@
 			                    </td>
 			                    <td>
 									<div class="form-group">
+
 			            			    {% render_field form.from_date_industrial type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
@@ -1001,7 +1014,7 @@
 			                        </div>
 			                    </td>
 			                </tr>
-                        </table>
+
 <input type="button" onclick="addField3();" id="add_industrial" class="btn btn-primary" value="Add Row">
                         <h2>Awards</h2>
                         <table id="awards" class="table table-bordered">
@@ -1035,6 +1048,7 @@
 			                </tr>
                         </table>
 <input type="button" onclick="addField4();" id="add_awards" class="btn btn-primary" value="Add Row">
+
                         <h2>Referral</h2>
                         <table class="table table-bordered">
                         	<tr>
@@ -1074,6 +1088,7 @@
                         </div>
                         <div class="form-group">
             			    <label>UPI: <span>*</span></label>
+
                             {% render_field form.uti placeholder=form.uti.label  class="form-control required" %}
                         </div>
 						<div class="form-group">
@@ -1161,6 +1176,7 @@
                         <div class="form-group">
             			    <label>Reference Letter 2: <span>*</span></label>
                             {% render_field form.reference_letter2 class="form-control " %}
+
                         </div>
                         <div class="form-wizard-buttons">
                             <button type="button" class="btn btn-previous">Previous</button>
@@ -1459,6 +1475,8 @@ duration.setAttribute("class", "form-control");
        currentCell.appendChild(duration);
      }		
 </script>
+=======
+>>>>>>> 7f53853a64d9ab37ed6760f7a25f3c3c11f7b674
 <script type="text/javascript">
 	"use strict";
 function scroll_to_class(element_class, removed_height) {
@@ -1641,4 +1659,6 @@ $(function() {
 	$('input[type=text]').val('a')
 })
 </script>
+
 </body>
+

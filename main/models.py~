@@ -82,6 +82,7 @@ class Faculty(models.Model):
 	total_experience = models.CharField("experience", max_length=50, null=False, blank=False)
 	university = models.CharField("university", max_length=50, null=False, blank=False)
 	designation = models.CharField("designationsi", max_length=50, null=False, blank=False)
+
 	from_date_conf = models.CharField("from", max_length=50, null=True, blank=False)
 	to_date_conf = models.CharField("to", max_length=50, null=True, blank=False)
 	total_duration_conf = models.CharField("total duration", max_length=50, null=True, blank=False)
@@ -93,6 +94,11 @@ class Faculty(models.Model):
 	to_date_teaching = models.CharField(max_length=50, null=True, blank=False)
 	total_duration_teaching = models.CharField(max_length=50, null=True, blank=False)
 
+	from_date = models.CharField("from", max_length=50, null=False, blank=False)
+	to_date = models.CharField("to", max_length=50, null=False, blank=False)
+	total_duration = models.CharField("total duration", max_length=50, null=False, blank=False)
+
+
 	#Affiliation
 	profbody = models.CharField("body", max_length=50, null=False, blank=False)
 	grade = models.CharField("grade", max_length=50, null=False, blank=False)
@@ -102,8 +108,13 @@ class Faculty(models.Model):
 	#IndustrialExperience
 	organisation = models.CharField("organisation", max_length=50, null=False, blank=False)
 	position_held = models.CharField("position held", max_length=50, null=False, blank=False)
+
 	from_date_industrial = models.CharField("from date", max_length=50, null=True, blank=False)
 	to_date_industrial = models.CharField("to date", max_length=50, null=True, blank=False)
+
+	from_date = models.CharField("from date", max_length=50, null=False, blank=False)
+	to_date = models.CharField("to date", max_length=50, null=False, blank=False)
+
 	experience_years = models.CharField("experience years", max_length=50, null=False, blank=False)
 
 	#Awards
@@ -144,5 +155,6 @@ class Faculty(models.Model):
 	reference_letter2 = models.FileField(upload_to='uploads/')
 	
 
-
+	def __str__(self):
+		return self.name
 

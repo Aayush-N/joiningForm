@@ -8,5 +8,5 @@ urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     path('done/', views.done, name='done'),
     path('display/', views.DisplayView.as_view(), name='display'),
-    path('download/', views.ExportView, name='download')
+    path('download/', views.
 ]
