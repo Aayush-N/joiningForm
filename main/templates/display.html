@@ -27,7 +27,11 @@
 	<div class="limiter">
 
 <center><img style="margin-top:5%;" height="80" width="80" src="https://bmsit.ac.in/assets/logo-5527329e306f832982eb5b10b8325a606bc2058ae61b4aa5705c8c2d4e436212.png"></center>
-		<div style="margin-top:-10%;" class="container-table100">
+ <p style="text-align: center;"><strong>BMS INSTITUTE OF TECHNOLOGY & MANAGEMENT</strong></p>
+      <p style="text-align: center;">Yelahanka, Bangaluru-560064 / Approved by AICTE / Accredited by NBA</p>
+      <h5 style="text-align: center;">APPLICATION DETAILS OF FACULTY POSITION</h5>
+
+		<div style="margin-top:-1%;" class="container-table100">
 			<div class="wrap-table100">
 				<div class="table100 ver1 m-b-110">
 					<div class="table100-head">
@@ -35,12 +39,82 @@
 							<thead>
 									<tr class="row100 head">
 										<th class="cell100 column2">Position</th>
-										<th class="cell100 column3">Department</th>
-										<th class="cell100 column4">Father's name</th>
+										<th class="cell30 column3">Department</th>
+										<th class="cell40 column4">Father's name</th>
 										<th class="cell100 column5">Address</th>
 										<th class="cell100 column6">Permanent Address</th>
 										<th class="cell100 column7">Phone</th>
 										<th class="cell100 column8">Email</th>
+										<th class="cell100 column9">date_of_birth</th>
+										<th class="cell50 column10">age</th>
+										<th class="cell100 column11">place</th>
+										<th class="cell100 column13">religion</th>
+										<th class="cell100 column14">reservation</th>
+										<th class="cell100 column15">family_members</th>
+										<th class="cell100 column16">proficiency_kannada</th>
+										<th class="cell100 column17">proficiency_english</th>
+										<th class="cell100 column18">proficiency_hindi</th>
+										<th class="cell100 column19">Course_phd</th>
+										<th class="cell100 column20">Specialisation_phd</th>
+										<th class="cell100 column21">Institution_Name_phd</th>
+										<th class="cell100 column22">Passing_Year_phd</th>
+										<th class="cell100 column23">Percent_Marks_phd</th>
+										<th class="cell100 column24">Class_Awarded_phd</th>
+										<th class="cell100 column25">Course_mtech</th>
+										<th class="cell100 column26">Specialisation_mtech</th>
+										<th class="cell100 column27">Institution_Name_mtech</th>
+										<th class="cell100 column28">Passing_Year_mtech</th>
+										<th class="cell100 column29">Percent_Marks_mtech</th>
+										<th class="cell100 column30">Class_Awarded_mtech</th>
+										<th class="cell100 column31">Course_mca</th>
+										<th class="cell100 column32">Specialisation_mca</th>
+										<th class="cell100 column33">Institution_Name_mca</th>
+										<th class="cell100 column34">Passing_Year_mca</th>
+										<th class="cell100 column35">Percent_Marks_mca</th>
+										<th class="cell100 column36">Class_Awarded_mca</th>
+										<th class="cell100 column37">Course_be</th>
+										<th class="cell100 column38">Specialisation_be</th>
+										<th class="cell100 column39">Institution_Name_be</th>
+										<th class="cell100 column40">Passing_Year_be</th>
+										<th class="cell100 column41">Percent_Marks_be</th>
+										<th class="cell100 column42">Class_Awarded_be</th>
+										<th class="cell100 column43">Course_bsc</th>
+										<th class="cell100 column44">Specialisation_bsc</th>
+										<th class="cell100 column45">Institution_Name_bsc</th>
+										<th class="cell100 column46">Passing_Year_bsc</th>
+										<th class="cell100 column47">Percent_Marks_bsc</th>
+										<th class="cell100 column48">Class_Awarded_bsc</th>
+										<th class="cell100 column49">Course_other</th>
+										<th class="cell100 column50">Specialisation_other</th>
+										<th class="cell100 column51">Institution_Name_other</th>
+										<th class="cell100 column52">Passing_Year_other</th>
+										<th class="cell100 column53">Percent_Marks_other</th>
+										<th class="cell100 column54">Class_Awarded_other</th>
+										<th class="cell100 column55">total_researchExp</th>
+										<th class="cell100 column56">Name_university</th>
+										<th class="cell100 column57">area_reasearch</th>
+										<th class="cell100 column58">from_date</th>
+										<th class="cell100 column59">to_date</th>
+										<th class="cell100 column60">total_duration</th>
+										<th class="cell100 column61">total_internationalConf</th>
+										<th class="cell100 column62">title_paper</th>
+										<th class="cell100 column63">conf_International</th>
+										<th class="cell100 column64">year_month_pub</th>
+										<th class="cell100 column65">conf_conducted_org</th>
+										<th class="cell100 column66">total_experience</th>
+										<th class="cell100 column67">university</th>
+										<th class="cell100 column68">designation</th>
+										<th class="cell100 column69">from_date_conf</th>
+										<th class="cell100 column70">to_date_conf</th>
+										<th class="cell100 column71">total_duration_conf</th>
+										<th class="cell100 column65">university_name</th>
+										<th class="cell100 column66">designation</th>
+										<th class="cell100 column67">from_date_teaching</th>
+										<th class="cell100 column68">to_date_teaching</th>
+										<th class="cell100 column69">from_date</th>
+										<th class="cell100 column70">to_date_conf</th>
+										<th class="cell100 column71">total_duration_conf</th>
+
 									</tr>
 								</thead>
 						</table>
@@ -52,12 +126,76 @@
 								{% for i in object_list %}
 									<tr class="row100 body">
 										<td class="cell100 column2">{{i.position}}</td>
-										<td class="cell100 column3">{{i.department}}</td>
-										<td class="cell100 column4">{{i.fathers_name}}</td>
+										<td class="cell30 column3">{{i.department}}</td>
+										<td class="cell40 column4">{{i.fathers_name}}</td>
 										<td class="cell100 column5">{{i.address}}</td>
 										<td class="cell100 column6">{{i.permanent_address}}</td>
 										<td class="cell100 column7">{{i.phone}}</td>
 										<td class="cell100 column8">{{i.email}}</td>
+										<td class="cell100 column9">{{i.date_of_birth}}</td>
+										<td class="cell50 column10">{{i.age}}</td>
+										<td class="cell100 column11">{{i.place}}</td>
+										<td class="cell100 column12">{{i.religion}}</td>
+										<td class="cell100 column14">{{i.reservation}}</td>
+										<td class="cell100 column15">{{i.family_members}}</td>
+									<td class="cell100 column16">{{i.proficiency_kannada}}</td>
+									<td class="cell100 column17">{{i.proficiency_english}}</td>
+									<td class="cell100 column18">{{i.proficiency_hindi}}</td>
+									<td class="cell100 column19">{{i.Course_phd}}</td>
+									<td class="cell100 column20">{{i.Specialisation_phd}}</td>
+									<td class="cell100 column21">{{i.Institution_Name_phd}}</td>
+									<td class="cell100 column22">{{i.Passing_Year_phd}}</td>
+									<td class="cell100 column23">{{i.Percent_Marks_phd}}</td>
+									<td class="cell100 column24">{{i.Class_Awarded_phd}}</td>
+									<td class="cell100 column25">{{i.Course_mtech}}</td>
+									<td class="cell100 column26">{{i.Specialisation_mtech}}</td>
+									<td class="cell100 column27">{{i.Institution_Name_mtech}}</td>
+									<td class="cell100 column28">{{i.Passing_Year_mtech}}</td>
+									<td class="cell100 column29">{{i.Percent_Marks_mtech}}</td>
+									<td class="cell100 column30">{{i.Class_Awarded_mtech}}</td>
+									<td class="cell100 column31">{{i.Course_mca}}</td>
+									<td class="cell100 column32">{{i.Specialisation_mca}}</td>
+									<td class="cell100 column33">{{i.Institution_Name_mca}}</td>
+									<td class="cell100 column34">{{i.Passing_Year_mca}}</td>
+									<td class="cell100 column35">{{i.Percent_Marks_mca}}</td>
+									<td class="cell100 column36">{{i.Class_Awarded_mca}}</td>
+									<td class="cell100 column37">{{i.Course_be}}</td>
+									<td class="cell100 column38">{{i.Specialisation_be}}</td>
+									<td class="cell100 column39">{{i.Institution_Name_be}}</td>
+									<td class="cell100 column40">{{i.Passing_Year_be}}</td>
+									<td class="cell100 column41">{{i.Percent_Marks_be}}</td>
+									<td class="cell100 column42">{{i.Class_Awarded_be}}</td>
+									<td class="cell100 column43">{{i.Course_bsc}}</td>
+									<td class="cell100 column44">{{i.Specialisation_bsc}}</td>
+									<td class="cell100 column45">{{i.Institution_Name_bsc}}</td>
+									<td class="cell100 column46">{{i.Passing_Year_bsc}}</td>
+									<td class="cell100 column47">{{i.Percent_Marks_bsc}}</td>
+									<td class="cell100 column48">{{i.Class_Awarded_bsc}}</td>
+									<td class="cell100 column49">{{i.Course_other}}</td>
+									<td class="cell100 column50">{{i.Specialisation_other}}</td>
+									<td class="cell100 column51">{{i.Institution_Name_other}}</td>
+									<td class="cell100 column52">{{i.Passing_Year_other}}</td>
+									<td class="cell100 column53">{{i.Percent_Marks_other}}</td>
+									<td class="cell100 column54">{{i.Class_Awarded_other}}</td>
+									<td class="cell100 column55">{{i.total_researchExp}}</td>
+									<td class="cell100 column56">{{i.Name_university}}</td>
+									<td class="cell100 column57">{{i.area_reasearch}}</td>
+									<td class="cell100 column58">{{i.from_date}}</td>
+									<td class="cell100 column59">{{i.to_date}}</td>
+									<td class="cell100 column60">{{i.total_duration}}</td>
+									<td class="cell100 column61">{{i.total_internationalConf}}</td>
+									<td class="cell100 column62">{{i.title_paper}}</td>
+									<td class="cell100 column63">{{i.conf_International}}</td>
+									<td class="cell100 column64">{{i.year_month_pub}}</td>
+									<td class="cell100 column65">{{i.conf_conducted_org}}</td>
+									<td class="cell100 column66">{{i.total_experience}}</td>
+									<td class="cell100 column67">{{i.university}}</td>
+									<td class="cell100 column68">{{i.designation}}</td>
+									<td class="cell100 column69">{{i.from_date_conf}}</td>
+									<td class="cell100 column70">{{i.to_date_conf}}</td>
+									<td class="cell100 column71">{{i.total_duration_conf}}</td>
+
+
 									</tr>
 									{% endfor %}
 							</tbody>

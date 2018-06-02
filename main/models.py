@@ -1,6 +1,17 @@
 from django.db import models
 
 # Create your models here.
+class Positions(models.Model):
+	name = models.CharField(max_length=40)
+	def __str__(self):
+		return self.name
+
+
+class ApplyPositions(models.Model):
+	name = models.ForeignKey("Positions", on_delete=models.CASCADE, null=False)
+	def __str__(self):
+		return self.name
+
 
 class Faculty(models.Model):
 	position = models.CharField(max_length=20)

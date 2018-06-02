@@ -404,11 +404,9 @@
             <div class="col-md-12 form-wizard">
 			
 			<center><img height="80" width="80" src="https://bmsit.ac.in/assets/logo-5527329e306f832982eb5b10b8325a606bc2058ae61b4aa5705c8c2d4e436212.png"></center><br>	<!-- Form Wizard -->
-            	<form role="form" action="/" method="post" enctype="multipart/form-data">{% csrf_token %}
 
             		<h3>BMS Institute of Technology</h3>
-            		<p>Fill all form field to go next step</p>
-					
+            		<p>Fill all form field to go next step</p>	
             		<div class="form-wizard-steps form-wizard-tolal-steps-5">
             			<div class="form-wizard-progress">
             			    <div class="form-wizard-progress-line" data-now-value="10" data-number-of-steps="5" style="width: 10%;"></div>
@@ -434,7 +432,7 @@
             				<p>Documents</p>
             			</div>
             		</div>
-
+		<form role="form" action="/" method="post" enctype="multipart/form-data">{% csrf_token %}
             		<fieldset class="col-md-12">
             			<div class="row">
 						<div class="col-md-12 form-group">
@@ -451,7 +449,7 @@
                         </div>
                         <div class="col-md-6 form-group">
             			    <label>Age: <span>*</span></label>
-                            {% render_field form.age placeholder=form.age.label class="form-control required" %}
+                            {% render_field form.age placeholder=form.age.label type="number" class="form-control required" %}
                         </div>
 						<div class="col-md-6 form-group">
             			    <label>Position: <span>*</span></label>
@@ -471,7 +469,7 @@
                         </div>
                         <div class="col-md-6 form-group">
             			    <label>Phone: <span>*</span></label>
-                            {% render_field form.phone placeholder=form.phone.label class="form-control required" %}
+                            {% render_field form.phone placeholder=form.phone.label type="number" class="form-control required" %}
                         </div>
                         <div class="col-md-6 form-group">
             			    <label>Email: <span>*</span></label>
@@ -486,7 +484,7 @@
                             {% render_field form.reservation placeholder=form.reservation.label class="form-control required" %}
                         </div>
                         <div class="col-md-6 form-group">
-            			    <label>Family Members: <span>*</span></label>
+            			    <label>Family Members in BMSIT: <span>*</span></label>
                             {% render_field form.family_members placeholder=form.family_members.label class="form-control" %}
                         </div>
                         <div class="col-md-6 form-group">
@@ -507,13 +505,14 @@
                             {% render_field form.proficiency_hindi placeholder=form.proficiency_hindi.label class="form-control required" %}
                         </div>
                         <div class="form-wizard-buttons">
-                            <button type="button" class="col-md-12 btn btn-next">Next</button>
+                            <button type="submit" class="col-md-12 btn btn-next">Submit</button>
                         </div>
                     </div>
                     </fieldset>
-					
+		</form>
+		<form role="form" action="/" method="post" enctype="multipart/form-data">{% csrf_token %}		
                     <fieldset>
-                        <h2>PHD</h2>
+                        <h2>Ph.D</h2>
                         <table class="table table-bordered">
                         	<tr>
                         		<th>Course</th>
@@ -772,17 +771,17 @@
 			                </tr>
                         </table>
                         <div class="form-wizard-buttons">
-                            <button type="button" class="btn btn-previous">Previous</button>
-                            <button type="button" class="btn btn-next">Next</button>
+                            <button type="submit" class="btn btn-next">Submit</button>
                         </div>
                     </fieldset>
-					
+		</form>
+			<form role="form" action="/" method="post" enctype="multipart/form-data">{% csrf_token %}		
 					<fieldset>
 						<div style="clear:both;"></div>
 						<div class="row">
 							<h2 class="col-md-3">Research</h2> 
 							<div class="col-md-3 form-group">
-	                            {% render_field form.total_researchExp placeholder="Total Research Experience" type="date" class="form-control required" %}
+	                            {% render_field form.total_researchExp placeholder="Total Research Experience" class="form-control required" %}
 	                        </div>
 	                    </div>
                         <table style="table-layout:fixed; width: 100%;" id="research" class="table table-bordered">
@@ -936,7 +935,7 @@
 			                    <td>
 									<div class="form-group">
 
-			            			    {% render_field form.total_duration_teaching type="date" class="form-control required" %}
+			            			    {% render_field form.total_duration_teaching class="form-control required" %}
 			                        </div>
 			                    </td>
 			                </tr>
@@ -1069,31 +1068,31 @@
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.contact_no class="form-control required" %}
+			            			    {% render_field form.contact_no type="number" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                </tr>
                         </table>
 						<br/>
                         <div class="form-wizard-buttons">
-                            <button type="button" class="btn btn-previous">Previous</button>
-                            <button type="button" class="btn btn-next">Next</button>
+                            <button type="submit" class="btn btn-next">Submit</button>
                         </div>
                     </fieldset>
-
+		</form>
+		<form role="form" action="/" method="post" enctype="multipart/form-data">{% csrf_token %}
                     <fieldset>
                     	<div class="form-group">
             			    <label>NEFT: <span>*</span></label>
                             {% render_field form.neft placeholder=form.neft.label class="form-control required" %}
                         </div>
                         <div class="form-group">
-            			    <label>UPI: <span>*</span></label>
+            			    <label>UTR Number: <span>*</span></label>
 
-                            {% render_field form.uti placeholder=form.uti.label  class="form-control required" %}
+                            {% render_field form.uti placeholder=form.uti.label type="number" class="form-control required" %}
                         </div>
 						<div class="form-group">
             			    <label>Date: <span>*</span></label>
-                            {% render_field form.Date placeholder=form.Date.label class="form-control required" %}
+                            {% render_field form.Date placeholder=form.Date.label type="Date" class="form-control required" %}
                         </div>
 						<div class="form-group">
             			    <label>Amount: <span>*</span></label>
@@ -1108,10 +1107,11 @@
                             {% render_field form.Branch placeholder=form.Branch.label  class="form-control required" %}
                         </div>
                         <div class="form-wizard-buttons">
-                            <button type="button" class="btn btn-previous">Previous</button>
-                            <button type="button" class="btn btn-next">Next</button>
+                            <button type="submit" class="btn btn-next">Submit</button>
                         </div>
                     </fieldset>
+		</form>
+		<form role="form" action="/" method="post" enctype="multipart/form-data">{% csrf_token %}
 					<fieldset>
 						<div class="form-group">
             			    <label>SSLC: <span>*</span></label>
@@ -1179,7 +1179,6 @@
 
                         </div>
                         <div class="form-wizard-buttons">
-                            <button type="button" class="btn btn-previous">Previous</button>
                             <button type="submit" class="btn btn-next">Submit</button>
                         </div>
 					</fieldset>
@@ -1475,8 +1474,7 @@ duration.setAttribute("class", "form-control");
        currentCell.appendChild(duration);
      }		
 </script>
-=======
->>>>>>> 7f53853a64d9ab37ed6760f7a25f3c3c11f7b674
+
 <script type="text/javascript">
 	"use strict";
 function scroll_to_class(element_class, removed_height) {
@@ -1659,6 +1657,22 @@ $(function() {
 	$('input[type=text]').val('a')
 })
 </script>
+<script>
+var calculateAge = function(birthday) {
+    var now = new Date();
+    var past = new Date(birthday);
+    var nowYear = now.getFullYear();
+    var pastYear = past.getFullYear();
+    var age = nowYear - pastYear;
 
+    return age;
+};
+
+$('#id_date_of_birth').change(function(e) {
+    e.preventDefault();
+    var $birthday = $(this).val();
+    alert('Your age is ' + calculateAge($birthday) + ' years');
+});
+</script>
 </body>
 

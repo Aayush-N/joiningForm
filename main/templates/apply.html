@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+{% load widget_tweaks %}
+{% load static %}
+<head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+</head>
+<body style="margin: 0;height: 100%;">
+	<section class="form-box" >
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-md-12 form-wizard">
+			
+			<center><img height="80" width="80" src="https://bmsit.ac.in/assets/logo-5527329e306f832982eb5b10b8325a606bc2058ae61b4aa5705c8c2d4e436212.png"></center><br>	<!-- Form Wizard -->
+
+            		<h3>BMS Institute of Technology</h3>
+            		<p>Fill all form field to go next step</p>	
+            		<div class="form-wizard-steps form-wizard-tolal-steps-5">
+            			<div class="form-wizard-progress">
+            			    <div class="form-wizard-progress-line" data-now-value="10" data-number-of-steps="5" style="width: 10%;"></div>
+            			</div>
+            		</div>
+			<form role="form" action="/apply/" method="post" enctype="multipart/form-data">{% csrf_token %}		
+						<div style="clear:both;"></div>
+							<div class="col-md-3 form-group">
+	                            {% render_field form.name class="form-control required" %}
+	                        </div>
+	                    </div>
+						<br/>
+                        <div class="form-wizard-buttons">
+                            <button type="submit" class="btn btn-next">Submit</button>
+                        </div>
+		</form>
+				<!-- Form Wizard -->
+			</div>
+		</div>
+	</div>
+</section>
+</body>
