@@ -54,12 +54,12 @@ input {
 		<form role="form" action="/personal/" method="post" enctype="multipart/form-data">{% csrf_token %}
             		<fieldset class="col-md-12">
             			<div class="row">
-						<div class="col-md-12 form-group">
+						            <div class="col-md-12 form-group">
             			    <label>Name: <span>*</span></label>
-                            {% render_field form.name placeholder=form.name.label class="form-control required" %}
+                            {% render_field form.first_name placeholder=form.first_name.label class="form-control required" %}
                         </div>
                         <div class="col-md-12 form-group">
-            			    <label>Father's Name: <span>*</span></label>
+                      <label>Father's Name: <span>*</span></label>
                             {% render_field form.fathers_name placeholder=form.fathers_name.label class="form-control required" %}
                         </div>
                         <div class="col-md-6 form-group">
@@ -68,7 +68,7 @@ input {
                         </div>
                         <div class="col-md-6 form-group">
             			    <label>Age: <span>*</span></label>
-                            {% render_field form.age placeholder=form.age.label type="number" class="form-control required" %}
+                            {% render_field form.age placeholder=form.age.label class="form-control required" %}
                         </div>
 						<div class="col-md-6 form-group">
             			    <label>Position: <span>*</span></label>
@@ -88,7 +88,7 @@ input {
                         </div>
                         <div class="col-md-6 form-group">
             			    <label>Phone: <span>*</span></label>
-                            {% render_field form.phone placeholder=form.phone.label type="number" class="form-control required" %}
+                            {% render_field form.phone placeholder=form.phone.label class="form-control required" %}
                         </div>
                         <div class="col-md-6 form-group">
             			    <label>Email: <span>*</span></label>

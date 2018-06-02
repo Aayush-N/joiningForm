@@ -27,7 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-APPEND_SLASH=False
+APPEND_SLASH=True
+
+AUTH_USER_MODEL = 'main.User'
+
+LOGIN_URL = '/login'
+
+LOGIN_REDIRECT_URL = '/jobs'
 
 # Application definition
 

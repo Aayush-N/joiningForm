@@ -48,262 +48,148 @@
             		</div>
 		<form role="form" action="/educational/" method="post" enctype="multipart/form-data">{% csrf_token %}		
                     <fieldset>
-                        <h2>Ph.D</h2>
+                        <h2>Bachelors</h2>
                         <table class="table table-bordered">
                         	<tr>
-                        		<th>Course</th>
+                        		<th>Degree</th>
                         		<th>Specialisation</th>
                         		<th>Institution Name</th>
                         		<th>Passing Year</th>
-                        		<th>Percent Marks</th>
-                        		<th>Class Awarded</th>
+                        		<th>Percent or Grade</th>
+                        		<th>Maximum Marks</th>
                         	</tr>
                         	<tr>
-                        		<td>
-                        			<div class="form-group">
-			                            {% render_field form.Course_phd class="form-control required" %}
-			                        </div>
-			                    </td>
 			                    <td>
 			                        <div class="form-group">
-			            			    {% render_field form.Specialisation_phd class="form-control required" %}
+			            			    {% render_field form.Degree class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Institution_Name_phd class="form-control required" %}
+			            			    {% render_field form.Specialisation class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Passing_Year_phd class="form-control required" %}
+			            			    {% render_field form.Institution_Name class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Percent_Marks_phd class="form-control required" %}
+			            			    {% render_field form.Passing_Year class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Class_Awarded_phd class="form-control required" %}
+			            			    {% render_field form.Percent_or_grade class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.maximum_marks_or_grade class="form-control required" %}
 			                        </div>
 			                    </td>
 			                </tr>
+			                <tr>
+			                	<div class="form-group">
+			            			    {% render_field form.file_upload class="form-control required" %}
+			                    </div>
+			                </tr>
                         </table>
-                        <h2>MTech.</h2>
+                        <h2>Masters</h2>
                         <table class="table table-bordered">
                         	<tr>
-                        		<th>Course</th>
+                        		<th>Degree</th>
                         		<th>Specialisation</th>
                         		<th>Institution Name</th>
                         		<th>Passing Year</th>
-                        		<th>Percent Marks</th>
-                        		<th>Class Awarded</th>
+                        		<th>Percent or Grade</th>
+                        		<th>Maximum Marks</th>
                         	</tr>
                         	<tr>
-                        		<td>
-                        			<div class="form-group">
-			                            {% render_field form.Course_mtech class="form-control required" %}
-			                        </div>
-			                    </td>
 			                    <td>
 			                        <div class="form-group">
-			            			    {% render_field form.Specialisation_mtech class="form-control required" %}
+			            			    {% render_field form.Degree class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Institution_Name_mtech class="form-control required" %}
+			            			    {% render_field form.Specialisation class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Passing_Year_mtech class="form-control required" %}
+			            			    {% render_field form.Institution_Name class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Percent_Marks_mtech class="form-control required" %}
+			            			    {% render_field form.Passing_Year class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Class_Awarded_mtech class="form-control required" %}
+			            			    {% render_field form.Percent_or_grade class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.maximum_marks_or_grade class="form-control required" %}
 			                        </div>
 			                    </td>
 			                </tr>
+			                <tr>
+			                	<div class="form-group">
+			            			    {% render_field form.file_upload class="form-control required" %}
+			                    </div>
+			                </tr>
                         </table>
-                        <h2>MCA</h2>
+                        <h2>Others</h2>
                         <table class="table table-bordered">
                         	<tr>
-                        		<th>Course</th>
+                        		<th>Degree</th>
                         		<th>Specialisation</th>
                         		<th>Institution Name</th>
                         		<th>Passing Year</th>
-                        		<th>Percent Marks</th>
-                        		<th>Class Awarded</th>
+                        		<th>Percent or Grade</th>
+                        		<th>Maximum Marks</th>
                         	</tr>
                         	<tr>
-                        		<td>
-                        			<div class="form-group">
-			                            {% render_field form.Course_mca class="form-control required" %}
-			                        </div>
-			                    </td>
 			                    <td>
 			                        <div class="form-group">
-			            			    {% render_field form.Specialisation_mca class="form-control required" %}
+			            			    {% render_field form.Degree class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Institution_Name_mca class="form-control required" %}
+			            			    {% render_field form.Specialisation class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Passing_Year_mca class="form-control required" %}
+			            			    {% render_field form.Institution_Name class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Percent_Marks_mca class="form-control required" %}
+			            			    {% render_field form.Passing_Year class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Class_Awarded_mca class="form-control required" %}
+			            			    {% render_field form.Percent_or_grade class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.maximum_marks_or_grade class="form-control required" %}
 			                        </div>
 			                    </td>
 			                </tr>
-                        </table>
-                        <h2>BE</h2>
-                        <table class="table table-bordered">
-                        	<tr>
-                        		<th>Course</th>
-                        		<th>Specialisation</th>
-                        		<th>Institution Name</th>
-                        		<th>Passing Year</th>
-                        		<th>Percent Marks</th>
-                        		<th>Class Awarded</th>
-                        	</tr>
-                        	<tr>
-                        		<td>
-                        			<div class="form-group">
-			                            {% render_field form.Course_be class="form-control required" %}
-			                        </div>
-			                    </td>
-			                    <td>
-			                        <div class="form-group">
-			            			    {% render_field form.Specialisation_be class="form-control required" %}
-			                        </div>
-			                    </td>
-			                    <td>
-									<div class="form-group">
-			            			    {% render_field form.Institution_Name_be class="form-control required" %}
-			                        </div>
-			                    </td>
-			                    <td>
-									<div class="form-group">
-			            			    {% render_field form.Passing_Year_be class="form-control required" %}
-			                        </div>
-			                    </td>
-			                    <td>
-									<div class="form-group">
-			            			    {% render_field form.Percent_Marks_be class="form-control required" %}
-			                        </div>
-			                    </td>
-			                    <td>
-									<div class="form-group">
-			            			    {% render_field form.Class_Awarded_be  class="form-control required" %}
-			                        </div>
-			                    </td>
-			                </tr>
-                        </table>
-                        <h2>BSc.</h2>
-                        <table class="table table-bordered">
-                        	<tr>
-                        		<th>Course</th>
-                        		<th>Specialisation</th>
-                        		<th>Institution Name</th>
-                        		<th>Passing Year</th>
-                        		<th>Percent Marks</th>
-                        		<th>Class Awarded</th>
-                        	</tr>
-                        	<tr>
-                        		<td>
-                        			<div class="form-group">
-			                            {% render_field form.Course_bsc class="form-control required" %}
-			                        </div>
-			                    </td>
-			                    <td>
-			                        <div class="form-group">
-			            			    {% render_field form.Specialisation_bsc  class="form-control required" %}
-			                        </div>
-			                    </td>
-			                    <td>
-									<div class="form-group">
-			            			    {% render_field form.Institution_Name_bsc class="form-control required" %}
-			                        </div>
-			                    </td>
-			                    <td>
-									<div class="form-group">
-			            			    {% render_field form.Passing_Year_bsc class="form-control required" %}
-			                        </div>
-			                    </td>
-			                    <td>
-									<div class="form-group">
-			            			    {% render_field form.Percent_Marks_bsc  class="form-control required" %}
-			                        </div>
-			                    </td>
-			                    <td>
-									<div class="form-group">
-			            			    {% render_field form.Class_Awarded_bsc class="form-control required" %}
-			                        </div>
-			                    </td>
-			                </tr>
-                        </table>
-                        <h2>Other</h2>
-                        <table class="table table-bordered">
-                        	<tr>
-                        		<th>Course</th>
-                        		<th>Specialisation</th>
-                        		<th>Institution Name</th>
-                        		<th>Passing Year</th>
-                        		<th>Percent Marks</th>
-                        		<th>Class Awarded</th>
-                        	</tr>
-                        	<tr>
-                        		<td>
-                        			<div class="form-group">
-			                            {% render_field form.Course_other class="form-control required" %}
-			                        </div>
-			                    </td>
-			                    <td>
-			                        <div class="form-group">
-			            			    {% render_field form.Specialisation_other class="form-control required" %}
-			                        </div>
-			                    </td>
-			                    <td>
-									<div class="form-group">
-			            			    {% render_field form.Institution_Name_other class="form-control required" %}
-			                        </div>
-			                    </td>
-			                    <td>
-									<div class="form-group">
-			            			    {% render_field form.Passing_Year_other type="date" class="form-control required" %}
-			                        </div>
-			                    </td>
-			                    <td>
-									<div class="form-group">
-			            			    {% render_field form.Percent_Marks_other class="form-control required" %}
-			                        </div>
-			                    </td>
-			                    <td>
-									<div class="form-group">
-			            			    {% render_field form.Class_Awarded_other class="form-control required" %}
-			                        </div>
-			                    </td>
+			                <tr>
+			                	<div class="form-group">
+			            			    {% render_field form.file_upload class="form-control required" %}
+			                    </div>
 			                </tr>
                         </table>
                         <div class="form-wizard-buttons">

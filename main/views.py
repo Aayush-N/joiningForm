@@ -1,45 +1,39 @@
+from django.views import generic
 from django.views.generic import CreateView, ListView, TemplateView
 from django.views.generic.edit import UpdateView
+
 import os
+
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponse, HttpResponseRedirect
+
 from django.contrib import messages 
+from django.contrib.auth.forms import UserCreationForm
+
+from django.contrib.auth import get_user_model
 
 from .models import *
 from .forms import *
+from django.forms import formset_factory
+
 
 import csv
 
 # Create your views here.
 
-class IndexView(CreateView):
-	template_name = 'index.html'
-	model = Faculty
+def register(request):
+	if request.method == 'POST':
+		f = CustomUserCreationForm(request.POST)
+		if f.is_valid():
+			f.save()
+			messages.success(request, 'Account created successfully')
+			return redirect('register')
 
-	success_url = reverse_lazy("index")
+	else:
+		f = CustomUserCreationForm()
 
-
-	error_url = reverse_lazy('index')
-	form_class = FacultyForm
-
-	def get_context_data(self, *args, **kwargs):
-
-		
-
-		context = super(IndexView, self).get_context_data(*args, **kwargs)
-		return context
-	
-	def form_valid(self, form):
-		create = form.save()
-
-		print(self.request.FILES)
-		return HttpResponseRedirect('/done')
-	
-	def form_invalid(self,form):
-		print(form.errors)
-
-		return HttpResponseRedirect('/done')
+	return render(request, 'signup.html', {'form': f})
 
 
 def done(request):
@@ -51,12 +45,16 @@ def done(request):
 	}
 	return render(request, template_name, context)
 
+
+
 class DisplayView(ListView):
 	template_name = 'display.html'
-	model = Faculty
+	model = User
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
 		return context	
+
+
 
 def ExportView(request):
 	with open(os.path.join("/"), "wb") as csv_file:
@@ -76,6 +74,9 @@ def upload_file(request):
 
 	return render(request, 'index.html', {'form': form})
 
+
+
+
 class LoginView(TemplateView):
 	template_name = "login.html"
 	def get_context_data(self, **kwargs):
@@ -83,8 +84,9 @@ class LoginView(TemplateView):
 		return context
 
 class PositionView(CreateView):
+	User = get_user_model()
 	template_name = 'apply.html'
-	model = Faculty
+	model = User
 
 	success_url = reverse_lazy("personal")
 
@@ -105,83 +107,145 @@ class PositionView(CreateView):
 
 		return HttpResponseRedirect('/apply/')
 
-
-class personalView(CreateView):
+class PersonalView(UpdateView):
+	User = get_user_model()
 	template_name = 'index.html'
-	model = Faculty
+	model = User
+	fields = ['first_name','email' ,'phone' ,	'position' ,'department' ,'fathers_name' ,'address' ,'permanent_address',
+	'date_of_birth','age','religion','reservation' ,'family_members' ,
+	'kannada_speak','kannada_read' ,'kannada_write' ,
+	'english_speak' ,'english_read' ,'english_write',
+	'hindi_speak' ,'hindi_read' ,'hindi_write']
+	template_name_suffix = 'faculty_update_form'
 
-	success_url = reverse_lazy("educational")
+	def get_object(self):
+		return self.User.objects.get(pk=self.request.user.pk)
 
-
-	error_url = reverse_lazy('personal')
-	form_class = PersonalForm
-
-	def get_context_data(self, *args, **kwargs):
-
-		
-
-		context = super(personalView, self).get_context_data(*args, **kwargs)
-		return context
-	
 	def form_valid(self, form):
 		create = form.save()
-
-		print('sfnsjbsjfbsjbfsjbsbsjbsfjfbsfbswbfsjfbsjf')
-		return HttpResponseRedirect('/educational/')
-	
-	def form_invalid(self,form):
-		print(form.errors)
-
 		return HttpResponseRedirect('/educational/')
 
-class educationalView(CreateView):
+
+class EducationalView(CreateView):
 	template_name = 'educational.html'
-	model = Faculty
+	model = Course
 
-	success_url = reverse_lazy("professional")
+	success_url = reverse_lazy("industrial")
 
 
 	error_url = reverse_lazy('educational')
 	form_class = EducationalForm
 
 	def get_context_data(self, *args, **kwargs):
-
-		
-
-		context = super(educationalView, self).get_context_data(*args, **kwargs)
+		EducationFormSet = formset_factory(EducationalForm, extra=5)
+		context = super(EducationalView, self).get_context_data(*args, **kwargs)
+		context['user'] = self.request.user.username
 		return context
 	
 	def form_valid(self, form):
 		create = form.save()
 
 		print(self.request.FILES)
-		return HttpResponseRedirect('/professional/')
+		return HttpResponseRedirect('/industrial/')
 	
 	def form_invalid(self,form):
 		print(form.errors)
 
-		return HttpResponseRedirect('/professional/')
+		return HttpResponseRedirect('/industrial/')
 
-class professionalView(CreateView):
-	template_name = 'professional.html'
-	model = Faculty
+class IndustrialView(CreateView):
+	template_name = 'industrial.html'
+	model = IndustrialExperience
 
-	success_url = reverse_lazy("payment")
+	success_url = reverse_lazy("teaching")
 
 
-	error_url = reverse_lazy('professional')
-	form_class = ProfessionalForm
+	error_url = reverse_lazy('industrial')
+	form_class = IndustrialForm
 
 	def get_context_data(self, *args, **kwargs):
 
 		
 
-		context = super(professionalView, self).get_context_data(*args, **kwargs)
+		context = super(IndustrialView, self).get_context_data(*args, **kwargs)
 		return context
 	
 	def form_valid(self, form):
 		create = form.save()
 
+		print(self.request.FILES)
+		return HttpResponseRedirect('/teaching/')
+	
+	def form_invalid(self,form):
+		print(form.errors)
+
+		return HttpResponseRedirect('/teaching/')
+
+
+class TeachingView(CreateView):
+	template_name = 'teaching.html'
+	model = TeachingExperience
+
+	success_url = reverse_lazy("research")
+
+
+	error_url = reverse_lazy('teaching')
+	form_class = TeachingForm
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(TeachingView, self).get_context_data(*args, **kwargs)
+		return context
+	
+	def form_valid(self, form):
+		create = form.save()
+		print(self.request.FILES)
+		return HttpResponseRedirect('/research/')
+	
+	def form_invalid(self,form):
+		print(form.errors)
+
+		return HttpResponseRedirect('/research/')
+
+class ResearchView(CreateView):
+	template_name = 'research.html'
+	model = Research
+
+	success_url = reverse_lazy("conference")
+
+
+	error_url = reverse_lazy('research')
+	form_class = ResearchForm
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(ResearchView, self).get_context_data(*args, **kwargs)
+		return context
+	
+	def form_valid(self, form):
+		create = form.save()
+		print(self.request.FILES)
+		return HttpResponseRedirect('/conference/')
+	
+	def form_invalid(self,form):
+		print(form.errors)
+
+		return HttpResponseRedirect('/conference/')
+
+class ConferenceView(CreateView):
+	template_name = 'conference.html'
+	model = TeachingExperience
+
+	success_url = reverse_lazy("payment")
+
+
+	error_url = reverse_lazy('conference')
+	form_class = TeachingForm
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(ConferenceView, self).get_context_data(*args, **kwargs)
+		return context
+	
+	def form_valid(self, form):
+		create = form.save()
 		print(self.request.FILES)
 		return HttpResponseRedirect('/payment/')
 	
@@ -190,9 +254,10 @@ class professionalView(CreateView):
 
 		return HttpResponseRedirect('/payment/')
 
-class paymentView(CreateView):
+
+class PaymentView(CreateView):
 	template_name = 'payment.html'
-	model = Faculty
+	model = User
 
 	success_url = reverse_lazy("professional")
 
@@ -204,7 +269,7 @@ class paymentView(CreateView):
 
 		
 
-		context = super(paymentView, self).get_context_data(*args, **kwargs)
+		context = super(PaymentView, self).get_context_data(*args, **kwargs)
 		return context
 	
 	def form_valid(self, form):
@@ -218,9 +283,9 @@ class paymentView(CreateView):
 
 		return HttpResponseRedirect('/documents/')
 
-class documentsView(CreateView):
+class DocumentsView(CreateView):
 	template_name = 'documents.html'
-	model = Faculty
+	model = DocumentUpload
 
 	success_url = reverse_lazy("done")
 
@@ -229,10 +294,8 @@ class documentsView(CreateView):
 	form_class = DocumentsForm
 
 	def get_context_data(self, *args, **kwargs):
-
-		
-
-		context = super(documentsView, self).get_context_data(*args, **kwargs)
+		DocumentFormSet = formset_factory(DocumentUpload, extra=10)
+		context = super(DocumentsView, self).get_context_data(*args, **kwargs)
 		return context
 	
 	def form_valid(self, form):

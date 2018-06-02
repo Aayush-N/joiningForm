@@ -48,74 +48,12 @@
             		</div>
 		<form role="form" action="/documents/" method="post" enctype="multipart/form-data">{% csrf_token %}
 					<fieldset>
-						<div class="form-group">
-            			    <label>SSLC: <span>*</span></label>
-                            {% render_field form.Sslc class="form-control required" %}
-                        </div>
-                        <div class="form-group">
-            			    <label>Bachelor's Certificate: <span>*</span></label>
-                            {% render_field form.bachelors_certificate class="form-control " %}
-                        </div>
-						<div class="form-group">
-            			    <label>Bachelor's Marks Card: <span>*</span></label>
-                            {% render_field form.bachelors_marks_card class="form-control " %}
-                        </div>
-						<div class="form-group">
-            			    <label>Masters Certificate: <span>*</span></label>
-                            {% render_field form.masters_certificate class="form-control " %}
-                        </div>
-						<div class="form-group">
-            			    <label>Masters Marks Card: <span>*</span></label>
-                            {% render_field form.masters_marks_card class="form-control " %}
-                        </div>
-                        <div class="form-group">
-            			    <label>PHD Certificate: <span>*</span></label>
-                            {% render_field form.phd_certificate class="form-control " %}
-                        </div>
-                        <div class="form-group">
-            			    <label>Other Certificate: <span>*</span></label>
-                            {% render_field form.other_certificate class="form-control " %}
-                        </div>
-                        <div class="form-group">
-            			    <label>Research Experience Certificate: <span>*</span></label>
-                            {% render_field form.research_experience_certificate class="form-control " %}
-                        </div>
-                        <div class="form-group">
-            			    <label>Teaching Experience Certificate: <span>*</span></label>
-                            {% render_field form.teaching_experience_certificate class="form-control " %}
-                        </div>
-                        <div class="form-group">
-            			    <label>Industrial Experience Certificate: <span>*</span></label>
-                            {% render_field form.industrial_experience_certificate class="form-control " %}
-                        </div>
-                        <div class="form-group">
-            			    <label>Research Publication Certificate: <span>*</span></label>
-                            {% render_field form.research_publication_certificate class="form-control " %}
-                        </div>
-                        <div class="form-group">
-            			    <label>Professional Membership Certificate: <span>*</span></label>
-                            {% render_field form.professional_membership_certificate class="form-control " %}
-                        </div>
-                        <div class="form-group">
-            			    <label>Aadhar Card: <span>*</span></label>
-                            {% render_field form.aadhar_card class="form-control " %}
-                        </div>
-                        <div class="form-group">
-            			    <label>Pan Card: <span>*</span></label>
-                            {% render_field form.pan_card class="form-control " %}
-                        </div>
-                        <div class="form-group">
-            			    <label>Reference Letter 1: <span>*</span></label>
-                            {% render_field form.reference_letter1 class="form-control " %}
-                        </div>
-                        <div class="form-group">
-            			    <label>Reference Letter 2: <span>*</span></label>
-                            {% render_field form.reference_letter2 class="form-control " %}
+						
+            {{form.as_p}}
 
-                        </div>
-                        <div class="form-wizard-buttons">
-                            <button type="submit" class="btn btn-next">Submit</button>
-                        </div>
+			       <div class="form-wizard-buttons">
+                <button type="submit" class="btn btn-next">Submit</button>
+            </div>
 					</fieldset>
             	
             	</form>
