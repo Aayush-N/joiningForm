@@ -44,40 +44,32 @@
             				<p>Documents</p>
             			</div>
             		</div>
-		<form role="form" action="/industrial/" method="post" enctype="multipart/form-data">{% csrf_token %}		
-                    <fieldset>
+		<form role="form" action="/research/" method="post" enctype="multipart/form-data">{% csrf_token %}		
+                    <fieldset style="color:black;">
                         <div style="display:none;" class="col-md-12 form-group">
             			    <label>Faculty: <span>*</span></label>
                             {% render_field form.faculty class="form-control required" %}
                         </div>
                          <div class="col-md-12 form-group">
-            			    <label>Organisation: <span>*</span></label>
-                            {% render_field form.organisation class="form-control required" %}
+            			    <label>Spec Awards Particulars: <span>*</span></label>
+                            {% render_field form.Spec_awards_particulars class="form-control required" %}
                         </div>
                          <div class="col-md-12 form-group">
-            			    <label>Position Held: <span>*</span></label>
-                            {% render_field form.position_held class="form-control required" %}
-                        </div>
-                         <div class="col-md-12 form-group">
-            			    <label>From Date: <span>*</span></label>
-                            {% render_field form.from_date class="form-control required" %}
-                        </div>
-                         <div class="col-md-12 form-group">
-            			    <label>To Date: <span>*</span></label>
-                            {% render_field form.to_date class="form-control required" %}
-                        </div>
-                         <div class="col-md-12 form-group">
-            			    <label>Experience Years: <span>*</span></label>
-                            {% render_field form.experience_years class="form-control required" %}
+            			    <label>State: <span>*</span></label>
+                            {% render_field form.state class="form-control required" %}
                         </div>
                         <div class="col-md-12 form-group">
-                        	<label>Any Special Remarks</label>
-                        	<textarea class="form-control"></textarea>
+                        	<label>National: </label>
+                        	{% render_field form.national class="form-control required" %}
                         </div>
-                        <div class="form-wizard-buttons">
-                            <button type="submit" class="btn btn-next">Submit</button>
+                        <div class="col-md-12 form-group">
+                        	<label>International: </label>
+                        	{% render_field form.international class="form-control required" %}
                         </div>
                     </fieldset>
+                    <div class="form-wizard-buttons">
+                        <button type="submit" class="btn btn-next">Submit</button>
+                    </div>
 				</form>
 				<!-- Form Wizard -->
             </div>

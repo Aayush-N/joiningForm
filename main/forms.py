@@ -83,9 +83,29 @@ class ResearchForm(forms.ModelForm):
 		model = Research
 		fields = ('__all__')
 
+class MembershipForm(forms.ModelForm):
+	class Meta:
+		model = Membership
+		fields = ('__all__')
+
 class ConferenceForm(forms.ModelForm):
 	class Meta:
 		model = Conference
+		fields = ('__all__')
+
+class AwardForm(forms.ModelForm):
+	class Meta:
+		model = Awards
+		fields = ('__all__')
+
+class ReferenceForm(forms.ModelForm):
+	class Meta:
+		model = Referral
+		fields = ('__all__')
+
+class AchievementForm(forms.ModelForm):
+	class Meta:
+		model = SpecialAchievement
 		fields = ('__all__')
 
 class PayementForm(forms.ModelForm):
@@ -99,3 +119,7 @@ class DocumentsForm(forms.ModelForm):
 		model = DocumentUpload
 		fields = ('__all__')
 
+class DeclarationForm(forms.ModelForm):
+	class Meta:
+		model = Declaration
+		fields = ('__all__')

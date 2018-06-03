@@ -52,11 +52,23 @@ input {
             			</div>
             		</div>
 		<form role="form" action="/personal/" method="post" enctype="multipart/form-data">{% csrf_token %}
-            		<fieldset class="col-md-12">
+            		<fieldset style="color:black;" class="col-md-12">
             			<div class="row">
-						            <div class="col-md-12 form-group">
+            				<div class="col-md-6 form-group">
+            			    <label>Position: <span>*</span></label>
+                            {% render_field form.position placeholder=form.position.label class="form-control required" %}
+                        </div>
+                        <div class="col-md-6 form-group">
+            			    <label>Department: <span>*</span></label>
+                            {% render_field form.department placeholder=form.department.label class="form-control required" %}
+                        </div>
+			            <div class="col-md-12 form-group">
             			    <label>Name: <span>*</span></label>
                             {% render_field form.first_name placeholder=form.first_name.label class="form-control required" %}
+                        </div>
+                        <div class="col-md-12 form-group">
+                        	<label>Photo</label>
+                        	{% render_field form.image class="form-control required" %}
                         </div>
                         <div class="col-md-12 form-group">
                       <label>Father's Name: <span>*</span></label>
@@ -69,14 +81,6 @@ input {
                         <div class="col-md-6 form-group">
             			    <label>Age: <span>*</span></label>
                             {% render_field form.age placeholder=form.age.label class="form-control required" %}
-                        </div>
-						<div class="col-md-6 form-group">
-            			    <label>Position: <span>*</span></label>
-                            {% render_field form.position placeholder=form.position.label class="form-control required" %}
-                        </div>
-                        <div class="col-md-6 form-group">
-            			    <label>Department: <span>*</span></label>
-                            {% render_field form.department placeholder=form.department.label class="form-control required" %}
                         </div>
                         <div class="col-md-12 form-group">
             			    <label>Address: <span>*</span></label>
@@ -99,8 +103,16 @@ input {
                             {% render_field form.religion placeholder=form.religion.label class="form-control required" %}
                         </div>
 						<div class="col-md-6 form-group">
-            			    <label>Reservation: <span>*</span></label>
-                            {% render_field form.reservation placeholder=form.reservation.label class="form-control required" %}
+            			    <label>Reservation: </label>
+                            {% render_field form.reservation placeholder=form.reservation.label class="form-control" %}
+                        </div>
+                        <div class="col-md-6 form-group">
+            			    <label>Category: </label>
+                            {% render_field form.category placeholder=form.category.label class="form-control" %}
+                        </div>
+                        <div class="col-md-6 form-group">
+            			    <label>Nationality: </label>
+                            {% render_field form.nationality placeholder=form.nationality.label class="form-control" %}
                         </div>
                         <div class="col-md-6 form-group">
             			    <label>Family Members in BMSIT: <span>*</span></label>

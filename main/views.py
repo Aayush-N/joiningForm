@@ -111,7 +111,7 @@ class PersonalView(UpdateView):
 	User = get_user_model()
 	template_name = 'index.html'
 	model = User
-	fields = ['first_name','email' ,'phone' ,	'position' ,'department' ,'fathers_name' ,'address' ,'permanent_address',
+	fields = ['image','category','nationality','first_name','email' ,'phone' ,	'position' ,'department' ,'fathers_name' ,'address' ,'permanent_address',
 	'date_of_birth','age','religion','reservation' ,'family_members' ,
 	'kannada_speak','kannada_read' ,'kannada_write' ,
 	'english_speak' ,'english_read' ,'english_write',
@@ -223,6 +223,30 @@ class ResearchView(CreateView):
 	def form_valid(self, form):
 		create = form.save()
 		print(self.request.FILES)
+		return HttpResponseRedirect('/membership/')
+	
+	def form_invalid(self,form):
+		print(form.errors)
+
+		return HttpResponseRedirect('/membership/')
+
+class MembershipView(CreateView):
+	template_name = 'membership.html'
+	model = Research
+
+	success_url = reverse_lazy("research")
+
+
+	error_url = reverse_lazy('membership')
+	form_class = MembershipForm
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(MembershipView, self).get_context_data(*args, **kwargs)
+		return context
+	
+	def form_valid(self, form):
+		create = form.save()
+		print(self.request.FILES)
 		return HttpResponseRedirect('/conference/')
 	
 	def form_invalid(self,form):
@@ -234,7 +258,7 @@ class ConferenceView(CreateView):
 	template_name = 'conference.html'
 	model = TeachingExperience
 
-	success_url = reverse_lazy("payment")
+	success_url = reverse_lazy("awards")
 
 
 	error_url = reverse_lazy('conference')
@@ -242,6 +266,81 @@ class ConferenceView(CreateView):
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(ConferenceView, self).get_context_data(*args, **kwargs)
+		return context
+	
+	def form_valid(self, form):
+		create = form.save()
+		print(self.request.FILES)
+		return HttpResponseRedirect('/awards/')
+	
+	def form_invalid(self,form):
+		print(form.errors)
+
+		return HttpResponseRedirect('/awards/')
+
+
+class ReferenceView(CreateView):
+	template_name = 'reference.html'
+	model = Awards
+
+	success_url = reverse_lazy("referral")
+
+
+	error_url = reverse_lazy('awards')
+	form_class = ReferenceForm
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(ReferenceView, self).get_context_data(*args, **kwargs)
+		return context
+	
+	def form_valid(self, form):
+		create = form.save()
+		print(self.request.FILES)
+		return HttpResponseRedirect('/reference/')
+	
+	def form_invalid(self,form):
+		print(form.errors)
+
+		return HttpResponseRedirect('/reference/')
+
+
+class AwardsView(CreateView):
+	template_name = 'awards.html'
+	model = Awards
+
+	success_url = reverse_lazy("achievement")
+
+
+	error_url = reverse_lazy('awards')
+	form_class = AwardForm
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(AwardsView, self).get_context_data(*args, **kwargs)
+		return context
+	
+	def form_valid(self, form):
+		create = form.save()
+		print(self.request.FILES)
+		return HttpResponseRedirect('/achievement/')
+	
+	def form_invalid(self,form):
+		print(form.errors)
+
+		return HttpResponseRedirect('/achievement/')
+
+
+class AchievementView(CreateView):
+	template_name = 'achievement.html'
+	model = SpecialAchievement
+
+	success_url = reverse_lazy("payment")
+
+
+	error_url = reverse_lazy('achievement')
+	form_class = AchievementForm
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(AchievementView, self).get_context_data(*args, **kwargs)
 		return context
 	
 	def form_valid(self, form):
@@ -287,7 +386,7 @@ class DocumentsView(CreateView):
 	template_name = 'documents.html'
 	model = DocumentUpload
 
-	success_url = reverse_lazy("done")
+	success_url = reverse_lazy("declaration")
 
 
 	error_url = reverse_lazy('documents')
@@ -302,17 +401,34 @@ class DocumentsView(CreateView):
 		create = form.save()
 
 		print(self.request.FILES)
+		return HttpResponseRedirect('/declaration/')
+	
+	def form_invalid(self,form):
+		print(form.errors)
+
+		return HttpResponseRedirect('/declaration/')
+
+
+class DeclarationView(CreateView):
+	template_name = 'declaration.html'
+	model = Declaration
+
+	success_url = reverse_lazy("done")
+
+	error_url = reverse_lazy('declaration')
+	form_class = DeclarationForm
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(DeclarationView, self).get_context_data(*args, **kwargs)
+		return context
+	
+	def form_valid(self, form):
+		create = form.save()
+
+		print(self.request.FILES)
 		return HttpResponseRedirect('/done')
 	
 	def form_invalid(self,form):
 		print(form.errors)
 
 		return HttpResponseRedirect('/done')
-
-
-
-
-
-
-
-

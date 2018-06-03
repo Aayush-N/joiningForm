@@ -47,7 +47,7 @@
             			</div>
             		</div>
 		<form role="form" action="/payment/" method="post" enctype="multipart/form-data">{% csrf_token %}
-                    <fieldset>
+                    <fieldset style="color:black;">
                     	<div class="form-group">
             			    <label>NEFT: <span>*</span></label>
                             {% render_field form.neft placeholder=form.neft.label class="form-control required" %}
@@ -72,6 +72,10 @@
                         <div class="form-group">
             			    <label>Branch: <span>*</span></label>
                             {% render_field form.Branch placeholder=form.Branch.label  class="form-control required" %}
+                        </div>
+                        <div class="form-group">
+                            <label>IFSC: <span>*</span></label>
+                            {% render_field form.ifsc class="form-control required" %}
                         </div>
                         <div class="form-wizard-buttons">
                             <button type="submit" class="btn btn-next">Submit</button>

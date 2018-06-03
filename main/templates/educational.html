@@ -48,6 +48,42 @@
             		</div>
 		<form role="form" action="/educational/" method="post" enctype="multipart/form-data">{% csrf_token %}		
                     <fieldset>
+                    	<h2>Higher Secondary/SSLC</h2>
+                    	<table class="table table-bordered">
+                    		<tr>
+                    			<th>Institution Name</th>
+                    			<th>Passing Year</th>
+                    			<th>Percent ot Grade</th>
+                    			<th>Maximum Marks</th>
+                    		</tr>
+                    		<tr>
+                    			<td>
+									<div class="form-group">
+			            			    {% render_field form.Institution_Name class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.Passing_Year class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.Percent_or_grade class="form-control required" %}
+			                        </div>
+			                    </td>
+			                    <td>
+									<div class="form-group">
+			            			    {% render_field form.maximum_marks_or_grade class="form-control required" %}
+			                        </div>
+			                    </td>
+			                </tr>
+			                <tr>
+			                	<div class="form-group">
+			            			    {% render_field form.file_upload class="form-control required" %}
+			                    </div>
+			                </tr>
+                    	</table>
                         <h2>Bachelors</h2>
                         <table class="table table-bordered">
                         	<tr>

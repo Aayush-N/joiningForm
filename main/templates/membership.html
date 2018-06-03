@@ -44,40 +44,28 @@
             				<p>Documents</p>
             			</div>
             		</div>
-		<form role="form" action="/industrial/" method="post" enctype="multipart/form-data">{% csrf_token %}		
+		<form role="form" action="/research/" method="post" enctype="multipart/form-data">{% csrf_token %}		
                     <fieldset>
                         <div style="display:none;" class="col-md-12 form-group">
-            			    <label>Faculty: <span>*</span></label>
-                            {% render_field form.faculty class="form-control required" %}
+            			    <label>Type of Member: <span>*</span></label>
+                            {% render_field form.type_of_member class="form-control required" %}
                         </div>
                          <div class="col-md-12 form-group">
-            			    <label>Organisation: <span>*</span></label>
-                            {% render_field form.organisation class="form-control required" %}
+            			    <label>Professional Body: <span>*</span></label>
+                            {% render_field form.professional_body class="form-control required" %}
                         </div>
                          <div class="col-md-12 form-group">
-            			    <label>Position Held: <span>*</span></label>
-                            {% render_field form.position_held class="form-control required" %}
-                        </div>
-                         <div class="col-md-12 form-group">
-            			    <label>From Date: <span>*</span></label>
-                            {% render_field form.from_date class="form-control required" %}
-                        </div>
-                         <div class="col-md-12 form-group">
-            			    <label>To Date: <span>*</span></label>
-                            {% render_field form.to_date class="form-control required" %}
-                        </div>
-                         <div class="col-md-12 form-group">
-            			    <label>Experience Years: <span>*</span></label>
-                            {% render_field form.experience_years class="form-control required" %}
+            			    <label>Membership number: <span>*</span></label>
+                            {% render_field form.membership_no class="form-control required" %}
                         </div>
                         <div class="col-md-12 form-group">
-                        	<label>Any Special Remarks</label>
-                        	<textarea class="form-control"></textarea>
-                        </div>
-                        <div class="form-wizard-buttons">
-                            <button type="submit" class="btn btn-next">Submit</button>
+                        	<label>Annual/Life: </label>
+                        	{% render_field form.annual class="form-control required" %}
                         </div>
                     </fieldset>
+                    <div class="form-wizard-buttons">
+                        <button type="submit" class="btn btn-next">Submit</button>
+                    </div>
 				</form>
 				<!-- Form Wizard -->
             </div>
@@ -569,8 +557,8 @@ $('#id_date_of_birth').change(function(e) {
 });
 </script>
 <script>
-	$(function() {
-		$('select[name^="faculty"] option[value="2"]').attr("selected","selected");
-	})
+  $(function() {
+    $('select[name^="faculty"] option[value="2"]').attr("selected","selected");
+  })
 </script>
 </body>	

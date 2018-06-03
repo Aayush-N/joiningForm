@@ -20,6 +20,7 @@ class Proficiency(models.Model):
 
 
 class User(AbstractUser):
+	image = models.FileField(upload_to='uploads/')
 	email = models.EmailField('email address', unique=True)
 	phone = models.CharField("Phone", max_length=15, null=True, blank=True)
 	position = models.CharField(max_length=20, null=True, blank=True)
@@ -27,11 +28,13 @@ class User(AbstractUser):
 	fathers_name = models.CharField(max_length=50, null=True, blank=True)
 	address = models.CharField(max_length=50, null=True, blank=True)
 	permanent_address = models.CharField(max_length=50, null=True, blank=True)
-	date_of_birth = models.DateField(max_length=8)
-	age = models.IntegerField() 
+	date_of_birth = models.DateField(max_length=8, null=True, blank=True)
+	age = models.IntegerField(null=True) 
 	place = models.CharField(max_length=50, null=True, blank=True)
 	religion = models.CharField(max_length=50, null=True, blank=True)
 	reservation = models.CharField(max_length=50, null=True, blank=True)
+	category = models.CharField(max_length=50, null=True, blank=True)
+	nationality = models.CharField(max_length=50, null=True, blank=True)
 	family_members = models.IntegerField(default=0)
 	kannada_speak = models.BooleanField(default=False)
 	kannada_read = models.BooleanField(default=False)
@@ -49,9 +52,10 @@ class User(AbstractUser):
 	neft = models.CharField("NEFT", max_length=50, null=True, blank=True)
 	uti = models.CharField("UTI", max_length=35, null=True, blank=True)
 	Date = models.CharField("Date", max_length=35, null=True, blank=True)
-	Amount = models.CharField("Amount", max_length=35, null=True, blank=True)
+	Amount = models.CharField("Amount", max_length=35, null=True, blank=True, default='500')
 	Bank = models.CharField("Bank", max_length=35, null=True, blank=True)
 	Branch = models.CharField("Branch", max_length=35, null=True, blank=True)
+	ifsc = models.CharField("IFSC", max_length=10, null=True, blank=True)
 
 	#FilesToBeUploaded
 	# Sslc = models.FileField(upload_to='uploads/')
@@ -124,7 +128,11 @@ class Referral(models.Model):
 	faculty = models.ForeignKey("User", on_delete=models.CASCADE)
 	name = models.CharField("name", max_length=50, null=False, blank=False)
 	position = models.CharField("position", max_length=50, null=False, blank=False)
+	designation = models.CharField("designation", max_length=50, null=False, blank=False)
+	affiliation = models.CharField("affiliation", max_length=50, null=False, blank=False)
 	contact_no = models.CharField("contact no", max_length=50, null=False, blank=False)
+	email = models.CharField("email", max_length=50, null=False, blank=False)
+	address = models.CharField("address", max_length=50, null=False, blank=False)
 	def __str__(self):
 		return self.faculty.name
 
@@ -163,6 +171,15 @@ class TeachingExperience(models.Model):
 	def __str__(self):
 		return self.faculty.name
 
+class Membership(models.Model):
+	faculty = models.ForeignKey("User", on_delete=models.CASCADE)
+	type_of_member = models.CharField(max_length=50,null=True, blank=False)
+	professional_body = models.CharField(max_length=50, null=True, blank=False)
+	membership_no = models.CharField(max_length=50, null=True, blank=False)
+	annual = models.CharField(max_length=50, null=False, blank=False)
+	def __str__(self):
+		return self.faculty.name
+
 
 class Conference(models.Model):
 	faculty = models.ForeignKey("User", on_delete=models.CASCADE)
@@ -191,3 +208,12 @@ class Research(models.Model):
 	def __str__(self):
 		return self.faculty.name
 
+class SpecialAchievement(models.Model):
+	faculty = models.ForeignKey("User", on_delete=models.CASCADE)
+	community_service = models.CharField("community services", max_length=250, null=True, blank=True)
+	industry_related = models.CharField("industry related", max_length=50, null=True, blank=True)
+	university_assignment = models.CharField("university assignment", max_length=50, null=True, blank=True)
+	administration = models.CharField("administration", max_length=50, null=True, blank=True)
+
+class Declaration(models.Model):
+	signature = models.FileField(upload_to='uploads/')

@@ -15,9 +15,14 @@ urlpatterns = [
     path('teaching/', views.TeachingView.as_view(), name='teaching'),
     path('industrial/', views.IndustrialView.as_view(), name='industrial'),
     path('research/', views.ResearchView.as_view(), name='research'),
+    path('membership/', views.MembershipView.as_view(), name='membership'),
     path('conference/', views.ConferenceView.as_view(), name='conference'),
+    path('awards/', views.AwardsView.as_view(), name='awards'),
+    path('reference/', views.ReferenceView.as_view(), name='reference'),
+    path('achievement/', views.AchievementView.as_view(), name='achievement'),
     path('payment/', views.PaymentView.as_view(), name='payment'),
     path('documents/', views.DocumentsView.as_view(), name='documents'),
+    path('declaration/', views.DeclarationView.as_view(), name='declaration'),
 
 ]
 
