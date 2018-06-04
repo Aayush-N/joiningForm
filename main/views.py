@@ -33,7 +33,7 @@ def register(request):
 	else:
 		f = CustomUserCreationForm()
 
-	return render(request, 'signup.html', {'form': f})
+	return render(request, 'registration/login.html')
 
 
 def done(request):
@@ -45,6 +45,9 @@ def done(request):
 	}
 	return render(request, template_name, context)
 
+def logout(request):
+	template_name = 'registration/logout.html'
+	return render(request, template_name)
 
 
 class DisplayView(ListView):
