@@ -44,12 +44,9 @@
             				<p>Documents</p>
             			</div>
             		</div>
-		<form role="form" action="/research/" method="post" enctype="multipart/form-data">{% csrf_token %}		
+		<form role="form" action="/achievement/" method="post" enctype="multipart/form-data">{% csrf_token %}		
                     <fieldset style="color:black;">
-                        <div style="display:none;" class="col-md-12 form-group">
-            			         <label>Faculty: <span>*</span></label>
-                            {% render_field form.faculty class="form-control required" %}
-                        </div>
+                        
                         <table class="table table-bordered">
                           <tr>
                             <th>Community Service</th>
@@ -560,7 +557,7 @@ $('#id_date_of_birth').change(function(e) {
 </script>
 <script>
 	$(function() {
-		$('select[name^="faculty"] option[value="2"]').attr("selected","selected");
+		$('select[name^="faculty"] option[value="1"]').attr("selected","selected");
 	})
 </script>
 </body>	

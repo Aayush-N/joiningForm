@@ -15,6 +15,8 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/vendor/animate/animate.css' %}">
 
 	<link rel="stylesheet" type="text/css" href="{% static 'css/vendor/css-hamburgers/hamburgers.min.css' %}">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'css/vendor/animsition/css/animsition.min.css' %}">
 <!--===============================================================================================-->
@@ -31,7 +33,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-				<form class="login100-form validate-form flex-sb flex-w">
+				<form method="POST" class="login100-form validate-form flex-sb flex-w">{% csrf_token %}
 					<span class="login100-form-title p-b-32">
 						Account Login
 					</span>
@@ -40,7 +42,7 @@
 						Email ID
 					</span>
 					<div class="wrap-input100 validate-input m-b-36" data-validate = "Username is required">
-						<input class="input100" type="text" name="email" >
+						<input class="input100" type="text" name="email" required>
 						<span class="focus-input100"></span>
 					</div>
 					
@@ -51,7 +53,7 @@
 						<span class="btn-show-pass">
 							<i class="fa fa-eye"></i>
 						</span>
-						<input class="input100" type="password" name="pass" >
+						<input class="input100" type="password" name="pass" required>
 						<span class="focus-input100"></span>
 					</div>
 					
@@ -71,9 +73,9 @@
 					</div>
 
 					<div class="container-login100-form-btn">
-						<a href="/personal/" class="login100-form-btn">
+						<button type="submit" class="login100-form-btn">
 							Login
-						</a>
+						</button>
 					</div>
 
 				</form>
@@ -100,6 +102,5 @@
 	<script src="{% static 'js/vendor/countdowntime/countdowntime.js' %}"></script>
 <!--===============================================================================================-->
 	<script src="{% static 'js/main.js' %}"></script>
-
 </body>
 </html>

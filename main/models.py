@@ -20,7 +20,7 @@ class Proficiency(models.Model):
 
 
 class User(AbstractUser):
-	image = models.FileField(upload_to='uploads/')
+	image = models.FileField(upload_to='uploads/', blank=True,null=True)
 	email = models.EmailField('email address', unique=True)
 	phone = models.CharField("Phone", max_length=15, null=True, blank=True)
 	position = models.CharField(max_length=20, null=True, blank=True)
@@ -29,7 +29,7 @@ class User(AbstractUser):
 	address = models.CharField(max_length=50, null=True, blank=True)
 	permanent_address = models.CharField(max_length=50, null=True, blank=True)
 	date_of_birth = models.DateField(max_length=8, null=True, blank=True)
-	age = models.IntegerField(null=True) 
+	age = models.IntegerField(null=True, blank=True) 
 	place = models.CharField(max_length=50, null=True, blank=True)
 	religion = models.CharField(max_length=50, null=True, blank=True)
 	reservation = models.CharField(max_length=50, null=True, blank=True)
@@ -50,7 +50,7 @@ class User(AbstractUser):
 	year_selection = models.CharField("year selection", max_length=50, null=True, blank=True)
 	#BankDetails
 	neft = models.CharField("NEFT", max_length=50, null=True, blank=True)
-	uti = models.CharField("UTI", max_length=35, null=True, blank=True)
+	uti = models.CharField("UTR", max_length=35, null=True, blank=True)
 	Date = models.CharField("Date", max_length=35, null=True, blank=True)
 	Amount = models.CharField("Amount", max_length=35, null=True, blank=True, default='500')
 	Bank = models.CharField("Bank", max_length=35, null=True, blank=True)
@@ -121,7 +121,7 @@ class DocumentUpload(models.Model):
 	file =  models.FileField(upload_to='uploads/')
 
 	def __str__(self):
-		return self.uploaded_by.name
+		return self.uploaded_by.first_name
 
 
 class Referral(models.Model):
@@ -216,4 +216,5 @@ class SpecialAchievement(models.Model):
 	administration = models.CharField("administration", max_length=50, null=True, blank=True)
 
 class Declaration(models.Model):
+	faculty = models.ForeignKey("User", on_delete=models.CASCADE)
 	signature = models.FileField(upload_to='uploads/')

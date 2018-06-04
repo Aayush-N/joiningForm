@@ -48,13 +48,13 @@
             		</div>
 		<form role="form" action="/educational/" method="post" enctype="multipart/form-data">{% csrf_token %}		
                     <fieldset>
-                    	<h2>Higher Secondary/SSLC</h2>
+                    	<h2>Higher Secondary / SSLC</h2>
                     	<table class="table table-bordered">
                     		<tr>
                     			<th>Institution Name</th>
                     			<th>Passing Year</th>
                     			<th>Percent ot Grade</th>
-                    			<th>Maximum Marks</th>
+                    			<th>Marks Secured</th>
                     		</tr>
                     		<tr>
                     			<td>
@@ -64,7 +64,7 @@
 			                    </td>
 			                    <td>
 									<div class="form-group">
-			            			    {% render_field form.Passing_Year class="form-control required" %}
+			            			    {% render_field form.Passing_Year type="date" class="form-control required" %}
 			                        </div>
 			                    </td>
 			                    <td>
@@ -92,7 +92,7 @@
                         		<th>Institution Name</th>
                         		<th>Passing Year</th>
                         		<th>Percent or Grade</th>
-                        		<th>Maximum Marks</th>
+                        		<th>Marks Secured</th>
                         	</tr>
                         	<tr>
 			                    <td>
@@ -140,7 +140,7 @@
                         		<th>Institution Name</th>
                         		<th>Passing Year</th>
                         		<th>Percent or Grade</th>
-                        		<th>Maximum Marks</th>
+                        		<th>Marks Secured</th>
                         	</tr>
                         	<tr>
 			                    <td>
@@ -188,7 +188,7 @@
                         		<th>Institution Name</th>
                         		<th>Passing Year</th>
                         		<th>Percent or Grade</th>
-                        		<th>Maximum Marks</th>
+                        		<th>Marks Secured</th>
                         	</tr>
                         	<tr>
 			                    <td>

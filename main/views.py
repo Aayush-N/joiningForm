@@ -4,7 +4,7 @@ from django.views.generic.edit import UpdateView
 
 import os
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponse, HttpResponseRedirect
 
@@ -28,7 +28,7 @@ def register(request):
 		if f.is_valid():
 			f.save()
 			messages.success(request, 'Account created successfully')
-			return redirect('register')
+			return redirect('login')
 
 	else:
 		f = CustomUserCreationForm()
@@ -100,6 +100,8 @@ class PositionView(CreateView):
 	
 	def form_valid(self, form):
 		create = form.save()
+		User = self.request.user
+		create.save()
 		return HttpResponseRedirect('/personal/')
 	
 	def form_invalid(self,form):
@@ -111,7 +113,7 @@ class PersonalView(UpdateView):
 	User = get_user_model()
 	template_name = 'index.html'
 	model = User
-	fields = ['image','category','nationality','first_name','email' ,'phone' ,	'position' ,'department' ,'fathers_name' ,'address' ,'permanent_address',
+	fields = ['place','image','category','nationality','first_name','email' ,'phone' ,	'position' ,'department' ,'fathers_name' ,'address' ,'permanent_address',
 	'date_of_birth','age','religion','reservation' ,'family_members' ,
 	'kannada_speak','kannada_read' ,'kannada_write' ,
 	'english_speak' ,'english_read' ,'english_write',
@@ -119,6 +121,7 @@ class PersonalView(UpdateView):
 	template_name_suffix = 'faculty_update_form'
 
 	def get_object(self):
+		print(self.request.user)
 		return self.User.objects.get(pk=self.request.user.pk)
 
 	def form_valid(self, form):
@@ -144,7 +147,8 @@ class EducationalView(CreateView):
 	
 	def form_valid(self, form):
 		create = form.save()
-
+		Course.Applicant = self.request.user
+		create.save()
 		print(self.request.FILES)
 		return HttpResponseRedirect('/industrial/')
 	
@@ -172,7 +176,8 @@ class IndustrialView(CreateView):
 	
 	def form_valid(self, form):
 		create = form.save()
-
+		IndustrialExperience.faculty = self.request.user
+		create.save()
 		print(self.request.FILES)
 		return HttpResponseRedirect('/teaching/')
 	
@@ -198,6 +203,8 @@ class TeachingView(CreateView):
 	
 	def form_valid(self, form):
 		create = form.save()
+		TeachingExperience.faculty = self.request.user
+		create.save()
 		print(self.request.FILES)
 		return HttpResponseRedirect('/research/')
 	
@@ -210,7 +217,7 @@ class ResearchView(CreateView):
 	template_name = 'research.html'
 	model = Research
 
-	success_url = reverse_lazy("conference")
+	success_url = reverse_lazy("membership")
 
 
 	error_url = reverse_lazy('research')
@@ -222,6 +229,8 @@ class ResearchView(CreateView):
 	
 	def form_valid(self, form):
 		create = form.save()
+		Research.faculty = self.request.user
+		create.save()
 		print(self.request.FILES)
 		return HttpResponseRedirect('/membership/')
 	
@@ -232,10 +241,9 @@ class ResearchView(CreateView):
 
 class MembershipView(CreateView):
 	template_name = 'membership.html'
-	model = Research
+	model = Membership
 
-	success_url = reverse_lazy("research")
-
+	success_url = reverse_lazy("conference")
 
 	error_url = reverse_lazy('membership')
 	form_class = MembershipForm
@@ -246,6 +254,8 @@ class MembershipView(CreateView):
 	
 	def form_valid(self, form):
 		create = form.save()
+		Membership.faculty = self.request.user
+		create.save()
 		print(self.request.FILES)
 		return HttpResponseRedirect('/conference/')
 	
@@ -256,37 +266,40 @@ class MembershipView(CreateView):
 
 class ConferenceView(CreateView):
 	template_name = 'conference.html'
-	model = TeachingExperience
+	model = Conference
 
-	success_url = reverse_lazy("awards")
+	success_url = reverse_lazy("reference")
 
 
 	error_url = reverse_lazy('conference')
-	form_class = TeachingForm
+	form_class = ConferenceForm
 
 	def get_context_data(self, *args, **kwargs):
+		ConferenceFormSet = formset_factory(Conference, extra=10)
 		context = super(ConferenceView, self).get_context_data(*args, **kwargs)
 		return context
 	
 	def form_valid(self, form):
 		create = form.save()
+		conference.faculty = self.request.user
+		create.save()
 		print(self.request.FILES)
-		return HttpResponseRedirect('/awards/')
+		return HttpResponseRedirect('/reference/')
 	
 	def form_invalid(self,form):
 		print(form.errors)
 
-		return HttpResponseRedirect('/awards/')
+		return HttpResponseRedirect('/reference/')
 
 
 class ReferenceView(CreateView):
 	template_name = 'reference.html'
-	model = Awards
+	model = Referral
 
-	success_url = reverse_lazy("referral")
+	success_url = reverse_lazy('awards')
 
 
-	error_url = reverse_lazy('awards')
+	error_url = reverse_lazy('reference')
 	form_class = ReferenceForm
 
 	def get_context_data(self, *args, **kwargs):
@@ -295,20 +308,22 @@ class ReferenceView(CreateView):
 	
 	def form_valid(self, form):
 		create = form.save()
+		Referral.faculty = self.request.user
+		create.save()
 		print(self.request.FILES)
-		return HttpResponseRedirect('/reference/')
+		return HttpResponseRedirect('/awards/')
 	
 	def form_invalid(self,form):
 		print(form.errors)
 
-		return HttpResponseRedirect('/reference/')
+		return HttpResponseRedirect('/awards/')
 
 
 class AwardsView(CreateView):
 	template_name = 'awards.html'
 	model = Awards
 
-	success_url = reverse_lazy("achievement")
+	success_url = reverse_lazy('achievement')
 
 
 	error_url = reverse_lazy('awards')
@@ -320,6 +335,8 @@ class AwardsView(CreateView):
 	
 	def form_valid(self, form):
 		create = form.save()
+		Awards.faculty = self.request.user
+		create.save()
 		print(self.request.FILES)
 		return HttpResponseRedirect('/achievement/')
 	
@@ -345,6 +362,8 @@ class AchievementView(CreateView):
 	
 	def form_valid(self, form):
 		create = form.save()
+		SpecialAchievement.faculty = self.request.user
+		create.save()
 		print(self.request.FILES)
 		return HttpResponseRedirect('/payment/')
 	
@@ -373,6 +392,10 @@ class PaymentView(CreateView):
 	
 	def form_valid(self, form):
 		create = form.save()
+		User = self.request.user
+		create.save()
+		User = self.request.user
+		create.save()
 
 		print(self.request.FILES)
 		return HttpResponseRedirect('/documents/')
@@ -399,7 +422,8 @@ class DocumentsView(CreateView):
 	
 	def form_valid(self, form):
 		create = form.save()
-
+		DocumentUpload.uploaded_by = self.request.user
+		create.save()
 		print(self.request.FILES)
 		return HttpResponseRedirect('/declaration/')
 	
@@ -424,7 +448,8 @@ class DeclarationView(CreateView):
 	
 	def form_valid(self, form):
 		create = form.save()
-
+		Declaration.faculty = self.request.user
+		create.save()
 		print(self.request.FILES)
 		return HttpResponseRedirect('/done')
 	

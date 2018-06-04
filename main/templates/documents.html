@@ -46,17 +46,23 @@
             				<p>Documents</p>
             			</div>
             		</div>
-		<form role="form" action="/documents/" method="post" enctype="multipart/form-data">{% csrf_token %}
-					<fieldset>
-						
-            {{form.as_p}}
-
-			       <div class="form-wizard-buttons">
-                <button type="submit" class="btn btn-next">Submit</button>
-            </div>
-					</fieldset>
-            	
-            	</form>
+		            <form role="form" action="/documents/" method="post" enctype="multipart/form-data">{% csrf_token %}    
+                    <fieldset style="color:black;">
+    
+                         <div class="col-md-12 form-group">
+                      <label>Type of document: <span>*</span></label>
+                            {% render_field form.type_of_document class="form-control required" %}
+                        </div>
+                        <div class="col-md-12 form-group">
+                      <label>File: <span>*</span></label>
+                            {% render_field form.file class="form-control required" %}
+                        </div>
+                         
+                        <div class="form-wizard-buttons">
+                            <button type="submit" class="btn btn-next">Submit</button>
+                        </div>
+                    </fieldset>
+        </form>
 				<!-- Form Wizard -->
             </div>
         </div>

@@ -45,11 +45,7 @@
             			</div>
             		</div>
 		<form role="form" action="/research/" method="post" enctype="multipart/form-data">{% csrf_token %}		
-                    <fieldset>
-                        <div style="display:none;" class="col-md-12 form-group">
-            			    <label>Faculty: <span>*</span></label>
-                            {% render_field form.faculty class="form-control required" %}
-                        </div>
+                    <fieldset style="color:black;">
                          <div class="col-md-12 form-group">
             			    <label>Total Experience: <span>*</span></label>
                             {% render_field form.total_experience class="form-control required" %}
@@ -683,14 +679,9 @@ $('#id_date_of_birth').change(function(e) {
 
 	})
 </script>
-<script>
+<!-- <script>
 	$(function() {
-		$('#id_faculty').val('{{request.user}}')
+		$('select[name^="faculty"] option[value="1"]').attr("selected","selected");
 	})
-</script>
-<script>
-	$(function() {
-		$('select[name^="faculty"] option[value="2"]').attr("selected","selected");
-	})
-</script>
+</script> -->
 </body>	
