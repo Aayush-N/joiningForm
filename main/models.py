@@ -134,7 +134,7 @@ class Referral(models.Model):
 	email = models.CharField("email", max_length=50, null=False, blank=False)
 	address = models.CharField("address", max_length=50, null=False, blank=False)
 	def __str__(self):
-		return self.faculty.name
+		return self.faculty.first_name
 
 
 class Awards(models.Model):
@@ -147,7 +147,7 @@ class Awards(models.Model):
 	national = models.CharField("National", max_length=50, null=False, blank=False)
 	international = models.CharField("International", max_length=50, null=False, blank=False)
 	def __str__(self):
-		return self.faculty.name
+		return self.faculty.first_name
 
 
 class IndustrialExperience(models.Model):
@@ -158,7 +158,7 @@ class IndustrialExperience(models.Model):
 	to_date = models.CharField("to date", max_length=50, null=False, blank=False)
 	experience_years = models.CharField("experience years", max_length=50, null=False, blank=False)
 	def __str__(self):
-		return self.faculty.name
+		return self.faculty.first_name
 
 
 class TeachingExperience(models.Model):
@@ -169,7 +169,7 @@ class TeachingExperience(models.Model):
 	to_date = models.CharField("to", max_length=50, null=False, blank=False)
 	total_duration = models.CharField("total duration", max_length=50, null=False, blank=False)
 	def __str__(self):
-		return self.faculty.name
+		return self.faculty.first_name
 
 class Membership(models.Model):
 	faculty = models.ForeignKey("User", on_delete=models.CASCADE)
@@ -178,7 +178,7 @@ class Membership(models.Model):
 	membership_no = models.CharField(max_length=50, null=True, blank=False)
 	annual = models.CharField(max_length=50, null=False, blank=False)
 	def __str__(self):
-		return self.faculty.name
+		return self.faculty.first_name
 
 
 class Conference(models.Model):
@@ -191,7 +191,7 @@ class Conference(models.Model):
 	to_date = models.CharField("to", max_length=50, null=True, blank=False)
 	total_duration = models.CharField("total duration", max_length=50, null=True, blank=False)
 	def __str__(self):
-		return self.faculty.name
+		return self.faculty.first_name
 
 class Research(models.Model):
 	faculty = models.ForeignKey("User", on_delete=models.CASCADE)
@@ -206,7 +206,7 @@ class Research(models.Model):
 	conf_International = models.CharField(max_length=50, null=False, blank=False)
 	year_month_pub = models.CharField(max_length=50, null=False, blank=False)
 	def __str__(self):
-		return self.faculty.name
+		return self.faculty.first_name
 
 class SpecialAchievement(models.Model):
 	faculty = models.ForeignKey("User", on_delete=models.CASCADE)

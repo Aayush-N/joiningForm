@@ -33,7 +33,7 @@ AUTH_USER_MODEL = 'main.User'
 
 LOGIN_URL = '/login'
 
-LOGIN_REDIRECT_URL = '/jobs'
+LOGIN_REDIRECT_URL = '/personal'
 
 # Application definition
 
