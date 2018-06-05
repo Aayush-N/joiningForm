@@ -528,10 +528,7 @@ th, td {
       padding-top: 40px;
       padding-bottom: 40px;
       
-      background: rgb(234,88,4); /* Old browsers */
-      background: -moz-linear-gradient(top,  rgba(234,88,4,1) 0%, rgba(234,40,3,1) 51%, rgba(234,88,4,1) 100%); /* FF3.6-15 */
-      background: -webkit-linear-gradient(top,  rgba(234,88,4,1) 0%,rgba(234,40,3,1) 51%,rgba(234,88,4,1) 100%); /* Chrome10-25,Safari5.1-6 */
-      background: linear-gradient(to bottom,  rgba(234,88,4,1) 0%,rgba(234,40,3,1) 51%,rgba(234,88,4,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      background-color: #a91a32; /* Old browsers */
       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ea5804', endColorstr='#ea5804',GradientType=0 ); /* IE6-9 */
     }
 
@@ -569,7 +566,7 @@ th, td {
     .form-wizard h3 {
       font-size: 25px;
         font-weight: 300;
-        color: #ea2803;
+        color: #a91a32;
         line-height: 30px;
       margin-top: 0; 
       margin-bottom: 5px; 
@@ -684,7 +681,7 @@ th, td {
     .form-wizard .btn.btn-next:focus,
     .form-wizard .btn.btn-next:active:focus, 
     .form-wizard .btn.btn-next.active:focus { 
-    background: #ea2803; 
+    background: #a91a32; 
     }
 
     .form-wizard .btn.btn-submit,
@@ -725,6 +722,9 @@ th, td {
       position: relative; 
       margin-top: 20px;
     }
+    i {
+      color:#a91a32;
+    }
     .form-wizard-step{
       padding-top:10px !important;
       border:2px solid #fff;
@@ -734,10 +734,10 @@ th, td {
         transform: skewX(-30deg); /* Standard syntax */
     }
     .form-wizard-step.active{
-      background:#ea2803;
+      background:#a91a32;
     }
     .form-wizard-step.activated{
-      background:#ea2803;
+      background:#a91a32;
     }
     .form-wizard-progress { 
       position: absolute; 

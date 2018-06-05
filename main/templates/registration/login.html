@@ -10,13 +10,18 @@
 
 	<link rel="stylesheet" type="text/css" href="{% static 'css/registration/login.css' %}">
 <!--===============================================================================================-->
+<style type="text/css">
+  body {
+    background-color: #a91a32;
+  }
+</style>
 </head>
 <body>
 	
 <div class="main-box">
   <div class="slider-cont">
-  	<center><img src="https://bmsit.ac.in/assets/logo-5527329e306f832982eb5b10b8325a606bc2058ae61b4aa5705c8c2d4e436212.png" style="height: 167px !important; "></center><br>	
-    <center><h3 style="color: #FFF;">Careers at BMSIT</h3><center>
+  	<center><img id="logo" src="https://bmsit.ac.in/assets/logo-5527329e306f832982eb5b10b8325a606bc2058ae61b4aa5705c8c2d4e436212.png" ></center><br>	
+    <center><h3 style="color: #000;">Careers at BMSIT</h3><center>
   </div>
   
   
@@ -33,7 +38,7 @@
     </div>
     
     <div class="form form-signup">
-      <form action="/signup/" method="POST">{% csrf_token %}
+      <form style="color:black;" action="/signup/" method="POST">{% csrf_token %}
         <lable>USERNAME</lable>
         <input type="text" name="username" id="id_username"
                placeholder="Your desired username">
@@ -53,7 +58,7 @@
       </form>
     </div>
 
-    <div class="form form-signin">
+    <div style="margin-top:-10%;" class="form form-signin">
       <form action="/login/" method="POST">{% csrf_token %}
         <lable>E-MAIL</lable>
         <input type="email" name="username" id="id_username"
@@ -72,5 +77,12 @@
 </div>
 	
 	<script src="{% static 'js/login.js' %}"></script>
+  <script>
+  $(function() {
+    $('#logo').removeAttr('style');
+    $('#logo').css('width', '100');
+    $('#logo').css('margin-top', '30%');
+  })
+  </script>
 </body>
 </html>
