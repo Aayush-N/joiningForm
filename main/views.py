@@ -459,17 +459,17 @@ def printView(request):
 	template_name='print.html'
 	User = get_user_model()
 	faculty = User.objects.get(username=request.user.username)
-	courses = Course.objects.filter(Applicant=request.user)
-	documents = DocumentUpload.objects.filter(uploaded_by=request.user)
-	referrals = Referral.objects.filter(faculty=request.user)
-	awards = Awards.objects.filter(faculty=request.user)
-	industrial = IndustrialExperience.objects.filter(faculty=request.user)
-	teaching = TeachingExperience.objects.filter(faculty=request.user)
-	membership = Membership.objects.filter(faculty=request.user)
-	conference = Conference.objects.filter(faculty=request.user)
-	research = Research.objects.filter(faculty=request.user)
-	special = SpecialAchievement.objects.filter(faculty=request.user)
-	declaration = Declaration.objects.filter(faculty=request.user)
+	courses = Course.objects.filter(Applicant=request.user.pk)
+	documents = DocumentUpload.objects.filter(uploaded_by=request.user.pk)
+	referrals = Referral.objects.filter(faculty=request.user.pk)
+	awards = Awards.objects.filter(faculty=request.user.pk)
+	industrial = IndustrialExperience.objects.filter(faculty=request.user.pk)
+	teaching = TeachingExperience.objects.filter(faculty=request.user.pk)
+	membership = Membership.objects.filter(faculty=request.user.pk)
+	conference = Conference.objects.filter(faculty=request.user.pk)
+	research = Research.objects.filter(faculty=request.user.pk)
+	special = SpecialAchievement.objects.filter(faculty=request.user.pk)
+	declaration = Declaration.objects.filter(faculty=request.user.pk)
 
 	context = {
 	"faculty" : faculty,

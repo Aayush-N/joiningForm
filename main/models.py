@@ -103,7 +103,7 @@ class Course(models.Model):
 	file_upload = models.FileField(upload_to='uploads/')
 
 	def __str__(self):
-		return self.Applicant.name
+		return self.Applicant.username
 
 class DocumentType(models.Model):
 	type_of_document = models.CharField(max_length=50, null=False, blank=False)
