@@ -67,46 +67,55 @@ class EducationalForm(forms.ModelForm):
 	class Meta:
 		model = Course
 		fields = ('__all__')
+		exclude = ('Applicant',)
 
 class IndustrialForm(forms.ModelForm):
 	class Meta:
 		model = IndustrialExperience
 		fields = ('__all__')
+		exclude = ('faculty',)
 
 class TeachingForm(forms.ModelForm):
 	class Meta:
 		model = TeachingExperience
 		fields = ('__all__')
+		exclude = ('faculty',)
 
 class ResearchForm(forms.ModelForm):
 	class Meta:
 		model = Research
 		fields = ('__all__')
+		exclude = ('faculty',)
 
 class MembershipForm(forms.ModelForm):
 	class Meta:
 		model = Membership
 		fields = ('__all__')
+		exclude = ('faculty',)
 
 class ConferenceForm(forms.ModelForm):
 	class Meta:
 		model = Conference
 		fields = ('__all__')
+		exclude = ('faculty',)
 
 class AwardForm(forms.ModelForm):
 	class Meta:
 		model = Awards
 		fields = ('__all__')
+		exclude = ('faculty',)
 
 class ReferenceForm(forms.ModelForm):
 	class Meta:
 		model = Referral
 		fields = ('__all__')
+		exclude = ('faculty',)
 
 class AchievementForm(forms.ModelForm):
 	class Meta:
 		model = SpecialAchievement
 		fields = ('__all__')
+		exclude = ('faculty',)
 
 class PayementForm(forms.ModelForm):
 	class Meta:
@@ -118,8 +127,10 @@ class DocumentsForm(forms.ModelForm):
 	class Meta:
 		model = DocumentUpload
 		fields = ('__all__')
+		exclude = ('uploaded_by',)
 
 class DeclarationForm(forms.ModelForm):
 	class Meta:
 		model = Declaration
 		fields = ('__all__')
+		exclude = ('faculty',)

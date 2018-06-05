@@ -143,10 +143,9 @@ class EducationalView(CreateView):
 		return context
 	
 	def form_valid(self, form):
-		create = form.save()
-		Course.Applicant = self.request.user
+		create = form.save(commit=False)
+		create.Applicant = self.request.user
 		create.save()
-		print(self.request.FILES)
 		return HttpResponseRedirect('/industrial/')
 	
 	def form_invalid(self,form):
@@ -172,8 +171,8 @@ class IndustrialView(CreateView):
 		return context
 	
 	def form_valid(self, form):
-		create = form.save()
-		IndustrialExperience.faculty = self.request.user
+		create = form.save(commit=False)
+		create.faculty = self.request.user
 		create.save()
 		print(self.request.FILES)
 		return HttpResponseRedirect('/teaching/')
@@ -199,8 +198,8 @@ class TeachingView(CreateView):
 		return context
 	
 	def form_valid(self, form):
-		create = form.save()
-		TeachingExperience.faculty = self.request.user
+		create = form.save(commit=False)
+		create.faculty = self.request.user
 		create.save()
 		print(self.request.FILES)
 		return HttpResponseRedirect('/research/')
@@ -225,8 +224,8 @@ class ResearchView(CreateView):
 		return context
 	
 	def form_valid(self, form):
-		create = form.save()
-		Research.faculty = self.request.user
+		create = form.save(commit=False)
+		create.faculty = self.request.user
 		create.save()
 		print(self.request.FILES)
 		return HttpResponseRedirect('/membership/')
@@ -250,8 +249,8 @@ class MembershipView(CreateView):
 		return context
 	
 	def form_valid(self, form):
-		create = form.save()
-		Membership.faculty = self.request.user
+		create = form.save(commit=False)
+		create.faculty = self.request.user
 		create.save()
 		print(self.request.FILES)
 		return HttpResponseRedirect('/conference/')
@@ -277,8 +276,8 @@ class ConferenceView(CreateView):
 		return context
 	
 	def form_valid(self, form):
-		create = form.save()
-		conference.faculty = self.request.user
+		create = form.save(commit=False)
+		create.faculty = self.request.user
 		create.save()
 		print(self.request.FILES)
 		return HttpResponseRedirect('/reference/')
@@ -304,8 +303,8 @@ class ReferenceView(CreateView):
 		return context
 	
 	def form_valid(self, form):
-		create = form.save()
-		Referral.faculty = self.request.user
+		create = form.save(commit=False)
+		create.faculty = self.request.user
 		create.save()
 		print(self.request.FILES)
 		return HttpResponseRedirect('/awards/')
@@ -331,8 +330,8 @@ class AwardsView(CreateView):
 		return context
 	
 	def form_valid(self, form):
-		create = form.save()
-		Awards.faculty = self.request.user
+		create = form.save(commit=False)
+		create.faculty = self.request.user
 		create.save()
 		print(self.request.FILES)
 		return HttpResponseRedirect('/achievement/')
@@ -358,8 +357,8 @@ class AchievementView(CreateView):
 		return context
 	
 	def form_valid(self, form):
-		create = form.save()
-		SpecialAchievement.faculty = self.request.user
+		create = form.save(commit=False)
+		create.faculty = self.request.user
 		create.save()
 		print(self.request.FILES)
 		return HttpResponseRedirect('/payment/')
@@ -391,9 +390,6 @@ class PaymentView(CreateView):
 		create = form.save()
 		User = self.request.user
 		create.save()
-		User = self.request.user
-		create.save()
-
 		print(self.request.FILES)
 		return HttpResponseRedirect('/documents/')
 	
@@ -418,10 +414,9 @@ class DocumentsView(CreateView):
 		return context
 	
 	def form_valid(self, form):
-		create = form.save()
-		DocumentUpload.uploaded_by = self.request.user
+		create = form.save(commit=False)
+		create.uploaded_by = self.request.user
 		create.save()
-		print(self.request.FILES)
 		return HttpResponseRedirect('/declaration/')
 	
 	def form_invalid(self,form):
@@ -444,8 +439,8 @@ class DeclarationView(CreateView):
 		return context
 	
 	def form_valid(self, form):
-		create = form.save()
-		Declaration.faculty = self.request.user
+		create = form.save(commit=False)
+		create.faculty = self.request.user
 		create.save()
 		print(self.request.FILES)
 		return HttpResponseRedirect('/done')
