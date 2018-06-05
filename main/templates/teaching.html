@@ -45,35 +45,29 @@
             			</div>
             		</div>
 		<form role="form" action="/teaching/" method="post" enctype="multipart/form-data">{% csrf_token %}		
-                    <fieldset style="color:black;">
-                         <div class="col-md-12 form-group">
-            			    <label>University Name: <span>*</span></label>
-                            {% render_field form.university_name class="form-control required" %}
-                        </div>
-                         <div class="col-md-12 form-group">
-            			    <label>Designation: <span>*</span></label>
-                            {% render_field form.designation class="form-control required" %}
-                        </div>
-                         <div class="col-md-12 form-group">
-            			    <label>From Date: <span>*</span></label>
-                            {% render_field form.from_date class="form-control required" %}
-                        </div>
-                         <div class="col-md-12 form-group">
-            			    <label>To Date: <span>*</span></label>
-                            {% render_field form.to_date class="form-control required" %}
-                        </div>
-                         <div class="col-md-12 form-group">
-            			    <label>Total Duration: <span>*</span></label>
-                            {% render_field form.total_duration class="form-control required" %}
-                        </div>
-                        <div class="col-md-12 form-group">
-                        	<label>Any Special Remarks</label>
-                        	<textarea class="form-control"></textarea>
-                        </div>
-                        <div class="form-wizard-buttons">
-                            <button type="submit" class="btn btn-next">Submit</button>
-                        </div>
-                    </fieldset>
+                <h2>Please Enter Your Teaching Experience Below</h2>
+        {{ formset.management_form }}
+        <div id="form_set">
+            {% for form in formset.forms %}
+                <table class='no_error'>
+                    {{ form.as_table }}
+                </table>
+            {% endfor %}
+        </div>
+        <input type="button" class="btn btn-primary" value="Add More" id="add_more">
+        <div id="empty_form" style="display:none">
+            <table class='no_error'>
+                {{ formset.empty_form.as_table }}
+            </table>
+        </div>
+        <script>
+            $('#add_more').click(function() {
+                var form_idx = $('#id_form-TOTAL_FORMS').val();
+                $('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+                $('#id_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+            });
+        </script>
+        <button type="submit" class="btn btn-next">Submit</button>
 				</form>
 				<!-- Form Wizard -->
             </div>

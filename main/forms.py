@@ -70,7 +70,7 @@ class EducationalForm(forms.ModelForm):
 		exclude = ('Applicant',)
 
 
-EducationalFormSet = modelformset_factory(Course, form=EducationalForm, extra=15)
+EducationalFormSet = modelformset_factory(Course, form=EducationalForm, extra=2)
 
 
 class IndustrialForm(forms.ModelForm):
@@ -79,11 +79,15 @@ class IndustrialForm(forms.ModelForm):
 		fields = ('__all__')
 		exclude = ('faculty',)
 
+IndustrialFormSet = modelformset_factory(IndustrialExperience, form=IndustrialForm, extra=1)
+
 class TeachingForm(forms.ModelForm):
 	class Meta:
 		model = TeachingExperience
 		fields = ('__all__')
 		exclude = ('faculty',)
+
+TeachingFormSet = modelformset_factory(TeachingExperience, form=TeachingForm, extra=1)
 
 class ResearchForm(forms.ModelForm):
 	class Meta:
@@ -91,17 +95,24 @@ class ResearchForm(forms.ModelForm):
 		fields = ('__all__')
 		exclude = ('faculty',)
 
+ResearchFormSet = modelformset_factory(Research, form=ResearchForm, extra=1)
+
+
 class MembershipForm(forms.ModelForm):
 	class Meta:
 		model = Membership
 		fields = ('__all__')
 		exclude = ('faculty',)
 
+MembershipFormSet = modelformset_factory(Membership, form=MembershipForm, extra=1)
+
 class ConferenceForm(forms.ModelForm):
 	class Meta:
 		model = Conference
 		fields = ('__all__')
 		exclude = ('faculty',)
+
+ConferenceFormSet = modelformset_factory(Conference, form=ConferenceForm, extra=1)
 
 class AwardForm(forms.ModelForm):
 	class Meta:
@@ -115,11 +126,17 @@ class ReferenceForm(forms.ModelForm):
 		fields = ('__all__')
 		exclude = ('faculty',)
 
+ReferenceFormSet = modelformset_factory(Referral, form=ReferenceForm, extra=1)
+
+
 class AchievementForm(forms.ModelForm):
 	class Meta:
 		model = SpecialAchievement
 		fields = ('__all__')
 		exclude = ('faculty',)
+
+AchievementFormSet = modelformset_factory(SpecialAchievement, form=AchievementForm, extra=1)
+
 
 class PayementForm(forms.ModelForm):
 	class Meta:
@@ -132,6 +149,8 @@ class DocumentsForm(forms.ModelForm):
 		model = DocumentUpload
 		fields = ('__all__')
 		exclude = ('uploaded_by',)
+
+DocumentsFormSet = modelformset_factory(DocumentUpload, form=DocumentsForm, extra=1)
 
 class DeclarationForm(forms.ModelForm):
 	class Meta:

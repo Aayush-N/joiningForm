@@ -49,18 +49,30 @@
 		            <form role="form" action="/documents/" method="post" enctype="multipart/form-data">{% csrf_token %}    
                     <fieldset style="color:black;">
     
-                         <div class="col-md-12 form-group">
-                      <label>Type of document: <span>*</span></label>
-                            {% render_field form.type_of_document class="form-control required" %}
-                        </div>
-                        <div class="col-md-12 form-group">
-                      <label>File: <span>*</span></label>
-                            {% render_field form.file class="form-control required" %}
-                        </div>
-                         
-                        <div class="form-wizard-buttons">
-                            <button type="submit" class="btn btn-next">Submit</button>
-                        </div>
+                         <h2>Please Enter Your Industrial Experience Below</h2>
+        {{ formset.management_form }}
+        <div id="form_set">
+            {% for form in formset.forms %}
+                <table class='no_error'>
+                    {{ form.as_table }}
+                </table>
+            {% endfor %}
+        </div>
+        <input type="button" class="btn btn-primary" value="Add More" id="add_more">
+        <div id="empty_form" style="display:none">
+            <table class='no_error'>
+                {{ formset.empty_form.as_table }}
+            </table>
+        </div>
+        <script>
+            $('#add_more').click(function() {
+                var form_idx = $('#id_form-TOTAL_FORMS').val();
+                $('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+                $('#id_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+            });
+        </script>
+        <button type="submit" class="btn btn-next">Submit</button>
+
                     </fieldset>
         </form>
 				<!-- Form Wizard -->

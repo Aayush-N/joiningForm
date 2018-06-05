@@ -97,9 +97,9 @@ class Course(models.Model):
 	Degree = models.ForeignKey("Degree", on_delete=models.CASCADE)
 	Specialisation = models.CharField(max_length=50, null=False, blank=False)
 	Institution_Name = models.CharField(max_length=50, null=False, blank=False)
-	Passing_Year = models.CharField(max_length=50, null=False, blank=False)
-	Percent_or_grade = models.CharField(max_length=50, null=False, blank=False)
-	maximum_marks_or_grade = models.CharField(max_length=50, null=False, blank=False)
+	Passing_Year = models.CharField(max_length=5, null=False, blank=False)
+	Percent_or_grade = models.CharField(max_length=5, null=False, blank=False)
+	maximum_marks_or_grade = models.CharField(max_length=5, null=False, blank=False)
 	file_upload = models.FileField(upload_to='uploads/')
 
 	def __str__(self):

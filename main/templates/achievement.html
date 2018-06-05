@@ -45,26 +45,30 @@
             			</div>
             		</div>
 		<form role="form" action="/achievement/" method="post" enctype="multipart/form-data">{% csrf_token %}		
-                    <fieldset style="color:black;">
-                        
-                        <table class="table table-bordered">
-                          <tr>
-                            <th>Community Service</th>
-                            <th>Industry Related</th>
-                            <th>University Assignment</th>
-                            <th>Administration</th>
-                          </tr>
-                          <tr>
-                            <td>{% render_field form.community_service class="form-control required" %}</td>
-                            <td>{% render_field form.industry_related class="form-control required" %}</td>
-                            <td>{% render_field form.university_assignment class="form-control required" %}</td>
-                            <td>{% render_field form.administration class="form-control required" %}</td>  
-                          </tr>
-                        </table>
-                    </fieldset>
-                    <div class="form-wizard-buttons">
-                        <button type="submit" class="btn btn-next">Submit</button>
-                    </div>
+                    <h2>Please Enter Your Achievements Below</h2>
+        {{ formset.management_form }}
+        <div id="form_set">
+            {% for form in formset.forms %}
+                <table class='no_error'>
+                    {{ form.as_table }}
+                </table>
+            {% endfor %}
+        </div>
+        <input type="button" class="btn btn-primary" value="Add More" id="add_more">
+        <div id="empty_form" style="display:none">
+            <table class='no_error'>
+                {{ formset.empty_form.as_table }}
+            </table>
+        </div>
+        <script>
+            $('#add_more').click(function() {
+                var form_idx = $('#id_form-TOTAL_FORMS').val();
+                $('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+                $('#id_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+            });
+        </script>
+        <button type="submit" class="btn btn-next">Submit</button>
+
 				        </form>
 				<!-- Form Wizard -->
             </div>

@@ -131,8 +131,6 @@ class EducationalView(CreateView):
 	model = Course
 
 	success_url = reverse_lazy("industrial")
-
-
 	error_url = reverse_lazy('educational')
 	form_class = EducationalForm
 
@@ -144,20 +142,6 @@ class EducationalView(CreateView):
 		context['user'] = self.request.user.username
 		return context
 	
-	# def form_valid(self, form):
-	# 	formset = EducationalFormSet(request.POST)
-	# 	create = formet.save(commit=False)
-	# 	print(create)
-	# 	create.Applicant = self.request.user
-	# 	create.save()
-
-	# 	return HttpResponseRedirect('/industrial/')
-	
-	# def form_invalid(self,form):
-	# 	print(form.errors)
-
-	# 	return HttpResponseRedirect('/industrial/')
-
 	def post(self, request, *args, **kwargs):
 		
 		formset = EducationalFormSet(request.POST, request.FILES)
@@ -184,21 +168,25 @@ class IndustrialView(CreateView):
 	form_class = IndustrialForm
 
 	def get_context_data(self, *args, **kwargs):
-
-		
-
+		formset = IndustrialFormSet(queryset=IndustrialExperience.objects.none())
 		context = super(IndustrialView, self).get_context_data(*args, **kwargs)
+		context['formset'] = formset
+		context['user'] = self.request.user.username
 		return context
 	
-	def form_valid(self, form):
-		create = form.save(commit=False)
-		create.faculty = self.request.user
-		create.save()
-		print(self.request.FILES)
-		return HttpResponseRedirect('/teaching/')
-	
-	def form_invalid(self,form):
-		print(form.errors)
+	def post(self, request, *args, **kwargs):
+		
+		formset = IndustrialFormSet(request.POST, request.FILES)
+		print(formset)
+		c = 0
+		for forms in formset.forms:
+			print(forms.errors)
+			print(c)
+			c = c +1
+			create = forms.save(commit=False)
+			create.faculty = self.request.user
+			create.save()
+		formset_valid = formset.is_valid()
 
 		return HttpResponseRedirect('/teaching/')
 
@@ -214,18 +202,24 @@ class TeachingView(CreateView):
 	form_class = TeachingForm
 
 	def get_context_data(self, *args, **kwargs):
+		formset = TeachingFormSet(queryset=TeachingExperience.objects.none())
 		context = super(TeachingView, self).get_context_data(*args, **kwargs)
+		context['formset'] = formset
+		context['user'] = self.request.user.username
 		return context
 	
-	def form_valid(self, form):
-		create = form.save(commit=False)
-		create.faculty = self.request.user
-		create.save()
-		print(self.request.FILES)
-		return HttpResponseRedirect('/research/')
-	
-	def form_invalid(self,form):
-		print(form.errors)
+	def post(self, request, *args, **kwargs):
+		
+		formset = TeachingFormSet(request.POST, request.FILES)
+		c = 0
+		for forms in formset.forms:
+			print(forms.errors)
+			print(c)
+			c = c +1
+			create = forms.save(commit=False)
+			create.faculty = self.request.user
+			create.save()
+		formset_valid = formset.is_valid()
 
 		return HttpResponseRedirect('/research/')
 
@@ -265,18 +259,24 @@ class MembershipView(CreateView):
 	form_class = MembershipForm
 
 	def get_context_data(self, *args, **kwargs):
+		formset = MembershipFormSet(queryset=Membership.objects.none())
 		context = super(MembershipView, self).get_context_data(*args, **kwargs)
+		context['formset'] = formset
+		context['user'] = self.request.user.username
 		return context
 	
-	def form_valid(self, form):
-		create = form.save(commit=False)
-		create.faculty = self.request.user
-		create.save()
-		print(self.request.FILES)
-		return HttpResponseRedirect('/conference/')
-	
-	def form_invalid(self,form):
-		print(form.errors)
+	def post(self, request, *args, **kwargs):
+		
+		formset = MembershipFormSet(request.POST, request.FILES)
+		c = 0
+		for forms in formset.forms:
+			print(forms.errors)
+			print(c)
+			c = c +1
+			create = forms.save(commit=False)
+			create.faculty = self.request.user
+			create.save()
+		formset_valid = formset.is_valid()
 
 		return HttpResponseRedirect('/conference/')
 
@@ -291,19 +291,24 @@ class ConferenceView(CreateView):
 	form_class = ConferenceForm
 
 	def get_context_data(self, *args, **kwargs):
-		ConferenceFormSet = formset_factory(Conference, extra=10)
+		formset = ConferenceFormSet(queryset=Conference.objects.none())
 		context = super(ConferenceView, self).get_context_data(*args, **kwargs)
+		context['formset'] = formset
+		context['user'] = self.request.user.username
 		return context
 	
-	def form_valid(self, form):
-		create = form.save(commit=False)
-		create.faculty = self.request.user
-		create.save()
-		print(self.request.FILES)
-		return HttpResponseRedirect('/reference/')
-	
-	def form_invalid(self,form):
-		print(form.errors)
+	def post(self, request, *args, **kwargs):
+		
+		formset = ConferenceFormSet(request.POST, request.FILES)
+		c = 0
+		for forms in formset.forms:
+			print(forms.errors)
+			print(c)
+			c = c +1
+			create = forms.save(commit=False)
+			create.faculty = self.request.user
+			create.save()
+		formset_valid = formset.is_valid()
 
 		return HttpResponseRedirect('/reference/')
 
@@ -319,18 +324,25 @@ class ReferenceView(CreateView):
 	form_class = ReferenceForm
 
 	def get_context_data(self, *args, **kwargs):
+		formset = ReferenceFormSet(queryset=Referral.objects.none())
 		context = super(ReferenceView, self).get_context_data(*args, **kwargs)
+		context['formset'] = formset
+		context['user'] = self.request.user.username
 		return context
 	
-	def form_valid(self, form):
-		create = form.save(commit=False)
-		create.faculty = self.request.user
-		create.save()
-		print(self.request.FILES)
-		return HttpResponseRedirect('/awards/')
-	
-	def form_invalid(self,form):
-		print(form.errors)
+	def post(self, request, *args, **kwargs):
+		
+		formset = ReferenceFormSet(request.POST, request.FILES)
+		c = 0
+		for forms in formset.forms:
+			print(forms.errors)
+			print(c)
+			c = c +1
+			create = forms.save(commit=False)
+			create.faculty = self.request.user
+			create.save()
+		formset_valid = formset.is_valid()
+
 
 		return HttpResponseRedirect('/awards/')
 
@@ -373,18 +385,24 @@ class AchievementView(CreateView):
 	form_class = AchievementForm
 
 	def get_context_data(self, *args, **kwargs):
+		formset = AchievementFormSet(queryset=SpecialAchievement.objects.none())
 		context = super(AchievementView, self).get_context_data(*args, **kwargs)
+		context['formset'] = formset
+		context['user'] = self.request.user.username
 		return context
 	
-	def form_valid(self, form):
-		create = form.save(commit=False)
-		create.faculty = self.request.user
-		create.save()
-		print(self.request.FILES)
-		return HttpResponseRedirect('/payment/')
-	
-	def form_invalid(self,form):
-		print(form.errors)
+	def post(self, request, *args, **kwargs):
+		
+		formset = AchievementFormSet(request.POST, request.FILES)
+		c = 0
+		for forms in formset.forms:
+			print(forms.errors)
+			print(c)
+			c = c +1
+			create = forms.save(commit=False)
+			create.faculty = self.request.user
+			create.save()
+		formset_valid = formset.is_valid()
 
 		return HttpResponseRedirect('/payment/')
 
@@ -429,18 +447,24 @@ class DocumentsView(CreateView):
 	form_class = DocumentsForm
 
 	def get_context_data(self, *args, **kwargs):
-		DocumentFormSet = formset_factory(DocumentUpload, extra=10)
+		formset = DocumentsFormSet(queryset=DocumentUpload.objects.none())
 		context = super(DocumentsView, self).get_context_data(*args, **kwargs)
+		context['formset'] = formset
+		context['user'] = self.request.user.username
 		return context
 	
-	def form_valid(self, form):
-		create = form.save(commit=False)
-		create.uploaded_by = self.request.user
-		create.save()
-		return HttpResponseRedirect('/declaration/')
-	
-	def form_invalid(self,form):
-		print(form.errors)
+	def post(self, request, *args, **kwargs):
+		
+		formset = DocumentsFormSet(request.POST, request.FILES)
+		c = 0
+		for forms in formset.forms:
+			print(forms.errors)
+			print(c)
+			c = c +1
+			create = forms.save(commit=False)
+			create.uploaded_by = self.request.user
+			create.save()
+		formset_valid = formset.is_valid()
 
 		return HttpResponseRedirect('/declaration/')
 
