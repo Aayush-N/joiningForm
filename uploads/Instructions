@@ -1,7 +1,0 @@
-Step 1 : Redirect index1.php form to file_upload
-Step 2 : Use $phone (pass it in POST) in file_uploadd and insert in database
-Step 3 : Refer $phone as id in photos database.
-Step 4 : Redirect from file_upload to DB_values
-Step 5 : Insert ID as Phone into DB_values
-Step 6 : Retrieve photo from photos database, using phone as id
-

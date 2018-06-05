@@ -7,7 +7,7 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
-
+from django.forms import modelformset_factory
 
 
 class CustomUserCreationForm(forms.Form):
@@ -68,6 +68,10 @@ class EducationalForm(forms.ModelForm):
 		model = Course
 		fields = ('__all__')
 		exclude = ('Applicant',)
+
+
+EducationalFormSet = modelformset_factory(Course, form=EducationalForm, extra=4)
+
 
 class IndustrialForm(forms.ModelForm):
 	class Meta:

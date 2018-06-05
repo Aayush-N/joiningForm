@@ -136,21 +136,41 @@ class EducationalView(CreateView):
 	error_url = reverse_lazy('educational')
 	form_class = EducationalForm
 
+
 	def get_context_data(self, *args, **kwargs):
-		EducationFormSet = formset_factory(EducationalForm, extra=5)
+		formset = EducationalFormSet(queryset=Course.objects.none())
 		context = super(EducationalView, self).get_context_data(*args, **kwargs)
+		context['formset'] = formset
 		context['user'] = self.request.user.username
 		return context
 	
-	def form_valid(self, form):
-		create = form.save(commit=False)
-		create.Applicant = self.request.user
-		create.save()
-		return HttpResponseRedirect('/industrial/')
-	
-	def form_invalid(self,form):
-		print(form.errors)
+	# def form_valid(self, form):
+	# 	formset = EducationalFormSet(request.POST)
+	# 	create = formet.save(commit=False)
+	# 	print(create)
+	# 	create.Applicant = self.request.user
+	# 	create.save()
 
+	# 	return HttpResponseRedirect('/industrial/')
+	
+	# def form_invalid(self,form):
+	# 	print(form.errors)
+
+	# 	return HttpResponseRedirect('/industrial/')
+
+	def post(self, request, *args, **kwargs):
+		
+		formset = EducationalFormSet(request.POST, request.FILES)
+		c = 0
+		for forms in formset.forms:
+			print(forms.errors)
+			print(c)
+			c = c +1
+			create = forms.save(commit=False)
+			create.Applicant = self.request.user
+			create.save()
+		formset_valid = formset.is_valid()
+		
 		return HttpResponseRedirect('/industrial/')
 
 class IndustrialView(CreateView):
