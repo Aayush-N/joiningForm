@@ -70,7 +70,7 @@ class EducationalForm(forms.ModelForm):
 		exclude = ('Applicant',)
 
 
-EducationalFormSet = modelformset_factory(Course, form=EducationalForm, extra=4)
+EducationalFormSet = modelformset_factory(Course, form=EducationalForm, extra=15)
 
 
 class IndustrialForm(forms.ModelForm):
