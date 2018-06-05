@@ -22,7 +22,7 @@ urlpatterns = [
     path('payment/', views.PaymentView.as_view(), name='payment'),
     path('documents/', views.DocumentsView.as_view(), name='documents'),
     path('declaration/', views.DeclarationView.as_view(), name='declaration'),
-
+    path('print/', views.printView, name='print')
 ]
 
 

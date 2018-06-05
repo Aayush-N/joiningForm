@@ -454,3 +454,40 @@ class DeclarationView(CreateView):
 		print(form.errors)
 
 		return HttpResponseRedirect('/done')
+
+def printView(request):
+	template_name='print.html'
+	User = get_user_model()
+	faculty = User.objects.get(username=request.user.username)
+	courses = Course.objects.filter(Applicant=request.user)
+	documents = DocumentUpload.objects.filter(uploaded_by=request.user)
+	referrals = Referral.objects.filter(faculty=request.user)
+	awards = Awards.objects.filter(faculty=request.user)
+	industrial = IndustrialExperience.objects.filter(faculty=request.user)
+	teaching = TeachingExperience.objects.filter(faculty=request.user)
+	membership = Membership.objects.filter(faculty=request.user)
+	conference = Conference.objects.filter(faculty=request.user)
+	research = Research.objects.filter(faculty=request.user)
+	special = SpecialAchievement.objects.filter(faculty=request.user)
+	declaration = Declaration.objects.filter(faculty=request.user)
+
+	context = {
+	"faculty" : faculty,
+	"courses" : courses,
+	"documents" : documents,
+	"referrals" : referrals,
+	"awards" : awards,
+	"industrial" : industrial,
+	"teaching" : teaching,
+	"membership" : membership,
+	"conference" : conference,
+	"research" : research,
+	"special" : special,
+	"declaration" : declaration,
+	}
+
+	return render(request, template_name, context)
+
+
+
+

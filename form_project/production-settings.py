@@ -132,15 +132,6 @@ USE_TZ = True
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 STATIC_URL = 'https://cdn.bmsit.ac.in'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-STATICFILES_DIRS = [STATIC_DIR, ]
 
-
-
-try:
-    from .local_settings import *
-except ImportError:
-    STATIC_URL = 'https://cdn.bmsit.ac.in'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-    STATICFILES_DIRS = [STATIC_DIR, ]
 
 
