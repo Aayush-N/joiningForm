@@ -1,47 +1,43 @@
-$(document).ready(function(){
-  $('.signup-slider').slick({
-    dots: true,
-    arrows: false,
-    autoplay: true,
-    autoplaySpeed: 2000
-  });
+$('.form').find('input, textarea').on('keyup blur focus', function (e) {
+  
+  var $this = $(this),
+      label = $this.prev('label');
 
-  $("img").height($(".main-box").height());
+    if (e.type === 'keyup') {
+      if ($this.val() === '') {
+          label.removeClass('active highlight');
+        } else {
+          label.addClass('active highlight');
+        }
+    } else if (e.type === 'blur') {
+      if( $this.val() === '' ) {
+        label.removeClass('active highlight'); 
+      } else {
+        label.removeClass('highlight');   
+      }   
+    } else if (e.type === 'focus') {
+      
+      if( $this.val() === '' ) {
+        label.removeClass('highlight'); 
+      } 
+      else if( $this.val() !== '' ) {
+        label.addClass('highlight');
+      }
+    }
 
-  $(".to-signin").on("click", function () {
-    $(this)
-      .addClass("top-active-button")
-      .siblings()
-      .removeClass("top-active-button");
-    $(".form-signup").slideUp(500);
-    $(".form-signin").slideDown(500);
-  });
-
-  $(".to-signup").on("click", function () {
-    $(this)
-      .addClass("top-active-button")
-      .siblings()
-      .removeClass("top-active-button");
-    $(".form-signin").slideUp(500);
-    $(".form-signup").slideDown(500);
-  });
-
-  $(".to-signin-link").on("click", function () {
-    $(".to-signin")
-      .addClass("top-active-button")
-      .siblings()
-      .removeClass("top-active-button");
-    $(".form-signup").slideUp(200);
-    $(".form-signin").slideDown(200);
-  });
-
-  $(".to-signup-link").on("click", function () {
-    $(".to-signup")
-      .addClass("top-active-button")
-      .siblings()
-      .removeClass("top-active-button");
-    $(".form-signin").slideUp(200);
-    $(".form-signup").slideDown(200);
-  });
 });
 
+$('.tab a').on('click', function (e) {
+  
+  e.preventDefault();
+  
+  $(this).parent().addClass('active');
+  $(this).parent().siblings().removeClass('active');
+  
+  target = $(this).attr('href');
+
+  $('.tab-content > div').not(target).hide();
+  
+  $(target).fadeIn(600);
+  
+});
