@@ -7,6 +7,7 @@ import os
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponse, HttpResponseRedirect
+from django.core.mail import send_mail, EmailMessage
 
 from django.contrib import messages 
 from django.contrib.auth.forms import UserCreationForm
@@ -43,6 +44,12 @@ def done(request):
 	"title": "FORM"
 
 	}
+	email = EmailMessage(
+					'Career Application at BMSIT ' + str(error_url),
+					'Hi ' + request.user.first_name + ' ,\nWe have received your application for the position of ' + request.user.position + '.',
+					[request.user.email] ,
+					)
+	email.send()
 	return render(request, template_name, context)
 
 def logout(request):
