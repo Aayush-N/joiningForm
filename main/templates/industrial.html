@@ -269,11 +269,6 @@ $('.image_title input').blur(function() {
 // image uploader scripts
 </script>
 <script>
-$(function() {
-	$('input[type=text]').val('a')
-})
-</script>
-<script>
 var calculateAge = function(birthday) {
 	var now = new Date();
 	var past = new Date(birthday);
@@ -290,9 +285,4 @@ $('#id_date_of_birth').change(function(e) {
 	$('#id_age').val(calculateAge($birthday));
 });
 </script>
-<!-- <script>
-	$(function() {
-		$('select[name^="faculty"] option[value="1"]').attr("selected","selected");
-	})
-</script> -->
 </body>	
