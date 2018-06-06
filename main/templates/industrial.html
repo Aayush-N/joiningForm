@@ -50,16 +50,8 @@ input {
 						</div>
 					</div>
 		<form role="form" action="/industrial/" method="post" enctype="multipart/form-data">{% csrf_token %}		
-		<h2>Please Enter Your Industrial Experience Below</h2>
-		<table class="table table-bordered">
-			<tr>
-				<th>Organisation</th>
-				<th>Position Held</th>
-				<th>From</th>
-				<th>To</th>
-				<th>Experience (in years)</th>
-			</tr>
-		</table>
+		<h2>Please Enter Your Industrial Experience Below</h2> 
+      <p>Date should be entered in YY/MM/DD format</p>
 		{{ formset.management_form }}
 		<div id="form_set">
 			{% for form in formset.forms %}

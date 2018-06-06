@@ -51,6 +51,7 @@ input {
             		</div>
 		<form role="form" action="/teaching/" method="post" enctype="multipart/form-data">{% csrf_token %}		
                 <h2>Please Enter Your Teaching Experience Below</h2>
+                <p>Date should be entered in YY/MM/DD format</p>
         {{ formset.management_form }}
         <div id="form_set">
             {% for form in formset.forms %}
