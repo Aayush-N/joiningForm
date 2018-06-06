@@ -8,359 +8,88 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<style>
+input {
+  border:solid 1px #d9d9d9 !important;
+}
+</style>
 </head>
 <body>
 <section class="form-box" >
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 form-wizard">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 form-wizard">
 			
 			<center><img height="80" width="80" src="https://bmsit.ac.in/assets/logo-5527329e306f832982eb5b10b8325a606bc2058ae61b4aa5705c8c2d4e436212.png"></center><br>	<!-- Form Wizard -->
 
-            		<h3>BMS Institute of Technology</h3>
-            		<p>Fill all form field to go next step</p>	
-            		<div class="form-wizard-steps form-wizard-tolal-steps-5">
-            			<div class="form-wizard-progress">
-            			    <div class="form-wizard-progress-line" data-now-value="10" data-number-of-steps="5" style="width: 10%;"></div>
-            			</div>
-            			<div style="background-color:green;" class="form-wizard-step">
-            				<div class="form-wizard-step-icon"><i class="fa fa-user" aria-hidden="true"></i></div>
-            				<p>Personal</p>
-            			</div>
+					<h3>BMS Institute of Technology</h3>
+					<p>Fill all form field to go next step</p>	
+					<div class="form-wizard-steps form-wizard-tolal-steps-5">
+						<div class="form-wizard-progress">
+							<div class="form-wizard-progress-line" data-now-value="10" data-number-of-steps="5" style="width: 10%;"></div>
+						</div>
 						<div style="background-color:green;" class="form-wizard-step">
-            				<div class="form-wizard-step-icon"><i class="fa fa-graduation-cap" aria-hidden="true"></i></div>
-            				<p>Educational</p>
-            			</div>
+							<div class="form-wizard-step-icon"><i class="fa fa-user" aria-hidden="true"></i></div>
+							<p>Personal</p>
+						</div>
+						<div style="background-color:green;" class="form-wizard-step">
+							<div class="form-wizard-step-icon"><i class="fa fa-graduation-cap" aria-hidden="true"></i></div>
+							<p>Educational</p>
+						</div>
 						<div class="form-wizard-step active">
-            				<div class="form-wizard-step-icon"><i class="fa fa-briefcase" aria-hidden="true"></i></div>
-            				<p>Professional Career</p>
-            			</div>
-            			<div class="form-wizard-step">
-            				<div class="form-wizard-step-icon"><i class="fa fa-money" aria-hidden="true"></i></div>
-            				<p>Payment Details</p>
-            			</div>
-            			<div class="form-wizard-step">
-            				<div class="form-wizard-step-icon"><i class="fa fa-file" aria-hidden="true"></i></div>
-            				<p>Documents</p>
-            			</div>
-            		</div>
+							<div class="form-wizard-step-icon"><i class="fa fa-briefcase" aria-hidden="true"></i></div>
+							<p>Professional Career</p>
+						</div>
+						<div class="form-wizard-step">
+							<div class="form-wizard-step-icon"><i class="fa fa-money" aria-hidden="true"></i></div>
+							<p>Payment Details</p>
+						</div>
+						<div class="form-wizard-step">
+							<div class="form-wizard-step-icon"><i class="fa fa-file" aria-hidden="true"></i></div>
+							<p>Documents</p>
+						</div>
+					</div>
 		<form role="form" action="/industrial/" method="post" enctype="multipart/form-data">{% csrf_token %}		
-        <h2>Please Enter Your Industrial Experience Below</h2>
-        {{ formset.management_form }}
-        <div id="form_set">
-            {% for form in formset.forms %}
-                <table class='no_error'>
-                    {{ form.as_table }}
-                </table>
-            {% endfor %}
-        </div>
-        <input type="button" class="btn btn-primary" value="Add More" id="add_more">
-        <div id="empty_form" style="display:none">
-            <table class='no_error'>
-                {{ formset.empty_form.as_table }}
-            </table>
-        </div>
-        <script>
-            $('#add_more').click(function() {
-                var form_idx = $('#id_form-TOTAL_FORMS').val();
-                $('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
-                $('#id_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
-            });
-        </script>
-        <button type="submit" class="btn btn-next">Submit</button>
+		<h2>Please Enter Your Industrial Experience Below</h2>
+		<table class="table table-bordered">
+			<tr>
+				<th>Organisation</th>
+				<th>Position Held</th>
+				<th>From</th>
+				<th>To</th>
+				<th>Experience (in years)</th>
+			</tr>
+		</table>
+		{{ formset.management_form }}
+		<div id="form_set">
+			{% for form in formset.forms %}
+				<table class='no_error'>
+					{{ form.as_table }}
+				</table>
+			{% endfor %}
+		</div>
+		<input type="button" class="btn btn-primary" value="Add More" id="add_more">
+		<div id="empty_form" style="display:none">
+			<table class='no_error'>
+				{{ formset.empty_form.as_table }}
+			</table>
+		</div>
+		<script>
+			$('#add_more').click(function() {
+				var form_idx = $('#id_form-TOTAL_FORMS').val();
+				$('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+				$('#id_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+			});
+		</script>
+		<button type="submit" class="btn btn-next">Submit</button>
 				</form>
 				<!-- Form Wizard -->
-            </div>
-        </div>     
-    </div>
+			</div>
+		</div>     
+	</div>
 </section>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="{% static 'js/jquery.formset.js' %}"></script>
-
-<script>
-function addField (argument) {
-       var myTable = document.getElementById("research");
-       var currentIndex = myTable.rows.length;
-       var currentRow = myTable.insertRow(-1);
-   
-       var university = document.createElement("input");
-       university.setAttribute("name", "Name_university" + currentIndex);
-university.setAttribute("class", "form-control");
-   
-       var area = document.createElement("input");
-       area.setAttribute("name", "area_research" + currentIndex);
-area.setAttribute("class", "form-control");
-   
-       var research_to = document.createElement("input");
-       research_to.setAttribute("name", "from_date" + currentIndex);
-research_to.setAttribute("class", "form-control");
-     
-     var research_from = document.createElement("input");
-       research_from.setAttribute("name", "to_date" + currentIndex);
-research_from.setAttribute("class", "form-control");
-   
-     var research_total = document.createElement("input");
-       research_total.setAttribute("name", "total_duration" + currentIndex);
-research_total.setAttribute("class", "form-control");
-
-var int_conf = document.createElement("input");
-       int_conf.setAttribute("name", "total_internationalConf" + currentIndex);
-int_conf.setAttribute("class", "form-control");
-
-var title_paper = document.createElement("input");
-       title_paper.setAttribute("name", "title_paper" + currentIndex);
-title_paper.setAttribute("class", "form-control");
-
-var conf = document.createElement("input");
-       conf.setAttribute("name", "conf_International" + currentIndex);
-conf.setAttribute("class", "form-control");
-
-var year = document.createElement("input");
-       year.setAttribute("name", "year_month_pub" + currentIndex);
-year.setAttribute("class", "form-control");
-  
-
-       var currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(university);
-   
-       currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(area);
-   
-       currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(research_to);
-   
-     currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(research_from);
-   
-     currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(research_total);
-
-	currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(int_conf);
-
-currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(title_paper);
-
-currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(conf);
-   
-     currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(year);
-     }
-
-
-function addField1 (argument) {
-       var myTable = document.getElementById("conference");
-       var currentIndex = myTable.rows.length;
-       var currentRow = myTable.insertRow(-1);
-   
-       var university = document.createElement("input");
-       university.setAttribute("name", "conf_conducted_org" + currentIndex);
-university.setAttribute("class", "form-control");
-   
-       var area = document.createElement("input");
-       area.setAttribute("name", "total_experience" + currentIndex);
-area.setAttribute("class", "form-control");
-   
-       var research_to = document.createElement("input");
-       research_to.setAttribute("name", "university" + currentIndex);
-research_to.setAttribute("class", "form-control");
-     
-     var research_from = document.createElement("input");
-       research_from.setAttribute("name", "designation" + currentIndex);
-research_from.setAttribute("class", "form-control");
-   
-     var research_total = document.createElement("input");
-       research_total.setAttribute("name", "from_date" + currentIndex);
-research_total.setAttribute("class", "form-control");
-
-var int_conf = document.createElement("input");
-       int_conf.setAttribute("name", "to_date" + currentIndex);
-int_conf.setAttribute("class", "form-control");
-
-var title_paper = document.createElement("input");
-       title_paper.setAttribute("name", "total_duration" + currentIndex);
-title_paper.setAttribute("class", "form-control");
-
-  
-
-       var currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(university);
-   
-       currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(area);
-   
-       currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(research_to);
-   
-     currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(research_from);
-   
-     currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(research_total);
-
-	currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(int_conf);
-
-currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(title_paper);
-     }
-
-
-function addField2 (argument) {
-       var myTable = document.getElementById("affiliation");
-       var currentIndex = myTable.rows.length;
-       var currentRow = myTable.insertRow(-1);
-   
-       var university = document.createElement("input");
-       university.setAttribute("name", "profbody" + currentIndex);
-university.setAttribute("class", "form-control");
-   
-       var area = document.createElement("input");
-       area.setAttribute("name", "year" + currentIndex);
-area.setAttribute("class", "form-control");
-   
-       var research_to = document.createElement("input");
-       research_to.setAttribute("name", "no_member" + currentIndex);
-research_to.setAttribute("class", "form-control");
-     
-     var research_from = document.createElement("input");
-       research_from.setAttribute("name", "year_selection" + currentIndex);
-research_from.setAttribute("class", "form-control");
-
-       var currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(university);
-   
-       currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(area);
-   
-       currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(research_to);
-   
-     currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(research_from);
-     }
-
-
-function addField3 (argument) {
-       var myTable = document.getElementById("industrial");
-       var currentIndex = myTable.rows.length;
-       var currentRow = myTable.insertRow(-1);
-   
-       var university = document.createElement("input");
-       university.setAttribute("name", "organisation" + currentIndex);
-university.setAttribute("class", "form-control");
-   
-       var area = document.createElement("input");
-       area.setAttribute("name", "position_held" + currentIndex);
-area.setAttribute("class", "form-control");
-   
-       var research_to = document.createElement("input");
-       research_to.setAttribute("name", "from_date" + currentIndex);
-research_to.setAttribute("class", "form-control");
-     
-     var research_from = document.createElement("input");
-       research_from.setAttribute("name", "to_date" + currentIndex);
-research_from.setAttribute("class", "form-control");
-
-var experience = document.createElement("input");
-       experience.setAttribute("name", "experience_years" + currentIndex);
-experience.setAttribute("class", "form-control");
-
-       var currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(university);
-   
-       currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(area);
-   
-       currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(research_to);
-   
-     currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(research_from);
-
-	currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(experience);
-     }
-
-
-function addField4 (argument) {
-       var myTable = document.getElementById("awards");
-       var currentIndex = myTable.rows.length;
-       var currentRow = myTable.insertRow(-1);
-   
-       var university = document.createElement("input");
-       university.setAttribute("name", "Spec_awards_particulars" + currentIndex);
-university.setAttribute("class", "form-control");
-   
-       var area = document.createElement("input");
-       area.setAttribute("name", "state" + currentIndex);
-area.setAttribute("class", "form-control");
-   
-       var research_to = document.createElement("input");
-       research_to.setAttribute("name", "national" + currentIndex);
-research_to.setAttribute("class", "form-control");
-     
-     var research_from = document.createElement("input");
-       research_from.setAttribute("name", "international" + currentIndex);
-research_from.setAttribute("class", "form-control");
-
-
-       var currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(university);
-   
-       currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(area);
-   
-       currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(research_to);
-   
-     currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(research_from);
-     }		
-
-function addField5 (argument) {
-       var myTable = document.getElementById("teaching");
-       var currentIndex = myTable.rows.length;
-       var currentRow = myTable.insertRow(-1);
-   
-       var university = document.createElement("input");
-       university.setAttribute("name", "university_name" + currentIndex);
-university.setAttribute("class", "form-control");
-   
-       var area = document.createElement("input");
-       area.setAttribute("name", "designation" + currentIndex);
-area.setAttribute("class", "form-control");
-   
-       var research_to = document.createElement("input");
-       research_to.setAttribute("name", "from_date_teaching" + currentIndex);
-research_to.setAttribute("class", "form-control");
-     
-     var research_from = document.createElement("input");
-       research_from.setAttribute("name", "to_date_teaching" + currentIndex);
-research_from.setAttribute("class", "form-control");
-
-var duration = document.createElement("input");
-      duration.setAttribute("name", "total_duration_teaching" + currentIndex);
-duration.setAttribute("class", "form-control");
-
-
-       var currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(university);
-   
-       currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(area);
-   
-       currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(research_to);
-   
-     currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(research_from);
-
-	currentCell = currentRow.insertCell(-1);
-       currentCell.appendChild(duration);
-     }		
-</script>
 
 <script type="text/javascript">
 	"use strict";
@@ -385,87 +114,87 @@ function bar_progress(progress_line_object, direction) {
 }
 
 jQuery(document).ready(function() {
-    
-    /*
-        Form
-    */
-    $('.form-wizard fieldset:first').fadeIn('slow');
-    
-    $('.form-wizard .required').on('focus', function() {
-    	$(this).removeClass('input-error');
-    });
-    
-    // next step
-    $('.form-wizard .btn-next').on('click', function() {
-    	var parent_fieldset = $(this).parents('fieldset');
-    	var next_step = true;
-    	// navigation steps / progress steps
-    	var current_active_step = $(this).parents('.form-wizard').find('.form-wizard-step.active');
-    	var progress_line = $(this).parents('.form-wizard').find('.form-wizard-progress-line');
-    	
-    	// fields validation
-    	parent_fieldset.find('.required').each(function() {
-    		if( $(this).val() == "" ) {
-    			$(this).addClass('input-error');
-    			next_step = false;
-    		}
-    		else {
-    			$(this).removeClass('input-error');
-    		}
-    	});
-    	// fields validation
-    	
-    	if( next_step ) {
-    		parent_fieldset.fadeOut(400, function() {
-    			// change icons
-    			current_active_step.removeClass('active').addClass('activated').next().addClass('active');
-    			// progress bar
-    			bar_progress(progress_line, 'right');
-    			// show next step
-	    		$(this).next().fadeIn();
-	    		// scroll window to beginning of the form
-    			scroll_to_class( $('.form-wizard'), 20 );
-	    	});
-    	}
-    	
-    });
-    
-    // previous step
-    $('.form-wizard .btn-previous').on('click', function() {
-    	// navigation steps / progress steps
-    	var current_active_step = $(this).parents('.form-wizard').find('.form-wizard-step.active');
-    	var progress_line = $(this).parents('.form-wizard').find('.form-wizard-progress-line');
-    	
-    	$(this).parents('fieldset').fadeOut(400, function() {
-    		// change icons
-    		current_active_step.removeClass('active').prev().removeClass('activated').addClass('active');
-    		// progress bar
-    		bar_progress(progress_line, 'left');
-    		// show previous step
-    		$(this).prev().fadeIn();
-    		// scroll window to beginning of the form
+	
+	/*
+		Form
+	*/
+	$('.form-wizard fieldset:first').fadeIn('slow');
+	
+	$('.form-wizard .required').on('focus', function() {
+		$(this).removeClass('input-error');
+	});
+	
+	// next step
+	$('.form-wizard .btn-next').on('click', function() {
+		var parent_fieldset = $(this).parents('fieldset');
+		var next_step = true;
+		// navigation steps / progress steps
+		var current_active_step = $(this).parents('.form-wizard').find('.form-wizard-step.active');
+		var progress_line = $(this).parents('.form-wizard').find('.form-wizard-progress-line');
+		
+		// fields validation
+		parent_fieldset.find('.required').each(function() {
+			if( $(this).val() == "" ) {
+				$(this).addClass('input-error');
+				next_step = false;
+			}
+			else {
+				$(this).removeClass('input-error');
+			}
+		});
+		// fields validation
+		
+		if( next_step ) {
+			parent_fieldset.fadeOut(400, function() {
+				// change icons
+				current_active_step.removeClass('active').addClass('activated').next().addClass('active');
+				// progress bar
+				bar_progress(progress_line, 'right');
+				// show next step
+				$(this).next().fadeIn();
+				// scroll window to beginning of the form
+				scroll_to_class( $('.form-wizard'), 20 );
+			});
+		}
+		
+	});
+	
+	// previous step
+	$('.form-wizard .btn-previous').on('click', function() {
+		// navigation steps / progress steps
+		var current_active_step = $(this).parents('.form-wizard').find('.form-wizard-step.active');
+		var progress_line = $(this).parents('.form-wizard').find('.form-wizard-progress-line');
+		
+		$(this).parents('fieldset').fadeOut(400, function() {
+			// change icons
+			current_active_step.removeClass('active').prev().removeClass('activated').addClass('active');
+			// progress bar
+			bar_progress(progress_line, 'left');
+			// show previous step
+			$(this).prev().fadeIn();
+			// scroll window to beginning of the form
 			scroll_to_class( $('.form-wizard'), 20 );
-    	});
-    });
-    
-    // submit
-    $('.form-wizard').on('submit', function(e) {
-    	
-    	// fields validation
-    	$(this).find('.required').each(function() {
-    		if( $(this).val() == "" ) {
-    			e.preventDefault();
-    			$(this).addClass('input-error');
-    		}
-    		else {
-    			$(this).removeClass('input-error');
-    		}
-    	});
-    	// fields validation
-    	
-    });
-    
-    
+		});
+	});
+	
+	// submit
+	$('.form-wizard').on('submit', function(e) {
+		
+		// fields validation
+		$(this).find('.required').each(function() {
+			if( $(this).val() == "" ) {
+				e.preventDefault();
+				$(this).addClass('input-error');
+			}
+			else {
+				$(this).removeClass('input-error');
+			}
+		});
+		// fields validation
+		
+	});
+	
+	
 });
 
 
@@ -475,10 +204,10 @@ jQuery(document).ready(function() {
 // image uploader scripts 
 
 var $dropzone = $('.image_picker'),
-    $droptarget = $('.drop_target'),
-    $dropinput = $('#inputFile'),
-    $dropimg = $('.image_preview'),
-    $remover = $('[data-action="remove_current_image"]');
+	$droptarget = $('.drop_target'),
+	$dropinput = $('#inputFile'),
+	$dropimg = $('.image_preview'),
+	$remover = $('[data-action="remove_current_image"]');
 
 $dropzone.on('dragover', function() {
   $droptarget.addClass('dropping');
@@ -497,10 +226,10 @@ $dropzone.on('drop', function(e) {
   e.preventDefault();
   
   var file = e.originalEvent.dataTransfer.files[0],
-      reader = new FileReader();
+	  reader = new FileReader();
 
   reader.onload = function(event) {
-    $dropimg.css('background-image', 'url(' + event.target.result + ')');
+	$dropimg.css('background-image', 'url(' + event.target.result + ')');
   };
   
   console.log(file);
@@ -515,10 +244,10 @@ $dropinput.change(function(e) {
   $('.image_title input').val('');
   
   var file = $dropinput.get(0).files[0],
-      reader = new FileReader();
+	  reader = new FileReader();
   
   reader.onload = function(event) {
-    $dropimg.css('background-image', 'url(' + event.target.result + ')');
+	$dropimg.css('background-image', 'url(' + event.target.result + ')');
   }
   
   reader.readAsDataURL(file);
@@ -533,7 +262,7 @@ $remover.on('click', function() {
 
 $('.image_title input').blur(function() {
   if ($(this).val() != '') {
-    $droptarget.removeClass('dropped');
+	$droptarget.removeClass('dropped');
   }
 });
 
@@ -546,19 +275,19 @@ $(function() {
 </script>
 <script>
 var calculateAge = function(birthday) {
-    var now = new Date();
-    var past = new Date(birthday);
-    var nowYear = now.getFullYear();
-    var pastYear = past.getFullYear();
-    var age = nowYear - pastYear;
+	var now = new Date();
+	var past = new Date(birthday);
+	var nowYear = now.getFullYear();
+	var pastYear = past.getFullYear();
+	var age = nowYear - pastYear;
 
-    return age;
+	return age;
 };
 
 $('#id_date_of_birth').change(function(e) {
-    e.preventDefault();
-    var $birthday = $(this).val();
-    $('#id_age').val(calculateAge($birthday));
+	e.preventDefault();
+	var $birthday = $(this).val();
+	$('#id_age').val(calculateAge($birthday));
 });
 </script>
 <!-- <script>

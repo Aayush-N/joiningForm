@@ -509,10 +509,11 @@ def printView(request):
 	research = Research.objects.filter(faculty=request.user.pk)
 	special = SpecialAchievement.objects.filter(faculty=request.user.pk)
 	declaration = Declaration.objects.filter(faculty=request.user.pk)
-
+	achievement = SpecialAchievement.objects.filter(faculty=request.user.pk)
 	context = {
 	"faculty" : faculty,
 	"courses" : courses,
+	"achievements" : achievement,
 	"documents" : documents,
 	"referrals" : referrals,
 	"awards" : awards,

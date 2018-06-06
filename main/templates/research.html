@@ -8,6 +8,11 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+  <style>
+input {
+  border:solid 1px #d9d9d9 !important;
+}
+</style>
 </head>
 <body>
 <section class="form-box" >
@@ -86,7 +91,7 @@
             			    <label>Year Month Pub: <span>*</span></label>
                             {% render_field form.year_month_pub class="form-control required" %}
                         </div>
-                        <h3>Publication</h3>
+                        <!--h3>Publication</h3>
                         <table class="table table-bordered">
                         	<tr>
                         		<th>Conference</th>
@@ -179,7 +184,7 @@
                         		<td><input type="text" class="form-control"></td>
                         		<td><input type="number" class="form-control"></td>
                         	</tr>
-                        </table>
+                        </table-->
                     </fieldset>
                     <div class="form-wizard-buttons">
                         <button type="submit" class="btn btn-next">Submit</button>
