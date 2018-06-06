@@ -145,10 +145,10 @@ class Awards(models.Model):
 	Description: Model Description
 	"""
 	faculty = models.ForeignKey("User", on_delete=models.CASCADE)
-	Spec_awards_particulars = models.CharField("Particulars", max_length=50, null=False, blank=False)
-	state = models.CharField("State", max_length=50, null=False, blank=False)
-	national = models.CharField("National", max_length=50, null=False, blank=False)
-	international = models.CharField("International", max_length=50, null=False, blank=False)
+	Spec_awards_particulars = models.CharField("Particulars", max_length=50, null=True, blank=True)
+	state = models.CharField("State", max_length=50, null=True, blank=True)
+	national = models.CharField("National", max_length=50, null=True, blank=True)
+	international = models.CharField("International", max_length=50, null=True, blank=True)
 	def __str__(self):
 		return self.faculty.first_name
 
