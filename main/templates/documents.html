@@ -54,7 +54,7 @@ input {
 		            <form role="form" action="/documents/" method="post" enctype="multipart/form-data">{% csrf_token %}    
                     <fieldset style="color:black;">
     
-                         <h2>Please Enter Your Industrial Experience Below</h2>
+                         <h2>Please upload any other documents.</h2>
         {{ formset.management_form }}
         <div id="form_set">
             {% for form in formset.forms %}

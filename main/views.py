@@ -45,7 +45,7 @@ def done(request):
 
 	}
 	email = EmailMessage(
-					'Career Application at BMSIT ' + str(error_url),
+					'Career Application at BMSIT ',
 					'Hi ' + request.user.first_name + ' ,\nWe have received your application for the position of ' + request.user.position + '.',
 					[request.user.email] ,
 					)

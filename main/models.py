@@ -51,7 +51,7 @@ class User(AbstractUser):
 	#BankDetails
 	neft = models.CharField("NEFT", max_length=50, null=True, blank=True)
 	uti = models.CharField("UTR", max_length=35, null=True, blank=True)
-	Date = models.CharField("Date", max_length=35, null=True, blank=True)
+	Date = models.DateField(max_length=8, null=True, blank=True)
 	Amount = models.CharField("Amount", max_length=35, null=True, blank=True, default='500')
 	Bank = models.CharField("Bank", max_length=35, null=True, blank=True)
 	Branch = models.CharField("Branch", max_length=35, null=True, blank=True)
@@ -154,8 +154,8 @@ class IndustrialExperience(models.Model):
 	faculty = models.ForeignKey("User", on_delete=models.CASCADE)
 	organisation = models.CharField("organisation", max_length=50, null=False, blank=False)
 	position_held = models.CharField("position held", max_length=50, null=False, blank=False)
-	from_date = models.CharField("from date", max_length=50, null=False, blank=False)
-	to_date = models.CharField("to date", max_length=50, null=False, blank=False)
+	from_date = models.DateField(max_length=8, null=True, blank=True)
+	to_date = models.DateField(max_length=8, null=True, blank=True)
 	experience_years = models.CharField("experience years", max_length=50, null=False, blank=False)
 	def __str__(self):
 		return self.faculty.first_name
@@ -165,8 +165,8 @@ class TeachingExperience(models.Model):
 	faculty = models.ForeignKey("User", on_delete=models.CASCADE)
 	university_name = models.CharField(max_length=50, null=True, blank=False)
 	designation = models.CharField(max_length=50, null=True, blank=False)
-	from_date = models.CharField("from", max_length=50, null=False, blank=False)
-	to_date = models.CharField("to", max_length=50, null=False, blank=False)
+	from_date = models.DateField(max_length=8, null=True, blank=True)
+	to_date = models.DateField(max_length=8, null=True, blank=True)
 	total_duration = models.CharField("total duration", max_length=50, null=False, blank=False)
 	def __str__(self):
 		return self.faculty.first_name
@@ -187,8 +187,8 @@ class Conference(models.Model):
 	total_experience = models.CharField("experience", max_length=50, null=False, blank=False)
 	university = models.CharField("university", max_length=50, null=False, blank=False)
 	designation = models.CharField("designationsi", max_length=50, null=False, blank=False)
-	from_date = models.CharField("from", max_length=50, null=True, blank=False)
-	to_date = models.CharField("to", max_length=50, null=True, blank=False)
+	from_date = models.DateField(max_length=8, null=True, blank=True)
+	to_date = models.DateField(max_length=8, null=True, blank=True)
 	total_duration = models.CharField("total duration", max_length=50, null=True, blank=False)
 	def __str__(self):
 		return self.faculty.first_name
@@ -198,8 +198,8 @@ class Research(models.Model):
 	total_experience = models.CharField(max_length=50, null=False, blank=False)
 	university_name = models.CharField(max_length=50, null=False, blank=False)
 	area_reasearch = models.CharField(max_length=50, null=False, blank=False)
-	from_date = models.CharField(max_length=50, null=False, blank=False)
-	to_date = models.CharField(max_length=50, null=False, blank=False)
+	from_date = models.DateField(max_length=8, null=True, blank=True)
+	to_date = models.DateField(max_length=8, null=True, blank=True)
 	total_duration = models.CharField(max_length=50, null=False, blank=False)
 	total_internationalConf = models.CharField(max_length=50, null=False, blank=False)
 	title_paper = models.CharField(max_length=50, null=False, blank=False)
