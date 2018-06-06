@@ -11,11 +11,16 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 </head>
 <body>
-	<h3 style="padding:2%;text-align:center;">Print Your Application Form</h3>
+	<h3 style="padding:2%;text-align:center;">BMS Institute of Technology & Management</h3>
+	<h4 style="padding:2%;text-align:center;">Application Form</h4>
 <table class="table table bordered">
 	<tr>
 		<th><b>FIELDS</b></th>
 		<th><b>VALUES</b></th>
+	</tr>
+	<tr>
+		<td>Photo</td>
+		<td><img width="100" src="{{faculty.image.url}}"/></td>
 	</tr>
 	<tr>
 		<td>First Name</td>

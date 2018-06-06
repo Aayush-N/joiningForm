@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import cloudinary
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -46,7 +47,16 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'widget_tweaks',
+    'cloudinary',
 ]
+
+
+cloudinary.config(
+    cloud_name = 'bmsit-ac-in',
+    api_key = '964973716822325',
+    api_secret = 'wzoHLhskK_wlOM9fJVXU9s7qVnM'
+)
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -130,7 +140,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
-STATIC_URL = 'https://cdn.bmsit.ac.in/careers'
+STATIC_URL = 'https://cdn.bmsit.ac.in/careers/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 

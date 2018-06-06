@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, User
 
+import cloudinary
+from cloudinary.models import CloudinaryField
+
 # Create your models here.
 class Positions(models.Model):
 	name = models.CharField(max_length=40)
@@ -20,14 +23,14 @@ class Proficiency(models.Model):
 
 
 class User(AbstractUser):
-	image = models.FileField(upload_to='uploads/', blank=True,null=True)
+	image=CloudinaryField('image')
 	email = models.EmailField('email address', unique=True)
 	phone = models.CharField("Phone", max_length=15, null=True, blank=True)
 	position = models.CharField(max_length=20, null=True, blank=True)
 	department = models.CharField(max_length=50, null=True, blank=True)
 	fathers_name = models.CharField(max_length=50, null=True, blank=True)
-	address = models.CharField(max_length=50, null=True, blank=True)
-	permanent_address = models.CharField(max_length=50, null=True, blank=True)
+	address = models.CharField(max_length=150, null=True, blank=True)
+	permanent_address = models.CharField(max_length=150, null=True, blank=True)
 	date_of_birth = models.DateField(max_length=8, null=True, blank=True)
 	age = models.IntegerField(null=True, blank=True) 
 	place = models.CharField(max_length=50, null=True, blank=True)
@@ -55,7 +58,7 @@ class User(AbstractUser):
 	Amount = models.CharField("Amount", max_length=35, null=True, blank=True, default='500')
 	Bank = models.CharField("Bank", max_length=35, null=True, blank=True)
 	Branch = models.CharField("Branch", max_length=35, null=True, blank=True)
-	ifsc = models.CharField("IFSC", max_length=10, null=True, blank=True)
+	ifsc = models.CharField("IFSC", max_length=20, null=True, blank=True)
 
 	#FilesToBeUploaded
 	# Sslc = models.FileField(upload_to='uploads/')
@@ -184,9 +187,9 @@ class Membership(models.Model):
 class Conference(models.Model):
 	faculty = models.ForeignKey("User", on_delete=models.CASCADE)
 	conf_conducted_org = models.CharField("organisation", max_length=50, null=False, blank=False)
-	total_experience = models.CharField("experience", max_length=50, null=False, blank=False)
+	
 	university = models.CharField("university", max_length=50, null=False, blank=False)
-	designation = models.CharField("designationsi", max_length=50, null=False, blank=False)
+	
 	from_date = models.CharField("from", max_length=50, null=True, blank=False)
 	to_date = models.CharField("to", max_length=50, null=True, blank=False)
 	total_duration = models.CharField("total duration", max_length=50, null=True, blank=False)

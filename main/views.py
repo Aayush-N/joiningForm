@@ -532,7 +532,7 @@ def printView(request):
 	"special" : special,
 	"declaration" : declaration,
 	}
-
+	print(str(faculty.image.url))
 	return render(request, template_name, context)
 
 
