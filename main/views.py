@@ -64,15 +64,32 @@ class DisplayView(ListView):
 		context = super().get_context_data(**kwargs)
 		return context	
 
+def export_view(request):
+	'''
+	Downloads the list of remaing students, department wise in a CSV file
+	'''
+	User = get_user_model()
+	faculty_list = User.objects.filter().order_by('email')
+	response = HttpResponse(content_type='text/csv')
 
+	response['Content-Disposition'] = 'attachment; filename=applied_list.csv'
+	writer = csv.writer(response)
+	writer.writerow(['username', 'first name', 'email', 'phone', 'fathers name', 'address', 'permanent_address',
+		'date of birth', 'age', 'position', 'department', 'place of birth', 'religion', 'reservation', 'category', 'nationality', 'family members', 'kannada speak', 'kannada read', 'kannada write'
+		'english speak', 'english read', 'english write', 'hindi speak', 'hindi read', 'hindi write', 'grade', 'no member', 'year of selection', 'neft', 'uti', 'Payment Date', 'Amount',
+		'Bank', 'Branch', 'IFSC'])
+	for faculty in faculty_list:
+		writer.writerow([faculty.username, faculty.first_name, faculty.email, faculty.phone, 
+			faculty.fathers_name, faculty.address, faculty.permanent_address, faculty.date_of_birth,
+			faculty.age, faculty.position, faculty.department, faculty.place, faculty.religion,
+			faculty.reservation, faculty.category, faculty.nationality, faculty.family_members,
+			faculty.kannada_speak, faculty.kannada_read, faculty.kannada_write, faculty.english_speak,
+			faculty.english_read, faculty.english_write, faculty.hindi_speak, faculty.hindi_read, faculty.hindi_write,
+			faculty.grade, faculty.no_member, faculty.year_selection, faculty.neft, faculty.uti, faculty.Date, faculty.Amount, faculty.Bank, faculty.Branch, faculty.ifsc])
+	writer.writerow(['Total Applied',(faculty_list.count() - 1)])
 
-def ExportView(request):
-	with open(os.path.join("/"), "wb") as csv_file:
-		writer = csv.writer(csv_file, delimiter=',')
-	data = Faculty.objects.all()
-	print(data)
-	for line in data:
-		writer.writerow(line)
+	return response
+
 
 def upload_file(request):
 	if request.method == 'POST':
@@ -83,7 +100,6 @@ def upload_file(request):
 		form = FacultyForm()
 
 	return render(request, 'index.html', {'form': form})
-
 
 
 
@@ -517,6 +533,41 @@ def printView(request):
 	special = SpecialAchievement.objects.filter(faculty=request.user.pk)
 	declaration = Declaration.objects.filter(faculty=request.user.pk)
 	achievement = SpecialAchievement.objects.filter(faculty=request.user.pk)
+	context = {
+	"faculty" : faculty,
+	"courses" : courses,
+	"achievements" : achievement,
+	"documents" : documents,
+	"referrals" : referrals,
+	"awards" : awards,
+	"industrial" : industrial,
+	"teaching" : teaching,
+	"membership" : membership,
+	"conference" : conference,
+	"research" : research,
+	"special" : special,
+	"declaration" : declaration,
+	}
+	print(str(faculty.image.url))
+	return render(request, template_name, context)
+
+def admin_print_view(request, username):
+	template_name='print.html'
+	User = get_user_model()
+	current_user = User.objects.get(username=username)
+	faculty = User.objects.get(username=current_user.username)
+	courses = Course.objects.filter(Applicant=current_user.pk)
+	documents = DocumentUpload.objects.filter(uploaded_by=current_user.pk)
+	referrals = Referral.objects.filter(faculty=current_user.pk)
+	awards = Awards.objects.filter(faculty=current_user.pk)
+	industrial = IndustrialExperience.objects.filter(faculty=current_user.pk)
+	teaching = TeachingExperience.objects.filter(faculty=current_user.pk)
+	membership = Membership.objects.filter(faculty=current_user.pk)
+	conference = Conference.objects.filter(faculty=current_user.pk)
+	research = Research.objects.filter(faculty=current_user.pk)
+	special = SpecialAchievement.objects.filter(faculty=current_user.pk)
+	declaration = Declaration.objects.filter(faculty=current_user.pk)
+	achievement = SpecialAchievement.objects.filter(faculty=current_user.pk)
 	context = {
 	"faculty" : faculty,
 	"courses" : courses,
