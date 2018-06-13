@@ -1,10 +1,15 @@
 from django.contrib import admin
+from import_export.admin import ImportExportModelAdmin
+
 
 from .models import *
 
 admin.site.site_header = 'Admin Interface'
 
-admin.site.register(User)
+@admin.register(User)
+class UserAdmin(ImportExportModelAdmin):
+    pass
+
 admin.site.register(Proficiency)
 admin.site.register(Degree)
 admin.site.register(Course)

@@ -49,8 +49,10 @@ INSTALLED_APPS = [
     'main',
     'widget_tweaks',
     'cloudinary',
+    'import_export',
 ]
 
+IMPORT_EXPORT_USE_TRANSACTIONS = True
 
 cloudinary.config(
     cloud_name = 'bmsit-ac-in',
