@@ -551,10 +551,10 @@ def printView(request):
 	print(str(faculty.image.url))
 	return render(request, template_name, context)
 
-def admin_print_view(request, username):
+def admin_print_view(request, email):
 	template_name='print.html'
 	User = get_user_model()
-	current_user = User.objects.get(username=username)
+	current_user = User.objects.get(email=email)
 	faculty = User.objects.get(username=current_user.username)
 	courses = Course.objects.filter(Applicant=current_user.pk)
 	documents = DocumentUpload.objects.filter(uploaded_by=current_user.pk)

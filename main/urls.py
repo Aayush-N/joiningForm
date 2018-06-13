@@ -23,7 +23,7 @@ urlpatterns = [
     path('documents/', views.DocumentsView.as_view(), name='documents'),
     path('declaration/', views.DeclarationView.as_view(), name='declaration'),
     path('print/', views.printView, name='print'),
-    path('admin-print/<slug:username>', views.admin_print_view, name='admin-print'),
+    path('admin-print/<email>/', views.admin_print_view, name='admin-print'),
 ]
 
 
