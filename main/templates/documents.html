@@ -55,6 +55,8 @@ input {
                     <fieldset style="color:black;">
     
                          <h2>Please upload any other documents.</h2>
+                         <p>Please ensure attachment size doesn't exceed 1 MB</p>
+                         <br>
         {{ formset.management_form }}
         <div id="form_set">
             {% for form in formset.forms %}

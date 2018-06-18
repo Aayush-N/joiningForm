@@ -53,6 +53,7 @@ input {
             		</div>
 		<form role="form" action="/educational/" method="post" enctype="multipart/form-data">{% csrf_token %}	
       <h2>Please Enter Your Educational Qualifications Below</h2>
+      <p>Please ensure attachment size doesn't exceed 1 MB</p>
         {{ formset.management_form }}
         <div id="form_set">
             {% for form in formset.forms %}
