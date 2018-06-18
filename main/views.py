@@ -64,32 +64,6 @@ class DisplayView(ListView):
 		context = super().get_context_data(**kwargs)
 		return context	
 
-def export_view(request):
-	'''
-	Downloads the list of remaing students, department wise in a CSV file
-	'''
-	User = get_user_model()
-	faculty_list = User.objects.filter().order_by('email')
-	response = HttpResponse(content_type='text/csv')
-
-	response['Content-Disposition'] = 'attachment; filename=applied_list.csv'
-	writer = csv.writer(response)
-	writer.writerow(['username', 'first name', 'email', 'phone', 'fathers name', 'address', 'permanent_address',
-		'date of birth', 'age', 'position', 'department', 'place of birth', 'religion', 'reservation', 'category', 'nationality', 'family members', 'kannada speak', 'kannada read', 'kannada write'
-		'english speak', 'english read', 'english write', 'hindi speak', 'hindi read', 'hindi write', 'grade', 'no member', 'year of selection', 'neft', 'uti', 'Payment Date', 'Amount',
-		'Bank', 'Branch', 'IFSC'])
-	for faculty in faculty_list:
-		writer.writerow([faculty.username, faculty.first_name, faculty.email, faculty.phone, 
-			faculty.fathers_name, faculty.address, faculty.permanent_address, faculty.date_of_birth,
-			faculty.age, faculty.position, faculty.department, faculty.place, faculty.religion,
-			faculty.reservation, faculty.category, faculty.nationality, faculty.family_members,
-			faculty.kannada_speak, faculty.kannada_read, faculty.kannada_write, faculty.english_speak,
-			faculty.english_read, faculty.english_write, faculty.hindi_speak, faculty.hindi_read, faculty.hindi_write,
-			faculty.grade, faculty.no_member, faculty.year_selection, faculty.neft, faculty.uti, faculty.Date, faculty.Amount, faculty.Bank, faculty.Branch, faculty.ifsc])
-	writer.writerow(['Total Applied',(faculty_list.count() - 1)])
-
-	return response
-
 
 def upload_file(request):
 	if request.method == 'POST':
@@ -586,6 +560,112 @@ def admin_print_view(request, email):
 	print(str(faculty.image.url))
 	return render(request, template_name, context)
 
+def export_view(request, file):
+	'''
+	Downloads the list of remaing students, department wise in a CSV file
+	'''
+	User = get_user_model()
+	faculty_list = User.objects.filter().order_by('email')
+	courses = Course.objects.filter()
+	referrals = Referral.objects.filter()
+	awards = Awards.objects.filter()
+	industrial = IndustrialExperience.objects.filter()
+	teaching = TeachingExperience.objects.filter()
+	membership = Membership.objects.filter()
+	conference = Conference.objects.filter()
+	research = Research.objects.filter()
+	special = SpecialAchievement.objects.filter()
+
+	response = HttpResponse(content_type='text/csv')
+	if file == '1':
+		response['Content-Disposition'] = 'attachment; filename=user-list.csv'
+		writer = csv.writer(response)
+		writer.writerow(['username', 'first name', 'email', 'phone', 'fathers name', 'address', 'permanent_address',
+			'date of birth', 'age', 'position', 'department', 'place of birth', 'religion', 'reservation', 'category', 'nationality', 'family members', 'kannada speak', 'kannada read', 'kannada write'
+			'english speak', 'english read', 'english write', 'hindi speak', 'hindi read', 'hindi write', 'grade', 'no member', 'year of selection', 'neft', 'uti', 'Payment Date', 'Amount',
+			'Bank', 'Branch', 'IFSC'])
+		for faculty in faculty_list:
+			writer.writerow([faculty.username, faculty.first_name, faculty.email, faculty.phone, 
+				faculty.fathers_name, faculty.address, faculty.permanent_address, faculty.date_of_birth,
+				faculty.age, faculty.position, faculty.department, faculty.place, faculty.religion,
+				faculty.reservation, faculty.category, faculty.nationality, faculty.family_members,
+				faculty.kannada_speak, faculty.kannada_read, faculty.kannada_write, faculty.english_speak,
+				faculty.english_read, faculty.english_write, faculty.hindi_speak, faculty.hindi_read, faculty.hindi_write,
+				faculty.grade, faculty.no_member, faculty.year_selection, faculty.neft, faculty.uti, faculty.Date, faculty.Amount, faculty.Bank, faculty.Branch, faculty.ifsc])
+		writer.writerow(['Total Applied',(faculty_list.count() - 1)])
+	if file == '2':
+		response['Content-Disposition'] = 'attachment; filename=course_list.csv'
+		writer = csv.writer(response)
+		writer.writerow(['first name', 'email', 'phone','degree name', 'Specialisation', 'Institution Name', 'Passing Year', 'Percent or grade', 'maximum_marks or grade'])
+		for course in courses:
+			writer.writerow([course.Applicant.first_name, course.Applicant.email, course.Applicant.phone, 
+				course.Degree.name, course.Specialisation, course.Institution_Name, course.Passing_Year, course.Percent_or_grade, course.maximum_marks_or_grade])
+	if file == '3':
+		response['Content-Disposition'] = 'attachment; filename=referral_list.csv'
+		writer = csv.writer(response)
+		writer.writerow(['first name', 'email', 'phone', 'referral name', 'position', 'designation', 'affiliation', 'contact no', 'email', 'address'])
+		for referral in referrals:
+			writer.writerow([referral.faculty.first_name, referral.faculty.email, referral.faculty.phone, 
+				referral.name, referral.position, referral.designation, referral.affiliation, referral.contact_no, referral.email, referral.address])
+	if file == '4':
+		response['Content-Disposition'] = 'attachment; filename=award_list.csv'
+		writer = csv.writer(response)
+		writer.writerow(['first name', 'email', 'phone', 'Spec awards particulars', 'state', 'national', 'international'])
+		for award in awards:
+			writer.writerow([award.faculty.first_name, award.faculty.email, award.faculty.phone, 
+				award.Spec_awards_particulars, award.state, award.national, award.international])
+	if file == '5':
+		response['Content-Disposition'] = 'attachment; filename=industrial-experience-list_list.csv'
+		writer = csv.writer(response)
+		writer.writerow(['first name', 'email', 'phone', 'organisation', 'position held', 'from date', 'to date', 'experience years'])
+		for ind in industrial:
+			writer.writerow([ind.faculty.first_name, ind.faculty.email, ind.faculty.phone, 
+				ind.organisation, ind.position_held, ind.from_date, ind.to_date, ind.experience_years])
+	if file == '6':
+		response['Content-Disposition'] = 'attachment; filename=teaching-experience-list_list.csv'
+		writer = csv.writer(response)
+		writer.writerow(['first name', 'email', 'phone', 'university name', 'designation', 'from date', 'to date', 'total duration'])
+		for t in teaching:
+			writer.writerow([t.faculty.first_name, t.faculty.email, t.faculty.phone, 
+				t.university_name, t.designation, t.from_date, t.to_date, t.total_duration])
+	if file == '7':
+		response['Content-Disposition'] = 'attachment; filename=membership-experience-list_list.csv'
+		writer = csv.writer(response)
+		writer.writerow(['first name', 'email', 'phone', 'type of member', 'professional body', 'membership no', 'annual'])
+		for t in membership:
+			writer.writerow([t.faculty.first_name, t.faculty.email, t.faculty.phone, 
+				t.type_of_member, t.professional_body, t.membership_no, t.annual])
+	if file == '8':
+		response['Content-Disposition'] = 'attachment; filename=conference-experience-list_list.csv'
+		writer = csv.writer(response)
+		writer.writerow(['first name', 'email', 'phone', 'conf conducted org', 'university', 'from date', 'to date', 'total duration'])
+		for t in conference:
+			writer.writerow([t.faculty.first_name, t.faculty.email, t.faculty.phone, 
+				t.conf_conducted_org, t.university, t.from_date, t.to_date, t.total_duration])
+	if file == '9':
+		response['Content-Disposition'] = 'attachment; filename=research-experience-list_list.csv'
+		writer = csv.writer(response)
+		writer.writerow(['first name', 'email', 'phone', 'total experience', 'university', 'area research', 'from date', 'to date', 'total duration'
+			'total international conf', 'title paper', 'International', 'year month pub'])
+		for t in research:
+			writer.writerow([t.faculty.first_name, t.faculty.email, t.faculty.phone, 
+				t.total_experience, t.university_name, t.area_reasearch, t.from_date, t.to_date, t.total_duration, t.total_internationalConf,
+				t.title_paper, t.conf_International, t.year_month_pub])
+	if file == '10':
+		response['Content-Disposition'] = 'attachment; filename=special-experience-list_list.csv'
+		writer = csv.writer(response)
+		writer.writerow(['first name', 'email', 'phone', 'community service', 'industry related', 'university assignment', 'administration'])
+		for t in special:
+			writer.writerow([t.faculty.first_name, t.faculty.email, t.faculty.phone, 
+				t.community_service, t.industry_related, t.university_assignment, t.administration])
+
+	return response
 
 
+def download_select_view(request):
+	template_name = 'download-select.html'
+	context = {
+		"title": "Download"
+	}
+	return render(request, template_name, context)
 
