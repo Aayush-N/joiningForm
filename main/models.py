@@ -121,7 +121,7 @@ class DocumentUpload(models.Model):
 	"""
 	uploaded_by = models.ForeignKey("User", on_delete=models.CASCADE)
 	type_of_document = models.ForeignKey("DocumentType", on_delete=models.CASCADE)
-	file =  CloudinaryField('documents')
+	file =  models.FileField(upload_to='uploads/')
 
 	def __str__(self):
 		return self.uploaded_by.first_name
