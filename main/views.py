@@ -564,17 +564,19 @@ def export_view(request, file):
 	'''
 	Downloads the list of remaing students, department wise in a CSV file
 	'''
+
+	declaration = list(Declaration.objects.all().values_list('faculty__username', flat=True))
 	User = get_user_model()
-	faculty_list = User.objects.filter().order_by('email')
-	courses = Course.objects.filter()
-	referrals = Referral.objects.filter()
-	awards = Awards.objects.filter()
-	industrial = IndustrialExperience.objects.filter()
-	teaching = TeachingExperience.objects.filter()
-	membership = Membership.objects.filter()
-	conference = Conference.objects.filter()
-	research = Research.objects.filter()
-	special = SpecialAchievement.objects.filter()
+	faculty_list = User.objects.filter(username__in=declaration).order_by('email')
+	courses = Course.objects.filter(Applicant__username__in=declaration)
+	referrals = Referral.objects.filter(faculty__username__in=declaration)
+	awards = Awards.objects.filter(faculty__username__in=declaration)
+	industrial = IndustrialExperience.objects.filter(faculty__username__in=declaration)
+	teaching = TeachingExperience.objects.filter(faculty__username__in=declaration)
+	membership = Membership.objects.filter(faculty__username__in=declaration)
+	conference = Conference.objects.filter(faculty__username__in=declaration)
+	research = Research.objects.filter(faculty__username__in=declaration)
+	special = SpecialAchievement.objects.filter(faculty__username__in=declaration)
 
 	response = HttpResponse(content_type='text/csv')
 	if file == '1':
@@ -592,7 +594,7 @@ def export_view(request, file):
 				faculty.kannada_speak, faculty.kannada_read, faculty.kannada_write, faculty.english_speak,
 				faculty.english_read, faculty.english_write, faculty.hindi_speak, faculty.hindi_read, faculty.hindi_write,
 				faculty.grade, faculty.no_member, faculty.year_selection, faculty.neft, faculty.uti, faculty.Date, faculty.Amount, faculty.Bank, faculty.Branch, faculty.ifsc])
-		writer.writerow(['Total Applied',(faculty_list.count() - 1)])
+		writer.writerow(['Total Applied',(faculty_list.count())])
 	if file == '2':
 		response['Content-Disposition'] = 'attachment; filename=course_list.csv'
 		writer = csv.writer(response)

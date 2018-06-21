@@ -221,3 +221,6 @@ class SpecialAchievement(models.Model):
 class Declaration(models.Model):
 	faculty = models.ForeignKey("User", on_delete=models.CASCADE)
 	signature = models.FileField(upload_to='uploads/')
+
+	def __str__(self):
+		return self.faculty.username
