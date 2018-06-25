@@ -25,6 +25,7 @@ urlpatterns = [
     path('declaration/', views.DeclarationView.as_view(), name='declaration'),
     path('print/', views.printView, name='print'),
     path('admin-print/<email>/', views.admin_print_view, name='admin-print'),
+    path('do_declare/',views.declaration, name='decl'),
 ]
 
 

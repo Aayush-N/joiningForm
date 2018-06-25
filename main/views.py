@@ -530,7 +530,8 @@ def admin_print_view(request, email):
 	User = get_user_model()
 	current_user = User.objects.get(email=email)
 	faculty = User.objects.get(username=current_user.username)
-	courses = Course.objects.filter(Applicant=current_user.pk)
+	courses = Course.objects.filter(Applicant=current_user.pk).values_list().distinct()
+	print(courses)
 	documents = DocumentUpload.objects.filter(uploaded_by=current_user.pk)
 	referrals = Referral.objects.filter(faculty=current_user.pk)
 	awards = Awards.objects.filter(faculty=current_user.pk)
@@ -671,3 +672,14 @@ def download_select_view(request):
 	}
 	return render(request, template_name, context)
 
+def declaration(request):
+	declaration = list(Declaration.objects.all().values_list('faculty__username', flat=True))
+	User = get_user_model()
+	faculty_list = User.objects.filter(username__in=declaration).order_by('email')
+	print(faculty_list)
+	for i in faculty_list:
+		print(i.declared)
+		i.declared = True
+		i.save()
+
+	return HttpResponse(request, 'Done')
