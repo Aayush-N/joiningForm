@@ -1,3 +1,5 @@
+django-import-export==1.2.0
+cloudinary==1.15.0
 asn1crypto==0.24.0
 attrs==18.1.0
 Automat==0.6.0
@@ -13,7 +15,7 @@ idna==2.6
 incremental==17.5.0
 paramiko==2.4.1
 pexpect==3.0
-Pillow==5.1.0
+Pillow
 pyasn1==0.4.3
 pycparser==2.18
 Pygments==2.2.0
